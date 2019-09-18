@@ -2,8 +2,8 @@
 
 소동물 분양 사이트 제작
 
-Framework: SPRING
-DB: MariaDB
+Framework: SPRING </br>
+DB: MariaDB</br>
 WAS: Tomcat
 
 그외: Graph QL
