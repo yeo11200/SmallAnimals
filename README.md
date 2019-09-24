@@ -5,7 +5,7 @@
 Framework: SPRING </br>
 DB: MariaDB</br>
 DB Framework: MyBatis</br>
-WAS: Tomcat
+WAS: Tomcat ver8.5
 
 
 그외: Graph QL
