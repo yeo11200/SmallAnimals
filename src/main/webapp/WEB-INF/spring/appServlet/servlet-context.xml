@@ -25,7 +25,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.smailanymals.myapp" />
-	
+	<context:annotation-config />
     <!-- Tiles -->
     <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <beans:property name="definitions">
