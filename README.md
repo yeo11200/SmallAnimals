@@ -6,7 +6,7 @@ Framework: SPRING </br>
 DB: MariaDB</br>
 DB Framework: MyBatis</br>
 WAS: Tomcat ver8.5
-
+이슈 관리: Trello 
 
 그외: Graph QL
 
