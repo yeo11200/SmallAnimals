@@ -2,9 +2,9 @@
 
 소동물 분양 사이트 제작
 
-Framework: SPRING </br>
-DB: MariaDB</br>
-DB Framework: MyBatis</br>
+Framework: SPRING 5.0.2 </br>
+DB: MariaDB 10.2</br>
+DB Framework: MyBatis 3.4.1</br>
 WAS: Tomcat ver8.5</br>
 이슈 관리: Trello [이슈 관리 내용이 궁금하시다면 여기로!](https://trello.com/smallanimals)
 
