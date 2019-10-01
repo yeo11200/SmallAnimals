@@ -7,7 +7,7 @@ DB: MariaDB 10.2</br>
 DB Framework: MyBatis 3.4.1</br>
 WAS: Tomcat ver8.5</br>
 UML Tool: StarUML</br>
-이슈 관리: Trello [이슈 관리 내용이 궁금하시다면 여기로!](https://trello.com/smallanimals)
+이슈 관리: Trello [이슈 관리 내용이 궁금하시다면 여기로!](https://trello.com/smallanimals)<br>
 ERD : [ERDCloud](https://www.erdcloud.com/d/4nBvoWyG64Bu6bYGb)
 
 그외: Graph QL
