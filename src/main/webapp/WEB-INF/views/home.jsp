@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 <head>
 	<title>Home</title>
@@ -11,5 +10,7 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 <textarea rows="3" cols="4" id="summernote" name="content"></textarea>
+<input type="button" style="width:200px; line-height:200px;">
+<script type="text/javascript" src="<c:url value='/resources/js/notice/notice.js' />"></script>
 </body>
 </html>
