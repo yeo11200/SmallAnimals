@@ -6,7 +6,6 @@
  
     <!-- 메뉴 표시 -->
     <definition name="base" template="/WEB-INF/tiles/template.jsp">
-        <put-attribute name="left"   value="/WEB-INF/tiles/left.jsp" />
         <put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
         <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
     </definition>
