@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smallanimals.notice">
+	<!-- VO와 컬럼이 서로 이름이 다른 경우 사용을 한다. property = vo이름, column = column 이름 -->
+	<resultMap type="com.smallanymals.notice.vo.NoticeVO" id="noticeMap">
+		<result property="no" column="notice_id"/>
+		<result property="title" column="notice_title"/>
+		<result property="content" column="notice_content"/>
+		<result property="startDate" column="notice_startDate"/>
+		<result property="endDate" column="notice_endDate"/>
+		<result property="writeDate" column="notice_writeDate"/>
+		<result property="emp" column="noticeEmp"/>
+	</resultMap>
+	
+	<select id="list" parameterType="com.smallanymals.notice.vo.NoticeVO" resultMap="noticeMap">
+		select *
+		from notice
+	</select>
+	
+	<select id="view" parameterType="com.smallanymals.notice.vo.NoticeVO" resultMap="noticeMap">
+		select *
+		from notice
+		where no = #{no}
+	</select>
+	
+	<insert id="insert"></insert>
+	<update id="update"></update>
+	<delete id="delete"></delete>
+	<select id="count"  parameterType="com.smallanymals.notice.vo.NoticeVO" resultMap="noticeMap">
+		select count(*) from notice
+	</select>
+</mapper>
