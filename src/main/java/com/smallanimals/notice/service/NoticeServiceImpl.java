@@ -1,8 +1,8 @@
-package com.smallanymals.notice.service;
+package com.smallanimals.notice.service;
 
 import java.util.List;
 
-import com.smallanymals.notice.vo.NoticeVO;
+import com.smallanimals.notice.vo.NoticeVO;
 
 public interface NoticeServiceImpl {
 

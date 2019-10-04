@@ -1,4 +1,4 @@
-package com.smailanymals.myapp;
+package com.smallanimals.myapp;
 
 import java.text.DateFormat;
 import java.util.Date;
