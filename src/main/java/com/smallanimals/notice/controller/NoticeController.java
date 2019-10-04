@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.smallanimals.notice.service.NoticeService;
@@ -40,10 +41,17 @@ public class NoticeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/notice/insert", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/notice/insert", method= RequestMethod.GET)
 	public ModelAndView insert(NoticeVO vo) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("notice/insert");
+		return mv;
+	}
+	
+	@RequestMapping(value="/notice/insertApi", method= RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView insertApi(NoticeVO vo) {
+		ModelAndView mv = new ModelAndView();
 		int success = service.insert(vo);
 		if(success == 1) {
 			mv.setViewName("redirect:/notice/list");
@@ -62,14 +70,16 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="/notice/updateApi", method=RequestMethod.PUT)
+	@ResponseBody
 	public ModelAndView updateApi(NoticeVO vo) {
 		ModelAndView mv = new ModelAndView();
 		int success = service.update(vo);
 		if(success == 1) {
-			mv.setViewName("redirect:/notice/views/"+vo.getNo());
+			mv.setViewName("redirect:/notice/list");
 		} else {
 			mv.setViewName("redirect:/error/error");
 		}
+		mv.setViewName("notice/update");
 		return mv;
 	}
 	

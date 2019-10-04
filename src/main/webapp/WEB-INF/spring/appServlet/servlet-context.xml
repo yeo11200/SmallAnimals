@@ -26,8 +26,8 @@
 		<beans:property name="order" value="2" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.smailanymals.myapp" />
-	<context:component-scan base-package="com.smallanymals.notice" />
+	<context:component-scan base-package="com.smailanimals.myapp" />
+	<context:component-scan base-package="com.smallanimals.notice" />
 	<context:annotation-config />
     <!-- Tiles -->
     <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
