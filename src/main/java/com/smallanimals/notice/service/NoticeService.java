@@ -1,12 +1,12 @@
-package com.smallanymals.notice.service;
+package com.smallanimals.notice.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.smallanymals.notice.dao.NoticeDAO;
-import com.smallanymals.notice.vo.NoticeVO;
+import com.smallanimals.notice.dao.NoticeDAO;
+import com.smallanimals.notice.vo.NoticeVO;
 
 @Service
 public class NoticeService implements NoticeServiceImpl {

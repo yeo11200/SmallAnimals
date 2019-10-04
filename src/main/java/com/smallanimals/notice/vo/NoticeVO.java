@@ -1,4 +1,4 @@
-package com.smallanymals.notice.vo;
+package com.smallanimals.notice.vo;
 
 import java.sql.Date;
 
