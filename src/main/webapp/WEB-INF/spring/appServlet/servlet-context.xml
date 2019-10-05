@@ -26,7 +26,7 @@
 		<beans:property name="order" value="2" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.smailanimals.myapp" />
+	<context:component-scan base-package="com.smallanimals.myapp" />
 	<context:component-scan base-package="com.smallanimals.notice" />
 	<context:annotation-config />
     <!-- Tiles -->
