@@ -34,14 +34,7 @@ window.addEventListener('load', function () {
 	view();
 })
 function view() {
-	var view = document.getElementsByClassName('no');
-	console.log(view.length);
-    for(var i=0; i < view.length; i++){
-    	view[i].addEventListener('click', function () {
-            var no = view[i].getAttribute('attr');
-            console.log(no);
-        });
-    };
+  alert(document.getElementsByClassName('no')[0].getAttribute('attr'));
 }
 </script>
 </body>
