@@ -7,9 +7,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class NoticeVO {
-	public int no, emp;
+	public int no, emp, cnt;
 	public String title, writer, content;
 	public Date startDate, endDate, writeDate;
+	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public int getNo() {
 		return no;
 	}
