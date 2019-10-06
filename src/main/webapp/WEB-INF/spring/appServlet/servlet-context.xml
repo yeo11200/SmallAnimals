@@ -28,6 +28,7 @@
 	
 	<context:component-scan base-package="com.smallanimals.myapp" />
 	<context:component-scan base-package="com.smallanimals.notice" />
+	<context:component-scan base-package="com.smallanimals.main"></context:component-scan>
 	<context:annotation-config />
     <!-- Tiles -->
     <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
