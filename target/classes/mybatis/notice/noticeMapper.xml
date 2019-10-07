@@ -12,18 +12,33 @@
 		<result property="emp" column="noticeEmp"/>
 	</resultMap>
 	
+<<<<<<< HEAD
+	<select id="list" parameterType="com.smallanimals.notice.vo.NoticeVO" resultMap="noticeMap">
+=======
 	<select id="list" resultType="com.smallanimals.notice.vo.NoticeVO" resultMap="noticeMap">
+>>>>>>> master
 		select *
 		from notice
 		order by notice_writeDate desc
 	</select>
 	
+<<<<<<< HEAD
+	<select id="view" parameterType="com.smallanimals.notice.vo.NoticeVO" resultMap="noticeMap">
+=======
 	<select id="view" resultType="com.smallanimals.notice.vo.NoticeVO" resultMap="noticeMap">
+>>>>>>> master
 		select *
 		from notice
 		where notice_id = #{no}
 	</select>
 	
+<<<<<<< HEAD
+	<insert id="insert"></insert>
+	<update id="update"></update>
+	<delete id="delete"></delete>
+	<select id="count"  parameterType="com.smallanimals.notice.vo.NoticeVO" resultMap="noticeMap">
+		select count(*) from notice
+=======
 	<insert id="insert">
 		insert into notice(notice_title, notice_content, notice_startDate, notice_endDate, notice_emp)
 		values(#{title}, #{content}, #{startDate}, #{endDate}, #{emp})
@@ -40,5 +55,6 @@
 	
 	<select id="count"  resultType="java.lang.Integer">
 		select count(*) as cnt from notice
+>>>>>>> master
 	</select>
 </mapper>
