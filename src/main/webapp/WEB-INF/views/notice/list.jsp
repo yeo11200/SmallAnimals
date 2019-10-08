@@ -51,7 +51,7 @@ function view() {
 }
 
 document.getElementById('insert').addEventListener('click', function () {
-	location.href = "/myapp/notice/insert";
+	location.href = "/notice/insert";
 });
 </script>
 </body>

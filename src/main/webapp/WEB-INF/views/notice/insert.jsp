@@ -62,6 +62,7 @@ $(document).ready(function() {
 	<textarea id="summernote" name="content"></textarea>
 	<input type="checkbox" name="emp" id="emp" value="1">중요공지
 </form>
-<button>글쓰기</button>
+<button id="insert">글쓰기</button>
+<script type="text/javascript" src="<c:out value='/resources/js/notice/insert.js'></c:out>"></script>
 </body>
 </html>

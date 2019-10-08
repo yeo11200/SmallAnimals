@@ -13,6 +13,7 @@ import com.smallanimals.notice.vo.NoticeVO;
 public class NoticeDAO implements NoticeServiceImpl {
 
 	public SqlSessionTemplate sql;
+	
 	@Autowired
 	public NoticeDAO(SqlSessionTemplate sql) {
 		this.sql = sql;
