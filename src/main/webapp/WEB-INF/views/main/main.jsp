@@ -21,18 +21,21 @@
 %>
 <body>
 <h2>메인입니다</h2>
+<a href='<c:url value="/page"/>'>GUEST</a></br> 
+<a href='<c:url value="/user/page"/>'>USER</a></br>
+<a href='<c:url value="/member/page"/>'>MEMBER</a></br>
+<a href='<c:url value="/admin/page"/>'>ADMIN</a></br> 
 <sec:authorize access="isAnonymous()">
 <a href='<c:url value="/memberInfo/login/loginPage"/>'>login</a></br> 
-<a href='<c:url value="/member/page"/>'>GUEST</a></br> 
-<a href='<c:url value="/member/user/page"/>'>USER</a></br>
-<a href='<c:url value="/member/member/page"/>'>MEMBER</a></br>
-<a href='<c:url value="/admin/page"/>'>ADMIN</a></br> 
+<a href='<c:url value="/register"/>'>회원가입</a></br> 
+
 </sec:authorize>
 <sec:authorize access="isAuthenticated()">
-		<li><a href="javascript:logout();">로그아웃</a></li>	
-</sec:authorize>
-<form id="logoutFrm" action="${pageContext.request.contextPath}/member/logout" method="post" style:"display:none">
+<form id="logoutFrm" action="${pageContext.request.contextPath}/logout" method="post" style:"display:none">
 	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+	<button type="submit">LOGOUT</button>
 </form>
+</sec:authorize>
+
 </body>
 </html>

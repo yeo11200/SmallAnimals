@@ -11,6 +11,11 @@ public class LoginController {
 	 public String page() throws Exception {
 	 System.out.println("들어옴");
 	 return "memberInfo/login/loginPage"; }
+	 
+	 @RequestMapping(value="/access_denied_page")
+	    public String accessDeniedPage() throws Exception {
+	        return "/access_denied_page";
+	 }
 
 	 
 }
