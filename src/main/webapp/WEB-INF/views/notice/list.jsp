@@ -45,7 +45,7 @@ function view() {
 		document.getElementsByClassName('views')[i].addEventListener('click', function() {
 			let no = views[i].getAttribute('attr');
 			
-			location.href = "/myapp/notice/views/"+no;
+			location.href = "/notice/views/"+no;
 		});	
 	}
 }

@@ -32,7 +32,7 @@
 	</update>
 	
 	<delete id="delete">
-		delete from notice where notice_no = #{no}
+		delete from notice where notice_id = #{no}
 	</delete>
 	
 	<select id="count"  resultType="java.lang.Integer">
