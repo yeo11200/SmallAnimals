@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>views</h2>
+<input value="${views.no }" type="hidden" id="no">
 <table>
 	<tbody>
 		<tr>
@@ -29,8 +30,8 @@
 	</tbody>
 </table>
 <button id="update">수정하기</button>
-<button>삭제하기</button>
+<button id="delete">삭제하기</button>
 
-<script type="module" src="<c:out valeu="/resouces/js/notice/update.js" />"></script>
+<script type="module" src="<c:out value="/resources/js/notice/import.js"/>"></script>
 </body>
 </html>

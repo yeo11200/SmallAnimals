@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +28,7 @@ public class NoticeController {
 	private NoticeService service;
 	private NoticeDAO dao;
 	
+	Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
 	public NoticeController(NoticeService service, NoticeDAO dao) {
 		// TODO Auto-generated constructor stub
@@ -66,7 +69,7 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="/notice/insert", method= RequestMethod.GET)
-	public ModelAndView insert(NoticeVO vo) {
+	public ModelAndView insert() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("notice/insert");
 		return mv;
@@ -106,16 +109,29 @@ public class NoticeController {
 		mv.setViewName("notice/update");
 		return mv;
 	}
-	
 	@RequestMapping(value="/notice/delete/{no}", method=RequestMethod.DELETE)
-	public ModelAndView delete(@PathVariable int no) {
-		ModelAndView mv = new ModelAndView();
-		int success = service.delete(no);
-		if(success == 1) {
-			mv.setViewName("redirect:/notice/list");
-		} else {
-			mv.setViewName("redirect:/error/error");
+	@ResponseBody
+	public String delete(@PathVariable int no ) throws Exception{
+		logger.info("info//////////"+no);
+		System.out.println(no);
+		
+		int a = service.delete(no);
+		System.out.println(a);
+		if(a == 1) {
+			return "/notice/list";
+		}else {
+			return "/error/error";
 		}
-		return mv;
+	}
+	
+	@GetMapping(value="/notice/idcheck", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String idCheck(String id) {
+		System.out.println(id);
+		if(id == "1234") {
+			return "불가능";
+		}else {
+			return "사용가능";
+		}
 	}
 }

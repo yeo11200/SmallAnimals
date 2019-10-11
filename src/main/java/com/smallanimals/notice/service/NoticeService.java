@@ -34,19 +34,19 @@ public class NoticeService implements NoticeServiceImpl {
 	@Override
 	public int insert(NoticeVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.insert(vo);
 	}
 
 	@Override
 	public int update(NoticeVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(vo);
 	}
 
 	@Override
 	public int delete(int no) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(no);
 	}
 
 	

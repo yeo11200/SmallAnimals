@@ -190,7 +190,13 @@
 		  <version>2.9.9.2</version>
 		</dependency>
   
-   
+   		<!-- JackSon -->
+		<dependency>
+		    <groupId>org.codehaus.jackson</groupId>
+		    <artifactId>jackson-mapper-asl</artifactId>
+		    <version>1.9.13</version>
+		</dependency>
+
         <!-- Logback -->
         <dependency>
             <groupId>ch.qos.logback</groupId>

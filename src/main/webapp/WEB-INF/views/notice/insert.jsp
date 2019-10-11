@@ -52,6 +52,8 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+<label for="id">너는 아이디다</label>
+<input type="text" name="id" id="id" onchange="idcheck();">
 <form name="form">
 	<input type="text" name="title" id="title">
 	<label for="startDate">시작일</label>
@@ -60,9 +62,56 @@ $(document).ready(function() {
 	<input type="text" name="endDate" id="endDate" autocomplete="off">
 	<br><br><br><br><br><br>
 	<textarea id="summernote" name="content"></textarea>
-	<input type="checkbox" name="emp" id="emp" value="1">중요공지
+	<input type="checkbox" name="emp" id="emp">중요공지
+	<button id="insert">글쓰기</button>
 </form>
-<button id="insert">글쓰기</button>
 <script type="text/javascript" src="<c:out value='/resources/js/notice/insert.js'></c:out>"></script>
+<script>
+	document.getElementById('insert').addEventListener('click', function (){
+		var a;
+		var a1 = document.getElementById('emp').checked;
+		if(a1 == true) {
+			a = 1;
+		} else {
+			a = 0;
+		}
+		alert(a);
+	});
+</script>
+
+<script>
+// 	$(document).ready(function () {
+// 		$('input#id').on('change', function () {
+// 			var a = $('#id').val();
+// 			$.ajax({
+// 				type: 'get',
+// 				url : "/notice/idcheck",
+// 				data : {'id': a},
+// 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+// 				success : function (data) {
+// 					alert(data);
+// 				},
+// 				error : function (request,status,error) {
+// 					 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+// 				}
+// 			});
+// 		});
+// 	});
+function idcheck() {
+		var a = $('#id').val();
+		$.ajax({
+			type: 'get',
+			url : "/notice/idcheck",
+			data : {'id': a},
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			success : function (data) {
+				alert(data);
+			},
+			error : function (request,status,error) {
+				 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+		});
+}
+</script>
 </body>
 </html>

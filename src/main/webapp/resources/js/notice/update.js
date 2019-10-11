@@ -1,11 +1,2 @@
-export class update {
-	
+export class update{
 }
-
-
-
-
-
-
-
-export {update, delete1}
