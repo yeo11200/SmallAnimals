@@ -68,25 +68,35 @@ public class NoticeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/notice/insert", method= RequestMethod.GET)
-	public ModelAndView insert() {
+	@RequestMapping(value="/notice/insert", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView insert(NoticeVO vo) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("notice/insert");
-		return mv;
-	}
-	
-	@RequestMapping(value="/notice/insertApi", method= RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView insertApi(NoticeVO vo) {
-		ModelAndView mv = new ModelAndView();
-		int success = service.insert(vo);
-		if(success == 1) {
-			mv.setViewName("redirect:/notice/list");
-		} else {
-			mv.setViewName("redirect:/error/error");
+		logger.info("insert!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println(vo.getTitle());
+		if(vo.getTitle() != null) {
+			int a = service.insert(vo);
+			 if(a != 0) {
+				 mv.setViewName("redirect:/notice/list");
+			 } else {
+				 mv.setViewName("redirect:/error/error");
+			 }
 		}
 		return mv;
 	}
+	
+//	@RequestMapping(value="/notice/insertApi", method= RequestMethod.POST)
+//	@ResponseBody
+//	public ModelAndView insertApi(NoticeVO vo) {
+//		ModelAndView mv = new ModelAndView();
+//		int success = service.insert(vo);
+//		if(success == 1) {
+//			mv.setViewName("redirect:/notice/list");
+//		} else {
+//			mv.setViewName("redirect:/error/error");
+//		}
+//		return mv;
+//	}
 	
 	@RequestMapping(value="/notice/update/{no}", method=RequestMethod.GET)
 	public ModelAndView update(@PathVariable int no) {

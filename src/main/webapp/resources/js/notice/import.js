@@ -6,7 +6,7 @@ document.getElementById('delete').addEventListener('click', delete1);
 document.getElementById('update').addEventListener('click', update);
 
 function update() {
-	let a = new update1();
-	
-	a.update('a',1,'2','4','5');
+	let no = document.getElementById('no').value;
+	let a = new update1(no);
+	a.update();
 }

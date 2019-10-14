@@ -22,7 +22,7 @@
 		where notice_id = #{no}
 	</select>
 	<insert id="insert">
-		insert into notice(notice_title, notice_content, notice_startDate, notice_endDate, notice_emp)
+		insert into notice(notice_title, notice_content, notice_startDate, notice_endDate, noticeEmp)
 		values(#{title}, #{content}, #{startDate}, #{endDate}, #{emp})
 	</insert>
 	
@@ -38,4 +38,18 @@
 	<select id="count"  resultType="java.lang.Integer">
 		select count(*) as cnt from notice
 	</select>
+	
+	<sql id="pre">
+		<choose>
+		 <when test="pre">
+		 
+		 </when>
+		 <when test="end">
+		 
+		 </when>
+		 <when test="start">
+		 
+		 </when>
+		</choose>
+	</sql>
 </mapper>
