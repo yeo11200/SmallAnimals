@@ -8,7 +8,7 @@ function delete1() {
 	let xhr = new XMLHttpRequest();
 	xhr.open('DELETE', '/notice/delete/'+no, true);
 	xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-	xhr.send(JSON.stringify(data));
+	xhr.send();
 	xhr.onload = function () {
 		alert('성공');
 		location.href = xhr.responseText;
@@ -24,18 +24,11 @@ function delete1() {
 }
 
 class update1 {
-//	constructor(a, b, ...c)
-//	{
-//		this.a = a;
-//		this.b = b;
-//		this.c = c;
-//	}
-	update (a, b, ...c) {
-		alert(a+b+c);
+	constructor(no){
+	this.no	= no
 	}
-	
-	list () {
-		return location.href = "/notice/list";
+	update () {
+		return location.href = "/notice/update/"+this.no;	
 	}
 }
 

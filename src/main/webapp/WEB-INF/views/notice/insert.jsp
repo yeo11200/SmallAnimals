@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,33 +53,17 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<label for="id">너는 아이디다</label>
-<input type="text" name="id" id="id" onchange="idcheck();">
-<form name="form">
+<form:form  name="form" method="post" action="/notice/insert">
 	<input type="text" name="title" id="title">
 	<label for="startDate">시작일</label>
 	<input type="text" name="startDate" id="startDate" autocomplete="off">~
 	<label for="endDate">종료일</label>
 	<input type="text" name="endDate" id="endDate" autocomplete="off">
-	<br><br><br><br><br><br>
 	<textarea id="summernote" name="content"></textarea>
 	<input type="checkbox" name="emp" id="emp">중요공지
 	<button id="insert">글쓰기</button>
-</form>
+</form:form>
 <script type="text/javascript" src="<c:out value='/resources/js/notice/insert.js'></c:out>"></script>
-<script>
-	document.getElementById('insert').addEventListener('click', function (){
-		var a;
-		var a1 = document.getElementById('emp').checked;
-		if(a1 == true) {
-			a = 1;
-		} else {
-			a = 0;
-		}
-		alert(a);
-	});
-</script>
-
 <script>
 // 	$(document).ready(function () {
 // 		$('input#id').on('change', function () {
