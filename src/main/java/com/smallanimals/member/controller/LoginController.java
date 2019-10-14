@@ -9,7 +9,7 @@ public class LoginController {
 	
 	 @RequestMapping("/memberInfo/login/loginPage") 
 	 public String page() throws Exception {
-	 System.out.println("ë“¤ì–´ì˜´");
+	 System.out.println("ÄÁÆ®·Ñ·¯ÀÔ´Ï´Ù.");
 	 return "memberInfo/login/loginPage"; }
 	 
 	 @RequestMapping(value="/access_denied_page")

@@ -13,13 +13,14 @@
         <property name="username" value="gudistudy"></property>
         <property name="password" value="gudistudy"></property>
     </bean>
- 
+    
+    
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
         <property name="configLocation" value="classpath:/mybatis/mybatis-config.xml"></property>
         <property name="mapperLocations" value="classpath*:/mybatis/**/*Mapper.xml"></property>
     </bean>
- 
+    
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
     </bean>
@@ -34,4 +35,7 @@
         <property name="cacheSeconds" value="5"/>
     </bean>
 	<tx:annotation-driven/>
+
+	
+	
 </beans>
