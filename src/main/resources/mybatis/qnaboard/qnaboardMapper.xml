@@ -12,7 +12,7 @@
 	select * from QnAboard where board_id = #{board_id}
 </select>
 
-<insert id="insert" parameterType="com.smallanimals.qnaboard.vo.QnAboardVO">
+<insert id="insert" >
 	INSERT INTO QnAboard (title, contents, user_id)
 		values (#{title}, #{contents}, #{user_id})
 </insert>
