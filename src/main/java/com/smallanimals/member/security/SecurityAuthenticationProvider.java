@@ -8,19 +8,22 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 
 import com.smallanimals.member.service.AuthoritiesService;
-import com.smallanimals.member.vo.AuthoritiesVO;
+import com.smallanimals.member.vo.MemberVO;
+
 
 public class SecurityAuthenticationProvider implements AuthenticationProvider  {
 
 	@Autowired
 	private AuthoritiesService AuthSer;
+	
+	
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		 String username = (String) authentication.getPrincipal();
 	        String password = (String) authentication.getCredentials();
 	        
-	        AuthoritiesVO user = (AuthoritiesVO) AuthSer.loadUserByUsername(username);
+	        MemberVO user = (MemberVO) AuthSer.loadUserByUsername(username);
 	        
 	        if(!matchPassword(password, user.getPassword())) {
 	            throw new BadCredentialsException(username);
@@ -42,5 +45,7 @@ public class SecurityAuthenticationProvider implements AuthenticationProvider  {
 	  private boolean matchPassword(String loginPwd, String password) {
 	        return loginPwd.equals(password);
 	  } 
+		  
+
 
 }

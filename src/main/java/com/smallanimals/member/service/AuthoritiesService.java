@@ -7,7 +7,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.smallanimals.member.dao.AuthoritiesDAO;
-import com.smallanimals.member.vo.AuthoritiesVO;
+import com.smallanimals.member.vo.MemberVO;
+
 
 @Service
 public class AuthoritiesService implements UserDetailsService{
@@ -22,12 +23,14 @@ public class AuthoritiesService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 			System.out.println("service까진 오는데" + username);
 			
-		   AuthoritiesVO user = AuthorDAO.getUserById("admin");
+		   MemberVO user = AuthorDAO.getUserById(username);
 		   
-		   System.out.println("service에서 dao 통과를 못해요;");
+		
 	        if(user==null) {
-            throw new UsernameNotFoundException(username);
+        
+	        	throw new UsernameNotFoundException(username);
 	        }
 	        return user;
 	}
+	
 }

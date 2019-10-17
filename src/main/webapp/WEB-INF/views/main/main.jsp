@@ -21,13 +21,9 @@
 %>
 <body>
 <h2>메인입니다</h2>
-<a href='<c:url value="/page"/>'>GUEST</a></br> 
-<a href='<c:url value="/user/page"/>'>USER</a></br>
-<a href='<c:url value="/member/page"/>'>MEMBER</a></br>
-<a href='<c:url value="/admin/page"/>'>ADMIN</a></br> 
 <sec:authorize access="isAnonymous()">
 <a href='<c:url value="/memberInfo/login/loginPage"/>'>login</a></br> 
-<a href='<c:url value="/register"/>'>회원가입</a></br> 
+<a href='<c:url value="/memberInfo/join/register2"/>'>회원가입</a></br> 
 
 </sec:authorize>
 <sec:authorize access="isAuthenticated()">

@@ -1,8 +1,9 @@
-package com.smallanimals.member.dao;
+package com.smallanimals.member.service;
 
 import com.smallanimals.member.vo.MemberVO;
 
-public interface MemberDAO {
+public interface MemberService {
 
+	
 	void registerMember(MemberVO vo);
 }
