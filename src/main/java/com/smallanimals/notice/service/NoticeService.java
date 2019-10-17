@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.smallanimals.notice.dao.NoticeDAO;
 import com.smallanimals.notice.vo.NoticeVO;
+import com.smallanimals.notice.vo.PreVO;
 
 @Service
 public class NoticeService implements NoticeServiceImpl {
@@ -20,9 +21,13 @@ public class NoticeService implements NoticeServiceImpl {
 	}
 	
 	@Override
-	public List<NoticeVO> list() {
+	public List<NoticeVO> list(PreVO vo) {
 		// TODO Auto-generated method stub
-		return dao.list();
+		if(vo.getDate() == null) {
+			vo.setDate("0");
+		}
+		System.out.println(vo.getDate());
+		return dao.list(vo);
 	}
 
 	@Override

@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.smallanimals.notice.dao.NoticeDAO;
 import com.smallanimals.notice.service.NoticeService;
 import com.smallanimals.notice.vo.NoticeVO;
+import com.smallanimals.notice.vo.PreVO;
 
 
 @Controller
@@ -36,21 +37,21 @@ public class NoticeController {
 		this.dao = dao;
 	}
 	
-	@RequestMapping(value="/notice/list", method=RequestMethod.GET)
-	public ModelAndView list() {
+	@RequestMapping(value="/notice/list", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView list(PreVO vo) {
+		logger.info("date????"+ vo.getDate());
 		ModelAndView mv = new ModelAndView();
-		System.out.println(service.list());
-		mv.addObject("list", service.list());
+		System.out.println(service.list(vo));
+		mv.addObject("list", service.list(vo));
 		mv.addObject("count", dao.count());
 		mv.setViewName("notice/list");
 		return mv;
 	}
 	
-	
 	@RequestMapping(value="/notice/lists", method = RequestMethod.GET)
-	public ResponseEntity<Map<String, Object>> lists() {
+	public ResponseEntity<Map<String, Object>> lists(PreVO vo) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		List<NoticeVO> list = service.list();
+		List<NoticeVO> list = service.list(vo);
 		int count = dao.count();
 		map.put("list", list);
 		map.put("count", count);
@@ -63,6 +64,7 @@ public class NoticeController {
 	@RequestMapping(value="/notice/views/{no}", method=RequestMethod.GET)
 	public ModelAndView view(@PathVariable int no) {
 		ModelAndView mv = new ModelAndView();
+		System.out.println(service.view(no).getStartDate());
 		mv.addObject("views", service.view(no));
 		mv.setViewName("notice/view");
 		return mv;
@@ -98,17 +100,28 @@ public class NoticeController {
 //		return mv;
 //	}
 	
-	@RequestMapping(value="/notice/update/{no}", method=RequestMethod.GET)
-	public ModelAndView update(@PathVariable int no) {
+	@RequestMapping(value="/notice/update/{no}", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView update(@PathVariable int no, NoticeVO vo) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("update", service.view(no));
-		mv.setViewName("notice/update");
+		try {
+			mv.addObject("update", service.view(no));
+			if(vo.getTitle() != null) {
+				mv.setViewName("redirect:/notice/views/"+no);
+			}else {
+				mv.setViewName("redirect:/error/error");
+			}
+			mv.setViewName("notice/update");
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			mv.setViewName("redirect:/error/error");
+		}
 		return mv;
 	}
 	
-	@RequestMapping(value="/notice/updateApi", method=RequestMethod.PUT)
-	@ResponseBody
+	@RequestMapping(value="/notice/updateApi", method=RequestMethod.POST)
 	public ModelAndView updateApi(NoticeVO vo) {
+		System.out.println("µé¾î¿Í!!!!!!!!!!!!!!!!!!!!");
 		ModelAndView mv = new ModelAndView();
 		int success = service.update(vo);
 		if(success == 1) {
@@ -116,7 +129,6 @@ public class NoticeController {
 		} else {
 			mv.setViewName("redirect:/error/error");
 		}
-		mv.setViewName("notice/update");
 		return mv;
 	}
 	@RequestMapping(value="/notice/delete/{no}", method=RequestMethod.DELETE)

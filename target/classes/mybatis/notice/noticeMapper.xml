@@ -14,8 +14,11 @@
 	<select id="list" parameterType="com.smallanimals.notice.vo.NoticeVO" resultMap="noticeMap">
 		select *
 		from notice
+		<include refid="pre"></include>
 		order by notice_writeDate desc
-	</select>	
+
+	</select>
+	
 	<select id="view" resultType="com.smallanimals.notice.vo.NoticeVO" resultMap="noticeMap">
 		select *
 		from notice
@@ -27,7 +30,7 @@
 	</insert>
 	
 	<update id="update">
-		update set notice notice_title = #{title}, notice_content = #{content}, notice_startDate = #{startDate}, notice_endDate = #{endDate}, notice_emp = #{emp}
+		update notice set notice_title = #{title}, notice_content = #{content}, notice_startDate = #{startDate}, notice_endDate = #{endDate}, noticeEmp = #{emp}
 		where notice_id = #{no}
 	</update>
 	
@@ -40,16 +43,28 @@
 	</select>
 	
 	<sql id="pre">
+
 		<choose>
-		 <when test="pre">
-		 
+		 <when test="date == 'pre'">
+		 <![CDATA[ 
+			where notice_startDate <= CURRENT_DATE() AND CURRENT_DATE() <= notice_endDate
+		]]>
+ 		</when>
+		 <when test="date == 'end'">
+		 <![CDATA[
+		 	where notice_endDate < CURRENT_DATE()
+		 ]]>
 		 </when>
-		 <when test="end">
-		 
+		 <when test="date == 'start'">
+		 <![CDATA[
+		 	where notice_startDate > CURRENT_DATE()
+		 ]]>
 		 </when>
-		 <when test="start">
-		 
-		 </when>
+		 <otherwise>
+		 <![CDATA[ 
+			where notice_startDate <= CURRENT_DATE() AND CURRENT_DATE() <= notice_endDate
+		]]>	
+		 </otherwise>
 		</choose>
 	</sql>
 </mapper>
