@@ -3,9 +3,10 @@ package com.smallanimals.notice.vo;
 import java.sql.Date;
 
 public class NoticeVO {
-	public int no, emp, cnt;
+	public int no, cnt;
 	public String title, writer, content;
 	public Date startDate, endDate, writeDate;
+	private String emp;
 	
 	public int getNo() {
 		return no;
@@ -15,11 +16,11 @@ public class NoticeVO {
 		this.no = no;
 	}
 	
-	public int getEmp() {
+	public String getEmp() {
 		return emp;
 	}
 	
-	public void setEmp(int emp) {
+	public void setEmp(String emp) {
 		this.emp = emp;
 	}
 	
