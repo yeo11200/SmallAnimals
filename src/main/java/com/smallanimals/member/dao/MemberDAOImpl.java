@@ -15,7 +15,6 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Override
 	public void registerMember(MemberVO vo) {
-	
 		sqlSession.insert("member.registerMember",vo);
 		
 	}

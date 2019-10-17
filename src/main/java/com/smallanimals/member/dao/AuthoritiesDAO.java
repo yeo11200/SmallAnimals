@@ -1,3 +1,4 @@
+
 package com.smallanimals.member.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -13,6 +14,7 @@ public class AuthoritiesDAO {
 	 	
 	    public MemberVO getUserById(String username) {
 	    	System.out.println(username+"dao에 들어오는 아이디는?" + username);
+	    	
 	        return sqlSession.selectOne("member.selectUserById", username);
 	    }
 

@@ -23,12 +23,10 @@
 	</resultMap>
 	
 <!-- 	<select id="selectUserById" resultType="com.smallanimals.member.vo.AuthoritiesVO" resultMap="memberMap"> -->
-	<select id="selectUserById" resultType="com.smallanimals.member.vo.MemberVO" >
-		    <![CDATA[
-		SELECT *
+	<select id="selectUserById" resultType="com.smallanimals.member.vo.MemberVO" resultMap="memberMap">
+		SELECT user_id, user_pwd, user_enabled,user_role
 		FROM member
-		WHERE userId = #{loginId}
-		 ]]>
+		WHERE user_id = #{loginId}
 	</select>
 	
 	

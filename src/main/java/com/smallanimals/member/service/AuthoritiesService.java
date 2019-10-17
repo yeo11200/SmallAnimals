@@ -24,11 +24,11 @@ public class AuthoritiesService implements UserDetailsService{
 			System.out.println("service까진 오는데" + username);
 			
 		   MemberVO user = AuthorDAO.getUserById(username);
-		   
-		
 	        if(user==null) {
-        
+	        
 	        	throw new UsernameNotFoundException(username);
+	        }else {
+	        	System.out.println(user.getPassword()+ "얻어온 비밀번호");
 	        }
 	        return user;
 	}

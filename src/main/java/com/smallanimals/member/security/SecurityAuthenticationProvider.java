@@ -24,6 +24,9 @@ public class SecurityAuthenticationProvider implements AuthenticationProvider  {
 	        String password = (String) authentication.getCredentials();
 	        
 	        MemberVO user = (MemberVO) AuthSer.loadUserByUsername(username);
+	        System.out.println("비밀번호 비교!");
+	       System.out.println(password);
+	        System.out.println(user.getPassword());
 	        
 	        if(!matchPassword(password, user.getPassword())) {
 	            throw new BadCredentialsException(username);

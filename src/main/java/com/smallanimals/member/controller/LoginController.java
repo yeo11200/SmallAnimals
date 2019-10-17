@@ -26,6 +26,7 @@ public class LoginController {
 	 @RequestMapping("/memberInfo/login/loginPage") 
 	 public String page() throws Exception {
 	 
+		 
 	 return "memberInfo/login/loginPage"; 
 	 
 	 }
