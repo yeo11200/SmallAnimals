@@ -10,13 +10,13 @@
 <title>Insert title here</title>
 <style type="text/css">
 #startDate {
-	z-index: 1;
+	z-index: auto;
 }
 #endDate {
-	z-index: 1;
+	z-index: auto;
 }
 #summernote {
-	z-index: 2;
+	z-index: auto;
 }
 </style>
 <script type="text/javascript">
@@ -59,8 +59,10 @@ $(document).ready(function() {
 	<input type="text" name="startDate" id="startDate" autocomplete="off">~
 	<label for="endDate">종료일</label>
 	<input type="text" name="endDate" id="endDate" autocomplete="off">
-	<textarea id="summernote" name="content"></textarea>
+	<div>
+	<textarea id="summernote" name="content" placeholder="내용을 입력해주세요"></textarea>
 	<input type="checkbox" name="emp" id="emp">중요공지
+	</div>
 	<button id="insert">글쓰기</button>
 </form:form>
 <script type="text/javascript" src="<c:out value='/resources/js/notice/insert.js'></c:out>"></script>

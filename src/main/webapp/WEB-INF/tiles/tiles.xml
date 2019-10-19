@@ -22,14 +22,17 @@
         <put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
     </definition>
     
+    
+    
+    
     <!-- 메뉴 미표시 -->
-    <definition name="baseEmpty" template="/WEB-INF/tiles/templateEmpty.jsp">
-    	<put-attribute name="nonempty" value="/WEB-INF/tiles/empty.jsp" />
-    	<!-- /WEB-INF/tiles/empty.jsp -->
-    </definition>
+<!--     <definition name="baseEmpty" template="/WEB-INF/tiles/templateEmpty.jsp"> -->
+<!--     	<put-attribute name="nonempty" value="/WEB-INF/tiles/empty.jsp" /> -->
+<!--     	/WEB-INF/tiles/empty.jsp -->
+<!--     </definition> -->
     
     <!-- 여기있는 name이랑 jsp의 tiles:insertAttribute랑 같아야 타일즈를 사용할 수 있다. 안쓰면 404error가 발생하는경우가 생긴다 -->
-    <definition name="*/*" extends="baseEmpty">
-        <put-attribute name="nonempty" value="/WEB-INF/views/modal/{1}.jsp" />
-    </definition>
+<!--     <definition name="*/*" extends="baseEmpty"> -->
+<!--         <put-attribute name="nonempty" value="/WEB-INF/views/modal/{1}.jsp" /> -->
+<!--     </definition> -->
 </tiles-definitions>
