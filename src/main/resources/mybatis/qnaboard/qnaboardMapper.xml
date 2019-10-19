@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smallanimals.qnaboard">
+	
+
+<select id="select_list" resultType="com.smallanimals.qnaboard.vo.QnAboardVO">
+	select * from QnAboard order by board_id desc
+</select>
+
+<select id="select_by_no" resultType="com.smallanimals.qnaboard.vo.QnAboardVO"> 
+	select * from QnAboard where board_id = #{board_id}
+</select>
+
+<insert id="insert" >
+	INSERT INTO QnAboard (title, contents, user_id)
+		values (#{title}, #{contents}, #{user_id})
+</insert>
+
+<update id="update">
+	<!-- 수정의 허용범위 합의 -->
+</update>
+
+<delete id="delete">
+	delete from QnAboard where board_id = #{board_id}
+</delete>
+</mapper>
