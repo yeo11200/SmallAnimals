@@ -1,11 +1,5 @@
-export class update {
-	
+document.getElementById('update').addEventListener('click', update);
+
+function update() {
+	let form = document.form;
 }
-
-
-
-
-
-
-
-export {update, delete1}

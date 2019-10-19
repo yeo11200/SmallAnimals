@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +10,13 @@
 <title>Insert title here</title>
 <style type="text/css">
 #startDate {
-	z-index: 1;
+	z-index: auto;
 }
 #endDate {
-	z-index: 1;
+	z-index: auto;
 }
 #summernote {
-	z-index: 2;
+	z-index: auto;
 }
 </style>
 <script type="text/javascript">
@@ -52,17 +53,52 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<form name="form">
+<form:form  name="form" method="post" action="/notice/insert">
 	<input type="text" name="title" id="title">
 	<label for="startDate">시작일</label>
 	<input type="text" name="startDate" id="startDate" autocomplete="off">~
 	<label for="endDate">종료일</label>
 	<input type="text" name="endDate" id="endDate" autocomplete="off">
-	<br><br><br><br><br><br>
-	<textarea id="summernote" name="content"></textarea>
-	<input type="checkbox" name="emp" id="emp" value="1">중요공지
-</form>
-<button id="insert">글쓰기</button>
+	<div>
+	<textarea id="summernote" name="content" placeholder="내용을 입력해주세요"></textarea>
+	<input type="checkbox" name="emp" id="emp">중요공지
+	</div>
+	<button id="insert">글쓰기</button>
+</form:form>
 <script type="text/javascript" src="<c:out value='/resources/js/notice/insert.js'></c:out>"></script>
+<script>
+// 	$(document).ready(function () {
+// 		$('input#id').on('change', function () {
+// 			var a = $('#id').val();
+// 			$.ajax({
+// 				type: 'get',
+// 				url : "/notice/idcheck",
+// 				data : {'id': a},
+// 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+// 				success : function (data) {
+// 					alert(data);
+// 				},
+// 				error : function (request,status,error) {
+// 					 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+// 				}
+// 			});
+// 		});
+// 	});
+function idcheck() {
+		var a = $('#id').val();
+		$.ajax({
+			type: 'get',
+			url : "/notice/idcheck",
+			data : {'id': a},
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			success : function (data) {
+				alert(data);
+			},
+			error : function (request,status,error) {
+				 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+		});
+}
+</script>
 </body>
 </html>

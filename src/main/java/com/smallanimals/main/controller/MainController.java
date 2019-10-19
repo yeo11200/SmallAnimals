@@ -25,6 +25,11 @@ public class MainController {
 		return new ModelAndView("/main/main");
 	}
 	
+	@GetMapping(value="/modal/modal")
+	public ModelAndView modal() {
+		return new ModelAndView("modal/modal");
+	}
+	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
