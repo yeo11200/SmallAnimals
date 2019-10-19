@@ -8,11 +8,13 @@ import org.springframework.stereotype.Repository;
 
 import com.smallanimals.notice.service.NoticeServiceImpl;
 import com.smallanimals.notice.vo.NoticeVO;
+import com.smallanimals.notice.vo.PreVO;
 
 @Repository
 public class NoticeDAO implements NoticeServiceImpl {
 
 	public SqlSessionTemplate sql;
+	
 	@Autowired
 	public NoticeDAO(SqlSessionTemplate sql) {
 		this.sql = sql;
@@ -20,9 +22,9 @@ public class NoticeDAO implements NoticeServiceImpl {
 	
 	public final String name = "com.smallanimals.notice.";
 	@Override
-	public List<NoticeVO> list() {
+	public List<NoticeVO> list(PreVO vo) {
 		// TODO Auto-generated method stub
-		return sql.selectList(name+"list");
+		return sql.selectList(name+"list", vo);
 	}
 
 	@Override
