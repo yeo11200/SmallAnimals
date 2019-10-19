@@ -21,7 +21,6 @@
 %>
 <body>
 <h2>메인입니다</h2>
-<<<<<<< HEAD
 <sec:authorize access="isAnonymous()">
 <a href='<c:url value="/memberInfo/login/loginPage"/>'>login</a></br> 
 <a href='<c:url value="/memberInfo/join/register2"/>'>회원가입</a></br> 
@@ -34,27 +33,5 @@
 </form>
 </sec:authorize>
 
-=======
-
-<button id="modal">모달창 열기</button>
-<div id="modalshow"></div>
-<script>
-document.getElementById('modal').onclick = function () {
-	var xhr = new XMLHttpRequest();
-	
-	xhr.open('get', '/modal/modal');
-	xhr.send();
-	xhr.onload = function () {
-		console.log(xhr.responseText);
-		document.getElementById('modalshow').innerHTML = xhr.responseText;
-		
-		document.getElementById('close').addEventListener('click', function () {
-			document.getElementById('noticeModal').style.display = 'none';
-		});
-	}
-}
-
-</script>
->>>>>>> master
 </body>
 </html>

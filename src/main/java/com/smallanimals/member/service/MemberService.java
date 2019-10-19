@@ -1,5 +1,9 @@
 package com.smallanimals.member.service;
 
-public class MemberService {
+import com.smallanimals.member.vo.MemberVO;
 
+public interface MemberService {
+
+	
+	void registerMember(MemberVO vo);
 }

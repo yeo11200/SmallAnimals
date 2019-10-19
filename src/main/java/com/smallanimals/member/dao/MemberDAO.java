@@ -1,5 +1,8 @@
 package com.smallanimals.member.dao;
 
-public class MemberDAO {
+import com.smallanimals.member.vo.MemberVO;
 
+public interface MemberDAO {
+
+	void registerMember(MemberVO vo);
 }
