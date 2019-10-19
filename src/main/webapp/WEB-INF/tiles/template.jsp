@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <title>제목</title>
     <style>
-        #header{            
+        #header{
+        	width: 100px;       
             height:50px;
             text-align: center;
             background-color: aqua;

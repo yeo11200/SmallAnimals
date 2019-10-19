@@ -21,7 +21,6 @@
 %>
 <body>
 <h2>메인입니다</h2>
-<<<<<<< HEAD
 <sec:authorize access="isAnonymous()">
 <a href='<c:url value="/memberInfo/login/loginPage"/>'>login</a></br> 
 <a href='<c:url value="/memberInfo/join/register2"/>'>회원가입</a></br> 
@@ -33,8 +32,6 @@
 	<button type="submit">LOGOUT</button>
 </form>
 </sec:authorize>
-
-=======
 
 <button id="modal">모달창 열기</button>
 <div id="modalshow"></div>
@@ -55,6 +52,5 @@ document.getElementById('modal').onclick = function () {
 }
 
 </script>
->>>>>>> master
 </body>
 </html>
