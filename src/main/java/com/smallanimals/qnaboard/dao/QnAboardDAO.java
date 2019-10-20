@@ -8,5 +8,7 @@ public interface QnAboardDAO {
 	public abstract List<QnAboardVO> select();
 	public abstract QnAboardVO select(int board_id);
 	public abstract int insert(QnAboardVO vo);
+	public abstract int update(QnAboardVO vo);
 	public abstract int delete(int board_id);
+	public abstract int viewUp(QnAboardVO vo);
 }
