@@ -41,7 +41,24 @@
 
 <!-- v-cloak은 로드되자마자 이벤트시 렌더링되는 것을 보여주지않는 효과가 있다. -->
 <div id="vuelist" v-cloak>
- {{ message }}
+ 	<table>
+ 	<thead>
+ 		<tr>
+ 			<th>제목</th>
+ 			<th>내용</th>
+ 			<th>시작일</th>
+ 			<th>종료일</th>
+ 		</tr>
+ 	</thead>
+ 	<tbody>
+ 		<tr v-for="list in lists" @click="views(list.no)">
+ 			<td>{{ list.title }}</td>
+ 			<td>{{ list.content }}</td>
+ 			<td>{{ list.startDate }}</td>
+ 			<td>{{ list.endDate }}</td>
+ 		</tr>
+ 	</tbody>
+ 	</table>
 </div>
 <script type="module" src="<c:out value="/resources/js/notice/import.js"/>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
@@ -58,17 +75,21 @@ function list() {
 			lists: []
 		},
 		created: function () {
-			fetch('/notice/list').then((data) => {
+			fetch('/notice/lists').then((data) => {
 					data.text().then((text) => {
 						// 이렇게 불러오는 데이터는 string 형식이기 떄문에 받아올때 JSON.parse로 json형식인 key value로 만들어서 사용해주면 js에서 사용가능
 						let a = JSON.parse(text);
 						this.lists = a.list.list;
-						
 						console.log(this.lists);
 					});
 			}).catch((err) => {
 				console.log('에러입니다만?');
 			});
+		},
+		methods : {
+			views : function (no) {
+				alert(no);
+			}
 		}
 	});
 }

@@ -77,6 +77,7 @@ public class NoticeController {
 		logger.info("insert!!!!!!!!!!!!!!!!!!!!!!!");
 		System.out.println(vo.getTitle());
 		if(vo.getTitle() != null) {
+			System.out.println(vo);
 			int a = service.insert(vo);
 			 if(a != 0) {
 				 mv.setViewName("redirect:/notice/list");

@@ -40,6 +40,7 @@
 	
 	<select id="count"  resultType="java.lang.Integer">
 		select count(*) as cnt from notice
+		<include refid="pre"></include>
 	</select>
 	
 	<sql id="pre">

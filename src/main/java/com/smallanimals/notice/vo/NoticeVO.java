@@ -2,9 +2,13 @@ package com.smallanimals.notice.vo;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class NoticeVO {
 	public int no, cnt;
 	public String title, writer, content;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	public Date startDate, endDate, writeDate;
 	private String emp;
 	
