@@ -20,9 +20,9 @@ function insert() {
 	}else {
 		let emp = document.getElementById('emp');
 		if(emp.checked == true){
-			emp.value = 1;
+			emp.value = 'on';
 		}else {
-			emp.value = 0;
+			emp.value = 'off';
 		}
 		return true;
 	}

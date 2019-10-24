@@ -39,6 +39,9 @@ public class NoticeService implements NoticeServiceImpl {
 	@Override
 	public int insert(NoticeVO vo) {
 		// TODO Auto-generated method stub
+		if(vo.getEmp() == null) {
+			vo.setEmp("off");
+		}
 		return dao.insert(vo);
 	}
 

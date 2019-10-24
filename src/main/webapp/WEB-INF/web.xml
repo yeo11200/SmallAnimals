@@ -26,22 +26,13 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		
+
+		 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-<!-- Spring Security Filter -->
-    <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-    </filter>
- 
-    <filter-mapping>
-          <filter-name>springSecurityFilterChain</filter-name>
-          <url-pattern>/*</url-pattern>
-    </filter-mapping>
-<!--  Spring 한글처리 filter -->
+		<!--  Spring 한글처리 filter -->
 		 <filter>
 		  <filter-name>encodingFilter</filter-name>
 		  <filter-class>
@@ -56,7 +47,17 @@
 		  <filter-name>encodingFilter</filter-name>
 		  <url-pattern>/*</url-pattern>
 		 </filter-mapping>
-		 
+<!-- Spring Security Filter -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+ 
+    <filter-mapping>
+          <filter-name>springSecurityFilterChain</filter-name>
+          <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 	<!--  404에 대한 에러처리 : 자원이 존재하지않는 경우는 톰켓으로 가지 않으므로 자바단에서 처리 불가능 
 		  forward 방식에 의해 처리되므로 파일시스템에 해당이 된다. /WEB-INF 밑에 있는 jsp를 불러 낼 수 있다.-->
 	<error-page>

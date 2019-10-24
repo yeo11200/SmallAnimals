@@ -21,7 +21,7 @@ let ols = document.getElementsByClassName('ol');
 for(let i = 0; i < ols.length; i++) {
 	ols[i].addEventListener('click', function () {
 		let views = ols[i].getAttribute('data-source');
-		alert(views);
+		location.href = '/'+views+'/list';
 	});
 }
 </script>

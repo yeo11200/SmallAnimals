@@ -35,6 +35,9 @@
 		<td>하하</td>
 	</tr>
 </tbody>
+<tfoot>
+	<tr><td colspan="3"><button id="insert">글쓰기</button></td></tr>
+</tfoot>
 </table>
 <script type="text/javascript">
 	let tr = document.getElementsByClassName('tr');
@@ -46,5 +49,6 @@
 		});
 	}
 </script>
+<script type="module" src="<c:out value='/resources/js/complaints/complaintEvent.js' />"></script>
 </body>
 </html>
