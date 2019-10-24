@@ -31,8 +31,8 @@
 	
 	
 	<insert id="registerMember" useGeneratedKeys="true"  keyProperty="userNo" parameterType="com.smallanimals.member.vo.MemberVO">
-		insert into member(user_id,user_pwd,user_nickname,user_name,user_phone,user_regdate,user_addr)
-		values(#{userId},#{userPwd},#{userNickname},#{userName},#{userPhone},#{userRegdate},#{userAddr})
+		insert into member(user_id,user_pwd,user_nickname,user_name,user_phone,user_regdate,user_addr,user_role)
+		values(#{userId},#{userPwd},#{userNickname},#{userName},#{userPhone},#{userRegdate},#{userAddr},#{userRole})
 	</insert>
 	
 </mapper>

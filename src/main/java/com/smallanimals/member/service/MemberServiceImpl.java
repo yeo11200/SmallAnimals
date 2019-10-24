@@ -23,6 +23,11 @@ public class MemberServiceImpl implements MemberService {
 	public void registerMember(MemberVO vo) {
 		System.out.println(vo.getUserName());
 	vo.setUserPwd(passwordEncoder.encode(vo.getUserPwd())); 
+		
+		  if(vo.getUserRole()==null) {
+		  vo.setUserRole("ROLE_USER");
+		  }
+		 
 		memberDAO.registerMember(vo);
 	}
 
