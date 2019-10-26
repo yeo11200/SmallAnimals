@@ -3,7 +3,9 @@
 <style>
 #summernote {
   z-index: auto;
+  
 }
+
 </style>
 <script type="text/javascript">
 $(function() {

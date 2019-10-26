@@ -10,6 +10,7 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
+	
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
@@ -25,13 +26,16 @@
 		<beans:property name="suffix" value=".jsp" />
 		<beans:property name="order" value="2" />
 	</beans:bean>
-	
 	<context:component-scan base-package="com.smallanimals.myapp" />
 	<context:component-scan base-package="com.smallanimals.notice" />
 	<context:component-scan base-package="com.smallanimals.qnaboard" />
 	<context:component-scan base-package="com.smallanimals.member" />
-	<context:component-scan base-package="com.smallanimals.main"></context:component-scan>
+	<context:component-scan base-package="com.smallanimals.main">
+	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
 	<context:annotation-config />
+	
     <!-- Tiles -->
     <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <beans:property name="definitions">

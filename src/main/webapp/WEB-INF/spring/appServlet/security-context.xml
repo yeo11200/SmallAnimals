@@ -17,7 +17,9 @@
     		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
     		<intercept-url pattern="/**" access="permitAll"/> -->
     		<intercept-url pattern="/**" access="permitAll"/>
-    
+    		<intercept-url pattern="/captcha/*" access="permitAll "/>
+    		<intercept-url pattern="/index" access="permitAll "/>
+    	
     	<form-login
         username-parameter="loginId"
         password-parameter="loginPwd"

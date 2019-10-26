@@ -7,7 +7,7 @@
     <title>제목</title>
     <style>
         #header{
-        	width: 100px;       
+        	width: 100%;       
             height:50px;
             text-align: center;
             background-color: aqua;
