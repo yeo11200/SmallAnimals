@@ -15,7 +15,6 @@
 		 <spring.security.version>5.0.0.RELEASE</spring.security.version>
 	</properties>
 	<dependencies>
-		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -29,7 +28,6 @@
 				 </exclusion>
 			</exclusions>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -132,15 +130,7 @@
         <artifactId>spring-security-taglibs</artifactId>
         <version>${spring.security.version}</version>
     </dependency>
-    
-    	<!-- http://mvnrepository.com/artifact/nl.captcha/simplecaptcha -->
-    	<dependency>
-    		<groupId>nl.captcha</groupId>
-    		<artifactId>simplecaptcha</artifactId>
-    		<version>1.2.1</version>
-    	</dependency>
-    
-    	<!-- Test -->
+		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -192,33 +182,7 @@
             <artifactId>tiles-jsp</artifactId>
             <version>3.0.8</version>
         </dependency>
-         <!-- 구글 리캡챠 -->
-        <dependency>
-            <groupId>net.tanesha.recaptcha4j</groupId>
-            <artifactId>recaptcha4j</artifactId>
-            <version>0.0.7</version>
-        </dependency>
- 
-        <!-- 구글 리캡챠 사용하기 위한 json -->
-        <dependency>
-            <groupId>javax.json</groupId>
-            <artifactId>javax.json-api</artifactId>
-            <version>1.1.2</version>
-        </dependency>
- 
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.json</artifactId>
-            <version>1.1</version>
-        </dependency>
- 
-        <!-- 잭슨 -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.9.5</version>
-        </dependency>
-
+        
         <!--  rest api나 restcontroler를 사용할 떄 json으로 바꿔주는 라이브러리 -->
         <dependency>
 		  <groupId>com.fasterxml.jackson.core</groupId>
@@ -250,23 +214,6 @@
         	<version>1.18.4</version>
         </dependency>
 	</dependencies>
-	
-	<!-- 리파지토리 생성 -->
-	<repositories>
-		<repository>
-			<id>oracle</id>
-			<name>ORACLE JDBC Repository</name>
-			<url>http://maven.jahia.org/maven2</url>
-		</repository>
-		
-		<repository>
-			<id>enonic</id>
-			<name>Enonic Repository</name>
-			<url>http://repo.enonic.com/public/</url>
-		</repository>
-	</repositories>
-	
-	
     <build>
         <plugins>
             <plugin>

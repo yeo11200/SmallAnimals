@@ -20,11 +20,6 @@
  	text-align:center;
  }
 </style>
-<style>
-body{
-width:100%;
-}
-</style>
 <!--  
 <script type="text/javascript" src="/silver/res/js/plugins/mask/meiomask.js"></script>
 <script type="text/javascript" src="/silver/res/js/main.js"></script>
@@ -90,7 +85,7 @@ function hide_caps_lock() {
                 if(roadAddr !== ''){
                     document.getElementById("sample4_extraAddress").value = extraRoadAddr;
                 } else {
-                    document.getElementById("sample4_extraAddress").value ='';
+                    document.getElementById("sample4_extraAddress").value = '';
                 }
 
                 var guideTextBox = document.getElementById("guide");
@@ -121,6 +116,7 @@ function hide_caps_lock() {
 				element.style.borderColor="#FF0000";
 				// 입력 필드의 경계선을 빨강으로 설정함
 				//return false;
+				
 			}else{
 				element.style.borderColor="#ffffff";
 		    	// 입력 필드의 경계선을 흰색으로 설정
@@ -178,12 +174,12 @@ function idcheck() {
 
 
 function checkMail(){
-	var email = document.getElementById("user_id").value;
+	var email = document.getElementById("email").value;
 	
-	if(email ==" "){
+	if(email ==""){
 		alert("메일을 입력 해 주세요")
 		return false;
-	}else{
+	}
 		var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(xhttp.readyState == 4){
@@ -200,7 +196,6 @@ function checkMail(){
 	xhttp.setRequestHeader("content-Type","application/x-www-form-urlencoded; charset=UTF-8")
 	xhttp.send('email=' + email);
 	return false;
-}
 }
 function checkJoinCode(){
 	<%String chk = (String)session.getAttribute("joinCode");%>
@@ -257,7 +252,7 @@ function chkValidate(){
 	<form action="${pageContext.request.contextPath}/registerMember" method="post" >
 <input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}">
 	<h3>정보입력</h3>
-				<table border="1" style="width:800px; height:500px;">
+				<table border="1" style="width:1000px; height:500px;">
 				<tr>
 					<td align="center"colspan="2">
 						<div class="stepLine">
@@ -267,7 +262,7 @@ function chkValidate(){
 						</div><br><br><br> 
 					</td>
 				</tr>
-				<tr> 
+				<tr>
 						<th><label for="user_id">아이디</label></th>
 						<td>
 							<div class="form-group">
@@ -282,12 +277,12 @@ function chkValidate(){
 						<th>비밀번호</th>
 						<td colspan="3">
 							
-							<input type="password" id="user_pwd" name="userPwd" maxlength="16" placeholder="비밀번호" onblur="validate(this,8,16)" onkeypress="caps_lock(event)" AUTOCOMPLETE="off">
+							<input type="password" id="user_pwd" name="userPwd" maxlength="16" placeholder="비밀번호" onblur="validate(this,8,16)" onkeypress="caps_lock(event)">
 							<font id="capslock" style="position:relative; border:1px solid #003b83; width:300px; bottom:0px; display:none">
 				 				&nbsp; <b>* CapsLock</b> 키가 눌려있습니다. &nbsp;
 				 			</font>
 				 				<br>
- 	 						<input type="password" id="user_pwdchk" maxlength="16" placeholder="비밀번호 확인" onblur="validate(this,8,16)" onkeypress="caps_lock(event)" AUTOCOMPLETE="off">
+ 	 						<input type="password" id="user_pwdchk" maxlength="16" placeholder="비밀번호 확인" onblur="validate(this,8,16)" onkeypress="caps_lock(event)">
  	 						<font  id="alert-success">비밀번호가 일치합니다^^</font>
 							<font  id="alert-danger" style="">비밀번호가 일치하지 않습니다!!</font>
 						</td>

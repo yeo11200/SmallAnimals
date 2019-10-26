@@ -18,7 +18,6 @@
   
     <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
     <button type="submit" class="btn btn-primary">Sign in</button>
-    <input type="button" id="*" name="*" value="회원가입" onclick="location.href='../join/register1'">
 	<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
     	<font color="red">
         	<p>Your login attempt was not successful due to <br/>
@@ -29,5 +28,6 @@
 
 
 </form>
+
 </body>
 </html>

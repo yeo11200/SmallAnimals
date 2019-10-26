@@ -41,19 +41,6 @@
           <filter-name>springSecurityFilterChain</filter-name>
           <url-pattern>/*</url-pattern>
     </filter-mapping>
-    
-<!-- captcha 서블릿 등록-->
-    <servlet>
-    <servlet-name>captcha</servlet-name>
-    <servlet-class>servlet.CaptchaServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-</servlet>
-<servlet-mapping>
-    <servlet-name>captcha</servlet-name>
-    <url-pattern>/captcha</url-pattern>
-</servlet-mapping>
-
-    
 <!--  Spring 한글처리 filter -->
 		 <filter>
 		  <filter-name>encodingFilter</filter-name>
