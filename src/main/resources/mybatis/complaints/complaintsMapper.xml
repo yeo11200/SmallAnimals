@@ -5,5 +5,18 @@
 	
 	<resultMap type="com.smallanimals.complaints.vo.ComplaintsVO" id="complaints">
 		<result column="complaintsId" property="no"/>
+		<result column="complaintsTitle" property="title" />
+		<result column="complaintsContent" property="content"/>
+		<result column="conmplaintsWriter" property="writer"/>
+		<result column="complaintsWriteDate" property="writeDate"/>
+		<result column="complaintsHit" property="hit"/>
+		<result column="complaintsResult" property="result"/>
 	</resultMap>
+	
+	<select id="list" parameterType="com.smallanimals.complaints.vo.ComplaintsVO" resultMap="complaints">
+		select *
+		from complaints
+	</select>
+	
+	
 </mapper>

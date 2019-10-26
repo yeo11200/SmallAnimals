@@ -43,7 +43,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(service.list(vo));
 		mv.addObject("list", service.list(vo));
-		mv.addObject("count", dao.count());
+		mv.addObject("count", dao.count(vo));
 		mv.setViewName("notice/list");
 		return mv;
 	}
@@ -52,7 +52,7 @@ public class NoticeController {
 	public ResponseEntity<Map<String, Object>> lists(PreVO vo) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<NoticeVO> list = service.list(vo);
-		int count = dao.count();
+		int count = dao.count(vo);
 		map.put("list", list);
 		map.put("count", count);
 		

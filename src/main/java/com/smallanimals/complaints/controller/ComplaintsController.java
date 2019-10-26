@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.smallanimals.complaints.service.ComplaintsService;
 import com.smallanimals.complaints.vo.ComplaintsVO;
 
 @Controller
@@ -19,10 +20,18 @@ public class ComplaintsController {
 
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
+	private ComplaintsService service;
+	
+	public ComplaintsController(ComplaintsService service) {
+		this.service = service;
+	}
 	
 	@GetMapping(value="/list")
 	public ModelAndView list() {
-		return new ModelAndView("complaints/list");
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("complaints/list");
+		mv.addObject("list", service.list());
+		return mv;
 	}
 	
 	@GetMapping(value="/views/{no}")

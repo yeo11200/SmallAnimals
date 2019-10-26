@@ -11,7 +11,7 @@ import com.smallanimals.notice.vo.NoticeVO;
 import com.smallanimals.notice.vo.PreVO;
 
 @Repository
-public class NoticeDAO implements NoticeServiceImpl {
+public class NoticeDAO{
 
 	public SqlSessionTemplate sql;
 	
@@ -21,37 +21,32 @@ public class NoticeDAO implements NoticeServiceImpl {
 	}
 	
 	public final String name = "com.smallanimals.notice.";
-	@Override
 	public List<NoticeVO> list(PreVO vo) {
 		// TODO Auto-generated method stub
 		return sql.selectList(name+"list", vo);
 	}
 
-	@Override
 	public NoticeVO view(int no) {
 		// TODO Auto-generated method stub
 		return sql.selectOne(name+"view", no);
 	}
 
-	@Override
 	public int insert(NoticeVO vo) {
 		// TODO Auto-generated method stub
 		return sql.insert(name+"insert", vo);
 	}
 
-	@Override
 	public int update(NoticeVO vo) {
 		// TODO Auto-generated method stub
 		return sql.update(name+"update", vo);
 	}
 
-	@Override
 	public int delete(int no) {
 		// TODO Auto-generated method stub
 		return sql.delete(name+"delete", no);
 	}
 	
-	public int count() {
-		return sql.selectOne(name+"count");
+	public int count(PreVO vo) {
+		return sql.selectOne(name+"count", vo);
 	}
 }

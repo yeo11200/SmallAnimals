@@ -8,8 +8,11 @@
 <head>
 <style type="text/css">
 	@media (min-height:320px){
-		tr:hover {
+		tbody > tr:hover {
 			background-color: gray;
+		}
+		thead > tr > th {
+			text-align: center;
 		}
 		#searchGroup {
 			margin-top: 10px;
@@ -29,20 +32,60 @@
 <button name="date" value="start" class="notice1" id="start">지난공지</button>
 </form>
 <table>
+<thead>
+	 <tr>
+	 	<th colspan="3">중요공지</th>
+	 </tr>
+</thead>
 	<tbody>
 	<c:choose>
 	   <c:when test="${fn:length(list) > 0}">
 		<c:forEach items="${list }" var="list" varStatus="index">
+			<c:if test="${list.emp == 'on'}">
+				<tr class="views" attr="${list.no }">
+					<td>${list.title }</td>
+					<td>${fn:substring(list.content, 0, 10) }</td>
+					<td>${list.startDate }</td>
+					<td>${list.endDate }</td>
+				</tr>
+			</c:if>
+		</c:forEach>
+		</c:when>
+		<c:otherwise>
+			<tr>
+				<td><h2>데이터가 없어요</h2></td>
+			</tr>
+		</c:otherwise>
+	</c:choose>
+	</tbody>
+</table>
+
+<table>
+<thead>
+	<tr>
+		<th>번호</th>
+		<th>제목</th>
+		<th>내용</th>
+		<th>공지일</th>
+		<th>공지종료일</th>
+	</tr>
+</thead>
+	<tbody>
+	<c:choose>
+	   <c:when test="${fn:length(list) > 0}">
+		<c:forEach items="${list }" var="list" varStatus="index">
+		<c:if test="${list.emp == 'off' }">
 			<tr class="views" attr="${list.no }">
 				<td class="no">${count}</td>
 				<td>${list.title }</td>
-				<td>${list.content }</td>
+				<td>${fn:substring(list.content, 0, 10) }</td>
 				<td>${list.startDate }</td>
 				<td>${list.endDate }</td>
 			</tr>
 			<!-- 글을 역순으로 출력하기 위해서 사용한다. -->
 			<!-- c:set은 값을 변경해서 가지고 올 떄 사용을 한다. -->
 			<c:set var="count" value="${count-1 }"></c:set>
+		</c:if>
 		</c:forEach>
 		</c:when>
 		<c:otherwise>

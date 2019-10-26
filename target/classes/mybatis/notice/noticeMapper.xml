@@ -14,9 +14,8 @@
 	<select id="list" parameterType="com.smallanimals.notice.vo.NoticeVO" resultMap="noticeMap">
 		select *
 		from notice
-		<include refid="pre"></include>
-		order by notice_writeDate desc
-
+		where noticeEmp = 'on' or <include refid="pre"></include>
+		order by notice_endDate desc
 	</select>
 	
 	<select id="view" resultType="com.smallanimals.notice.vo.NoticeVO" resultMap="noticeMap">
@@ -40,7 +39,7 @@
 	
 	<select id="count"  resultType="java.lang.Integer">
 		select count(*) as cnt from notice
-		<include refid="pre"></include>
+		<include refid="precnt"></include>
 	</select>
 	
 	<sql id="pre">
@@ -48,22 +47,48 @@
 		<choose>
 		 <when test="date == 'pre'">
 		 <![CDATA[ 
-			where notice_startDate <= CURRENT_DATE() AND CURRENT_DATE() <= notice_endDate
+			notice_startDate <= CURRENT_DATE() AND CURRENT_DATE() <= notice_endDate
 		]]>
  		</when>
 		 <when test="date == 'end'">
 		 <![CDATA[
-		 	where notice_endDate < CURRENT_DATE()
+		 	notice_endDate < CURRENT_DATE()
 		 ]]>
 		 </when>
 		 <when test="date == 'start'">
 		 <![CDATA[
-		 	where notice_startDate > CURRENT_DATE()
+		 	notice_startDate > CURRENT_DATE()
 		 ]]>
 		 </when>
 		 <otherwise>
 		 <![CDATA[ 
-			where notice_startDate <= CURRENT_DATE() AND CURRENT_DATE() <= notice_endDate
+			notice_startDate <= CURRENT_DATE() AND CURRENT_DATE() <= notice_endDate
+		]]>	
+		 </otherwise>
+		</choose>
+	</sql>
+	
+		<sql id="precnt">
+
+		<choose>
+		 <when test="date == 'pre'">
+		 <![CDATA[ 
+			where noticeEmp <> 'on' and notice_startDate <= CURRENT_DATE() AND CURRENT_DATE() <= notice_endDate
+		]]>
+ 		</when>
+		 <when test="date == 'end'">
+		 <![CDATA[
+		 	where noticeEmp <> 'on' and notice_endDate < CURRENT_DATE()
+		 ]]>
+		 </when>
+		 <when test="date == 'start'">
+		 <![CDATA[
+		 	where noticeEmp <> 'on' and notice_startDate > CURRENT_DATE()
+		 ]]>
+		 </when>
+		 <otherwise>
+		 <![CDATA[ 
+			where noticeEmp <> 'on' and notice_startDate <= CURRENT_DATE() AND CURRENT_DATE() <= notice_endDate
 		]]>	
 		 </otherwise>
 		</choose>
