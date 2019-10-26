@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smallanimals.notice">
+	<!-- VO와 컬럼이 서로 이름이 다른 경우 사용을 한다. property = vo이름, column = column 이름 -->
+	<resultMap type="com.smallanimals.notice.vo.NoticeVO" id="noticeMap">
+		<result property="no" column="notice_id"/>
+		<result property="title" column="notice_title"/>
+		<result property="content" column="notice_content"/>
+		<result property="startDate" column="notice_startDate"/>
+		<result property="endDate" column="notice_endDate"/>
+		<result property="writeDate" column="notice_writeDate"/>
+		<result property="emp" column="noticeEmp"/>
+	</resultMap>
+	<select id="list" parameterType="com.smallanimals.notice.vo.NoticeVO" resultMap="noticeMap">
+		select *
+		from notice
+		<include refid="pre"></include>
+		order by notice_writeDate desc
+
+	</select>
+	
+	<select id="view" resultType="com.smallanimals.notice.vo.NoticeVO" resultMap="noticeMap">
+		select *
+		from notice
+		where notice_id = #{no}
+	</select>
+	<insert id="insert">
+		insert into notice(notice_title, notice_content, notice_startDate, notice_endDate, noticeEmp)
+		values(#{title}, #{content}, #{startDate}, #{endDate}, #{emp})
+	</insert>
+	
+	<update id="update">
+		update notice set notice_title = #{title}, notice_content = #{content}, notice_startDate = #{startDate}, notice_endDate = #{endDate}, noticeEmp = #{emp}
+		where notice_id = #{no}
+	</update>
+	
+	<delete id="delete">
+		delete from notice where notice_id = #{no}
+	</delete>
+	
+	<select id="count"  resultType="java.lang.Integer">
+		select count(*) as cnt from notice
+	</select>
+	
+	<sql id="pre">
+
+		<choose>
+		 <when test="date == 'pre'">
+		 <![CDATA[ 
+			where notice_startDate <= CURRENT_DATE() AND CURRENT_DATE() <= notice_endDate
+		]]>
+ 		</when>
+		 <when test="date == 'end'">
+		 <![CDATA[
+		 	where notice_endDate < CURRENT_DATE()
+		 ]]>
+		 </when>
+		 <when test="date == 'start'">
+		 <![CDATA[
+		 	where notice_startDate > CURRENT_DATE()
+		 ]]>
+		 </when>
+		 <otherwise>
+		 <![CDATA[ 
+			where notice_startDate <= CURRENT_DATE() AND CURRENT_DATE() <= notice_endDate
+		]]>	
+		 </otherwise>
+		</choose>
+	</sql>
+</mapper>

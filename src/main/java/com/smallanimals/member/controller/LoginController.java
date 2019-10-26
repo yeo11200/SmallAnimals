@@ -22,7 +22,7 @@ public class LoginController {
 	 Logger logger = LoggerFactory.getLogger(getClass());
 	
 	 
-	 
+
 	 @RequestMapping("/memberInfo/login/loginPage") 
 	 public String page() throws Exception {
 	 
@@ -30,19 +30,19 @@ public class LoginController {
 	 return "memberInfo/login/loginPage"; 
 	 
 	 }
-	 
+	 @RequestMapping(value="/main/main")
+	    public String main() throws Exception {
+	        return "/main/main";
+	 }
 	 @RequestMapping(value="/access_denied_page")
 	    public String accessDeniedPage() throws Exception {
 	        return "/access_denied_page";
 	 }
-
 	 @RequestMapping(value = "/memberInfo/join/register1", method = {RequestMethod.GET, RequestMethod.POST})
 
 		public String register1(Locale locale, Model model) {
 			logger.info("Welcome home! The client locale is {}.", locale);
-			
-			
-			
+		
 			return "memberInfo/join/register1";
 		}
 	@RequestMapping(value = "/memberInfo/join/register2", method = {RequestMethod.GET, RequestMethod.POST})
