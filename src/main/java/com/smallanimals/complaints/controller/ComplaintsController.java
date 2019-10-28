@@ -29,10 +29,8 @@ public class ComplaintsController {
 	@GetMapping(value="/list")
 	public ModelAndView list() {
 		ModelAndView mv = new ModelAndView();
-<<<<<<< HEAD
 		mv.setViewName("complaints/list");
 		mv.addObject("list", service.list());
-=======
 		
 		try {
 			mv.setViewName("complaints/list");
@@ -41,7 +39,6 @@ public class ComplaintsController {
 			System.out.println(e);
 			mv.setViewName("error/error500");
 		}
->>>>>>> complaints
 		return mv;
 	}
 	

@@ -40,31 +40,19 @@ public class ComplaintsDAO implements ComplaintsImfo{
 	@Override
 	public int insert(ComplaintsVO vo) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		return 0;
-=======
 		return sql.insert(name+"insert", vo);
->>>>>>> complaints
 	}
 
 	@Override
 	public int update(ComplaintsVO vo) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		return 0;
-=======
 		return sql.update(name+"update", vo);
->>>>>>> complaints
 	}
 
 	@Override
 	public int delete(int no) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		return 0;
-=======
 		return sql.delete(name+"delete", no);
->>>>>>> complaints
 	}
 
 }
