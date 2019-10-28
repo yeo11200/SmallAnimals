@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class ComplaintsVO {
 	
 	private int no, hit;
-	private String writer, title, content;
+	private String writer, title, content, result;
 	
 	@JsonFormat(pattern = "YYYY-MM-DD")
 	private Date writeDate;
@@ -59,6 +59,13 @@ public class ComplaintsVO {
 	public void setWriteDate(Date writeDate) {
 		this.writeDate = writeDate;
 	}
-	
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
 	
 }
