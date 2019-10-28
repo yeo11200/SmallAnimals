@@ -27,25 +27,25 @@ public class ComplaintsDAO implements ComplaintsImfo{
 	@Override
 	public ComplaintsVO view(int no) {
 		// TODO Auto-generated method stub
-		return null;
+		return sql.selectOne(name+"view");
 	}
 
 	@Override
 	public int insert(ComplaintsVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sql.insert(name+"insert", vo);
 	}
 
 	@Override
 	public int update(ComplaintsVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sql.update(name+"update", vo);
 	}
 
 	@Override
 	public int delete(int no) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sql.delete(name+"delete", no);
 	}
 
 }

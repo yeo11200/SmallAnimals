@@ -29,14 +29,28 @@ public class ComplaintsController {
 	@GetMapping(value="/list")
 	public ModelAndView list() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("complaints/list");
-		mv.addObject("list", service.list());
+		
+		try {
+			mv.setViewName("complaints/list");
+			mv.addObject("list", service.list());		
+		}catch(Exception e) {
+			System.out.println(e);
+			mv.setViewName("error/error500");
+		}
 		return mv;
 	}
 	
 	@GetMapping(value="/views/{no}")
 	public ModelAndView view(int no) {
-		return new ModelAndView("complaints/views");
+		ModelAndView mv = new ModelAndView();
+		
+		if(service.view(no).getNo() != 0) {
+			mv.addObject("view", service.view(no));
+			mv.setViewName("complaints/view");
+		}else {
+			mv.setViewName("error/error500");
+		}
+		return mv;
 	}
 	
 	@GetMapping(value="/insert")
@@ -45,25 +59,45 @@ public class ComplaintsController {
 	}
 	
 	@PostMapping(value="/insert")
-	public void insertApi(ComplaintsVO vo) {
+	public ModelAndView insertApi(ComplaintsVO vo) {
 		logger.info("insert!!!!"+vo.getTitle());
+		ModelAndView mv = new ModelAndView();
+		
+		try {
+			if(service.insert(vo) == 1) {
+				mv.setViewName("complaints/list");
+			}else {
+				mv.setViewName("error/error500");
+			}
+		}catch(Exception e) {
+			mv.setViewName("error/error");
+		}
+		return mv;
 	}
 	
 	@GetMapping(value="/update")
 	public ModelAndView update(int no) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("", "");
-		mv.setViewName("");
-		return new ModelAndView("complaints/update");
+		ModelAndView mv = new ModelAndView();	
+		mv.addObject("update", service.view(no));
+		mv.setViewName("complaints/update");
+		return mv;
 	}
 	
 	@PutMapping(value="/update")
-	public void updateApi() {
+	public void updateApi(ComplaintsVO vo) {
+		ModelAndView mv = new ModelAndView();
 		
+		try {
+			if(service.update(vo) == 1) {
+				
+			}
+		}catch(Exception e) {
+			
+		}
 	}
 	
-	@DeleteMapping(value="/delete")
-	public void delete(int no) {
-		
+	@DeleteMapping(value="/delete", produces = "application/text; charset=utf-8")
+	public String delete(int no) {
+		return "";
 	}
 }
