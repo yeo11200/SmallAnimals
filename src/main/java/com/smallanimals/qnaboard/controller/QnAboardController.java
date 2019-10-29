@@ -34,6 +34,7 @@ public class QnAboardController {
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public void detail(int board_id, Model model) {
 		QnAboardVO vo = qnaboardService.read(board_id);
+		qnaboardService.viewUp(vo);
 		model.addAttribute("vo", vo);
 		logger.info("detail");
 	}
@@ -46,8 +47,6 @@ public class QnAboardController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(QnAboardVO vo, RedirectAttributes reAttr) {
-		logger.info("register post");
-		logger.info(vo.getTitle());
 		int result = qnaboardService.create(vo);
 		if (result == 1) {
 			reAttr.addFlashAttribute("result_reg", "success");
@@ -55,6 +54,39 @@ public class QnAboardController {
 		} else {
 			reAttr.addFlashAttribute("result_reg", "failed");
 		}
+		logger.info("register post");
+		return "redirect:list";
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public void updatepage(int board_id, Model model) {
+		QnAboardVO vo = qnaboardService.read(board_id);
+		model.addAttribute("vo", vo);
+		logger.info("update");
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(QnAboardVO vo, RedirectAttributes reAttr) {
+		int result = qnaboardService.update(vo);
+		if (result == 1) {
+			reAttr.addFlashAttribute("result_up", "success");
+		} else {
+			reAttr.addFlashAttribute("result_up", "failed");
+		}
+		
+		logger.info("update");
+		return "redirect:detail?board_id=" + vo.getBoard_id();
+	}
+	
+	@RequestMapping(value = "/delete")
+	public String delete(int board_id, RedirectAttributes reAttr) {
+		int result = qnaboardService.delete(board_id);
+		if (result == 1) {
+			reAttr.addFlashAttribute("result_del", "success");
+		} else {
+			reAttr.addFlashAttribute("result_del", "failed");
+		}
+		logger.info("delete");
 		return "redirect:list";
 	}
 }
