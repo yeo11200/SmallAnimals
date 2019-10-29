@@ -17,10 +17,7 @@ public class ComplaintsDAO implements ComplaintsImfo{
 		this.sql = template;
 	}
 	private static String name = "com.smallanimals.complaints.";
-<<<<<<< HEAD
-=======
-	
->>>>>>> complaints
+
 	@Override
 	public List<ComplaintsVO> list() {
 		// TODO Auto-generated method stub
@@ -30,11 +27,7 @@ public class ComplaintsDAO implements ComplaintsImfo{
 	@Override
 	public ComplaintsVO view(int no) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		return null;
-=======
 		return sql.selectOne(name+"view");
->>>>>>> complaints
 	}
 
 	@Override
