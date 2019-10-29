@@ -31,16 +31,26 @@ public class QnAboardServiceImple implements QnAboardService {
 
 	@Override
 	public int create(QnAboardVO vo) {
-		logger.info("createeeee 호출");
-		logger.info("제목 : " + vo.getTitle());
-		System.out.println("제목 : " + vo.getTitle());
+		logger.info("create 호출");
 		return dao.insert(vo);
+	}
+	
+	@Override
+	public int update(QnAboardVO vo) {
+		logger.info("update 호출");
+		return dao.update(vo);
 	}
 
 	@Override
 	public int delete(int board_id) {
 		logger.info("delete 호출");
 		return dao.delete(board_id);
+	}
+	
+	@Override
+	public int viewUp(QnAboardVO vo) {
+		logger.info("viewUp 호출");
+		return dao.viewUp(vo);
 	}
 
 }
