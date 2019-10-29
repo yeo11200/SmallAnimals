@@ -13,25 +13,15 @@
 </select>
 
 <insert id="insert" >
-	INSERT INTO QnAboard (title, contents, user_id, reg_date)
-		values (#{title}, #{contents}, #{user_id}, now())
+	INSERT INTO QnAboard (title, contents, user_id)
+		values (#{title}, #{contents}, #{user_id})
 </insert>
 
 <update id="update">
-	update QnAboard set 
-		title = #{title}, 
-		contents = #{contents}, 
-		edit_num = #{edit_num} + 1 
-	where board_id = #{board_id} 
+	<!-- 수정의 허용범위 합의 -->
 </update>
 
 <delete id="delete">
 	delete from QnAboard where board_id = #{board_id}
 </delete>
-
-<update id="viewUp">
-	update QnAboard set
-		viewcnt = #{viewcnt} + 1 
-	where board_id = #{board_id}	
-</update>
 </mapper>

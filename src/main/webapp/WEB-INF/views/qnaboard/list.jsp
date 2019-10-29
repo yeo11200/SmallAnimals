@@ -15,6 +15,7 @@
       <tr>
         <th>번호</th>
         <th>제목</th>
+        <th>내용</th>
         <th>작성자</th>
         <th>등록일</th>
         <th>조회수</th>
@@ -24,15 +25,16 @@
     <tbody>
       <c:forEach var="vo" items="${QnA }">
         <tr>
-          <td style="width: 100px;">${vo.board_id }</td>
-          <td style="width: 800px;"><a class="goToDetail" href="${vo.board_id }">${vo.title }</a></td>
+          <td>${vo.board_id }</td>
+          <td><a class="goToDetail" href="${vo.board_id }">${vo.title }</a></td>
+          <td>${vo.contents }</td>
           <td>${vo.user_id }</td>
           <fmt:formatDate value="${vo.reg_date }"
               pattern="yyyy-MM-dd HH:mm:ss" var="regdate" />
           <td>${regdate }</td>
           <td>${vo.viewcnt }</td>
           <c:choose>
-            <c:when test="${vo.answer eq 'N'}">
+            <c:when test="${empty vo.answer }">
               <td>N</td>
             </c:when>
             <c:otherwise>
@@ -58,11 +60,7 @@
 			alert('새 글 작성 성공');
 		} else if('${result_reg}' === 'failed') {
 			alert('등록 실패')
-		} else if('${result_del}' === 'success') {
-			alert('삭제 성공');
-		} else if('${result_del}' === 'failed') {
-			alert('삭제 실패')
-		} 
+		}
 		
 		$('.goToDetail').click(function() {
 			event.preventDefault(); 

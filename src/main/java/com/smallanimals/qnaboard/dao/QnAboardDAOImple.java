@@ -33,25 +33,14 @@ public class QnAboardDAOImple implements QnAboardDAO {
 	@Override
 	public int insert(QnAboardVO vo) {
 		logger.info("insert vo 호출");
+		System.out.println("제목 : " + vo.getTitle());
 		return sqlSession.insert(NAMESPACE + ".insert", vo);
-	}
-	
-	@Override
-	public int update(QnAboardVO vo) {
-		logger.info("update");
-		return sqlSession.update(NAMESPACE + ".update", vo);
 	}
 
 	@Override
 	public int delete(int board_id) {
 		logger.info("delete 호출");
 		return sqlSession.delete(NAMESPACE + ".delete", board_id);
-	}
-	
-	@Override
-	public int viewUp(QnAboardVO vo) {
-		logger.info("viewUp");
-		return sqlSession.update(NAMESPACE + ".viewUp", vo);
 	}
 
 }
