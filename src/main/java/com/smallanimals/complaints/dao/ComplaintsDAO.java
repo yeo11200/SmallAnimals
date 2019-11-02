@@ -27,7 +27,7 @@ public class ComplaintsDAO implements ComplaintsImfo{
 	@Override
 	public ComplaintsVO view(int no) {
 		// TODO Auto-generated method stub
-		return sql.selectOne(name+"view");
+		return sql.selectOne(name+"view", no);
 	}
 
 	@Override
