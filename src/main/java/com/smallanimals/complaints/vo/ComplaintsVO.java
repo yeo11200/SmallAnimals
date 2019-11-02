@@ -1,6 +1,6 @@
 package com.smallanimals.complaints.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
