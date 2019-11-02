@@ -12,34 +12,15 @@
 <body>
 <table>
 <tbody>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
 	<c:if test="${fn:length(list) > 0 }">
 	<c:forEach var="list" items="${list }">
-		<tr>
-			<td>고고고</td>
+		<tr class="tr" attr="${list.no }">
+			<td>${list.result }</td>
+			<td>${list.title }</td>
+			<td>${fn:substring(list.content,0, 5) }(${list.replycnt})</td>
+			<td>${list.writer }</td>
+			<td>${list.writeDate }</td>
+			<td>${list.title }</td>
 		</tr>
 	</c:forEach>
 	</c:if>
@@ -59,7 +40,7 @@
 	for(let i=0; i < tr.length; i++) {
 		tr[i].addEventListener('click', function() {
 			let no = tr[i].getAttribute('attr');
-			alert(no);
+			window.location.href = '/complaints/views/'+no;
 		});
 	}
 </script>

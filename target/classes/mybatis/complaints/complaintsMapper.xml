@@ -7,16 +7,46 @@
 		<result column="complaintsId" property="no"/>
 		<result column="complaintsTitle" property="title" />
 		<result column="complaintsContent" property="content"/>
-		<result column="conmplaintsWriter" property="writer"/>
+		<result column="complaintsWriter" property="writer"/>
 		<result column="complaintsWriteDate" property="writeDate"/>
 		<result column="complaintsHit" property="hit"/>
-		<result column="complaintsResult" property="result"/>
 	</resultMap>
 	
-	<select id="list" parameterType="com.smallanimals.complaints.vo.ComplaintsVO" resultMap="complaints">
+<!-- 	parameterType="com.smallanimals.complaints.vo.ComplaintsVO" -->
+	<select id="list" resultMap="complaints">
+		SELECT *, (SELECT COUNT(*) FROM complaints c INNER JOIN ReplyComplaints rc ON c.complaintsId = rc.complaintsId) AS replycnt
+		FROM complaints c
+		LEFT JOIN complaintsResult cr ON c.complaintsResult = cr.`NO`
+	</select>
+	
+	<select id="view" resultMap="complaints">
+		SELECT c.*, cr.result
+		FROM complaints c INNER JOIN complaintsResult cr ON c.complaintsResult = cr.`NO`
+		WHERE complaintsId = #{no}
+	</select>
+	
+	<insert id="insert">
+		insert into complaints(complaintsTitle, complaintsContent, complaintsWriter)
+		values(#{title}, #{content}, #{writer})
+	</insert>
+	
+	<update id="update">
+		update complaints set complaintsTitle = #{title}, complaintsContent = #{content}, complaintsWriter = #{writer}
+		where complaintsId = #{no}
+	</update>
+	
+	<delete id="delete">
+		delete from complaints where complaintsId = #{no}
+	</delete>
+	
+	<!-- 민원을 해결했을 때 나타내는 곳 -->
+	<update id="result">
+		update complaints set complaintsResult = #{result}
+		where complaintsId = #{no}
+	</update>
+	
+	<select id="count" resultType="java.lang.Integer">
 		select *
 		from complaints
 	</select>
-	
-	
 </mapper>

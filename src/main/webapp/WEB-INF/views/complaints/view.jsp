@@ -12,6 +12,10 @@
 <table>
 	<tbody>
 		<tr>
+			<td>진행상태</td>
+			<td>${view.result }</td>
+		</tr>
+		<tr>
 			<td>제목</td>
 			<td>${view.title }</td>
 		</tr>
@@ -30,8 +34,8 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="2"><button>수정</button></td>
-			<td colspan="2"><button>삭제</button></td>
+			<td><button>수정</button></td>
+			<td><button>삭제</button></td>
 		</tr>
 	</tfoot>
 </table>

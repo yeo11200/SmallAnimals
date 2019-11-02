@@ -126,7 +126,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		int success = service.update(vo);
 		if(success == 1) {
-			mv.setViewName("redirect:/notice/list");
+			mv.setViewName("redirect:/notice/view/"+vo.getNo());
 		} else {
 			mv.setViewName("redirect:/error/error");
 		}

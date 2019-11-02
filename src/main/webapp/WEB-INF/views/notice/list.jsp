@@ -31,34 +31,6 @@
 <button name="date" value="end" class="notice1" id="end">예약공지</button>
 <button name="date" value="start" class="notice1" id="start">지난공지</button>
 </form>
-<table>
-<thead>
-	 <tr>
-	 	<th colspan="3">중요공지</th>
-	 </tr>
-</thead>
-	<tbody>
-	<c:choose>
-	   <c:when test="${fn:length(list) > 0}">
-		<c:forEach items="${list }" var="list" varStatus="index">
-			<c:if test="${list.emp == 'on'}">
-				<tr class="views" attr="${list.no }">
-					<td>${list.title }</td>
-					<td>${fn:substring(list.content, 0, 10) }</td>
-					<td>${list.startDate }</td>
-					<td>${list.endDate }</td>
-				</tr>
-			</c:if>
-		</c:forEach>
-		</c:when>
-		<c:otherwise>
-			<tr>
-				<td><h2>데이터가 없어요</h2></td>
-			</tr>
-		</c:otherwise>
-	</c:choose>
-	</tbody>
-</table>
 
 <table>
 <thead>
@@ -74,6 +46,15 @@
 	<c:choose>
 	   <c:when test="${fn:length(list) > 0}">
 		<c:forEach items="${list }" var="list" varStatus="index">
+		<c:if test="${list.emp == 'on'}">
+				<tr class="views" attr="${list.no }">
+					<td>공지</td>
+					<td>${list.title }</td>
+					<td>${fn:substring(list.content, 0, 10) }</td>
+					<td>${list.startDate }</td>
+					<td>${list.endDate }</td>
+				</tr>
+		</c:if>
 		<c:if test="${list.emp == 'off' }">
 			<tr class="views" attr="${list.no }">
 				<td class="no">${count}</td>
