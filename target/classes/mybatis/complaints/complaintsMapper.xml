@@ -40,7 +40,7 @@
 	</delete>
 	
 	<!-- 민원을 해결했을 때 나타내는 곳 -->
-	<update id="result">
+	<update id="result">  
 		update complaints set complaintsResult = #{result}
 		where complaintsId = #{no}
 	</update>

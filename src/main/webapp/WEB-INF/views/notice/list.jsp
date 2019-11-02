@@ -53,7 +53,7 @@
 					<td>${fn:substring(list.content, 0, 10) }</td>
 					<td>${list.startDate }</td>
 					<td>${list.endDate }</td>
-				</tr>
+				</tr> 
 		</c:if>
 		<c:if test="${list.emp == 'off' }">
 			<tr class="views" attr="${list.no }">

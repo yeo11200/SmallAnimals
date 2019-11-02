@@ -26,7 +26,7 @@ public class ComplaintsService implements ComplaintsImfo{
 		return dao.list();
 	}
 
-	@Override
+	@Override 
 	public ComplaintsVO view(int no) {
 		// TODO Auto-generated method stub
 		return dao.view(no);

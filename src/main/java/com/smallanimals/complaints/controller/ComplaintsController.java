@@ -46,7 +46,7 @@ public class ComplaintsController {
 	public ModelAndView view(@PathVariable int no) {
 		ModelAndView mv = new ModelAndView();
 		
-		if(service.view(no).getNo() != 0) {
+		if(service.view(no).getNo() != 0) { 
 			mv.addObject("view", service.view(no));
 			mv.setViewName("complaints/view");
 		}else {

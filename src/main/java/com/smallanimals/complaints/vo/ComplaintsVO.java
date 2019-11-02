@@ -14,7 +14,7 @@ public class ComplaintsVO {
 	private Date writeDate;
 	
 	public int getReplycnt() {
-		return replycnt;
+		return replycnt;  
 	}
 
 	public void setReplycnt(int replycnt) {
