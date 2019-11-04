@@ -8,46 +8,45 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+		table {
+			width: 100%;
+		}
+		table > thead > tr > th {
+			text-align: center;
+		}
+		table > tbody > tr > td {
+			text-align: center;
+		}
+		table > tbody > tr:hover {
+			background: gray;
+		}
+		strong {
+			color: red;
+		}
+</style>
 </head>
 <body>
 <table>
-<tbody>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<tr class="tr" attr="gkgk">
-		<td>하하</td>
-	</tr>
-	<c:if test="${fn:length(list) > 0 }">
-	<c:forEach var="list" items="${list }">
-		<tr>
-			<td>고고고</td>
-		</tr>
-	</c:forEach>
-	</c:if>
-	<c:if test="${fn:length(list) <= 0 }">
+<thead>
 	<tr>
-		<td><strong>데이터가 없습니다.</strong></td>
+		<th>진행상태</th>
+		<th>제목</th>
+		<th>내용</th>
+		<th>작성자</th>
+		<th>날짜</th>
 	</tr>
-	</c:if>
+</thead>
+<tbody>
+<c:forEach var="list" items="${ list }">
+    <tr class="tr" attr="${list.no }">
+    	<td>${list.result }</td>
+    	<td>${list.title }</td>
+    	<td>${list.content }(<strong>${list.replycnt }</strong>)</td>
+    	<td>${list.writer }</td>
+    	<td>${list.writeDate }</td>
+    </tr>
+</c:forEach>
 </tbody>
 <tfoot>
 	<tr><td colspan="3"><button id="insert">글쓰기</button></td></tr>
@@ -59,7 +58,7 @@
 	for(let i=0; i < tr.length; i++) {
 		tr[i].addEventListener('click', function() {
 			let no = tr[i].getAttribute('attr');
-			alert(no);
+			window.location.href = '/complaints/views/'+no;
 		});
 	}
 </script>

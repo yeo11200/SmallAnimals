@@ -30,9 +30,6 @@ public class ComplaintsController {
 	@GetMapping(value="/list")
 	public ModelAndView list() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("complaints/list");
-		mv.addObject("list", service.list());
-		
 		try {
 			mv.setViewName("complaints/list");
 			mv.addObject("list", service.list());		

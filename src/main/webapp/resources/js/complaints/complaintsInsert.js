@@ -7,4 +7,7 @@ function insertEvent() {
 	return insert.insertGo('1234');
 }
 
-document.getElementById('insert').addEventListener('click', insertEvent);
+document.getElementById('submit').addEventListener('click', function () {
+	alert(123);
+	event.preventDefault();
+});

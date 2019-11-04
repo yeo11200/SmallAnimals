@@ -7,7 +7,7 @@
 		<result column="complaintsId" property="no"/>
 		<result column="complaintsTitle" property="title" />
 		<result column="complaintsContent" property="content"/>
-		<result column="conmplaintsWriter" property="writer"/>
+		<result column="complaintsWriter" property="writer"/>
 		<result column="complaintsWriteDate" property="writeDate"/>
 		<result column="complaintsHit" property="hit"/>
 	</resultMap>
@@ -28,4 +28,21 @@
 		insert into complaints(complainsTitle, complainsContent, complainsWriter)
 		VALUES(#{title}, #{content}, #{writer});
 	</insert>
+	
+	<update id="update">
+		update complaints set complainsTitle = #{title}, complainsContent = #{content}, complainsWriter = #{writer}
+		where complaintsId = #{no}
+	</update>
+	
+	<delete id="delete">
+		delete from complaints where complaintId = #{no}
+	</delete>
+	
+	<select id="count">
+		select count(complaintsId) from complaints;
+	</select>
+	
+	<update id="result">
+		update complaints set complaintsResult = #{result}
+	</update>
 </mapper>

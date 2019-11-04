@@ -3,7 +3,8 @@ class list {
 		
 	}
 	
-	insertGo() {
+	insertGo(app) {
+		alert(app);
 		location.href = '/complaints/insert';
 	}
 	

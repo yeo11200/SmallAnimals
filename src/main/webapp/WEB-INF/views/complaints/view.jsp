@@ -7,33 +7,51 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	table {
+		width: 100%;
+	}
+	table > tbody > tr > td {
+		text-align: center;
+		width: 80%;
+	}
+	table > tbody > tr > th {
+		text-align: center;
+		width: 20%;
+	}
+	div {
+		text-align: left;
+	}
+</style>
 </head>
 <body>
 <table>
 	<tbody>
 		<tr>
-			<td>제목</td>
+			<th>상태</th>
+			<td>${view.result }</td>
+		</tr>
+		<tr>
+			<th>제목</th>
 			<td>${view.title }</td>
 		</tr>
 		<tr>
-			<td>민원내용</td>
+			<th>민원내용</th>
 			<td>${view.content }</td>
 		</tr>
 		<tr>
-			<td>민원내용</td>
-			<td>${view.content }</td>
-		</tr>
-		<tr>
-			<td>작성자</td>
+			<th>작성자</th>
 			<td>${view.writer }</td>
 		</tr>
-	</tbody>
-	<tfoot>
 		<tr>
-			<td colspan="2"><button>수정</button></td>
-			<td colspan="2"><button>삭제</button></td>
+			<th>조회수</th>
+			<td>${view.hit }</td>
 		</tr>
-	</tfoot>
+	</tbody>
 </table>
+<div>
+	<button>수정</button>
+	<button>삭제</button>
+</div>
 </body>
 </html>
