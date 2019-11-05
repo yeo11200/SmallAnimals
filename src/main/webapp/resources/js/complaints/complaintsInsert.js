@@ -9,5 +9,5 @@ function insertEvent() {
 
 document.getElementById('submit').addEventListener('click', function () {
 	alert(123);
-	event.preventDefault();
+//	event.preventDefault();
 });

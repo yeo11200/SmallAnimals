@@ -25,7 +25,7 @@
 	</select>
 	
 	<insert id="insert">
-		insert into complaints(complainsTitle, complainsContent, complainsWriter)
+		insert into complaints(complaintsTitle, complaintsContent, complaintsWriter)
 		VALUES(#{title}, #{content}, #{writer});
 	</insert>
 	
@@ -45,4 +45,31 @@
 	<update id="result">
 		update complaints set complaintsResult = #{result}
 	</update>
+	
+	<insert id="like">
+		insert into ReplyComplaintsLike(replyComplaiantsId, ReplyLikeUid)
+		values(#{replyno}, #{replyUid}) 
+	</insert>
+	
+	<select id="replyList">
+		select *
+		from ReplyComplaints
+	</select>
+	
+	<insert id="replyInsert">
+		insert into ReplyComplaints(complaintsId, replyComplaintsWriter, replyComplaintsContent)
+		values(#{no}, #{replyWriter}, #{replyContent})
+	</insert>
+	
+	<update id="replyUpdate">
+		update ReplyComplaints set replyComplaintsWriter = #{replyWriter}, replyComplaintsContent = #{replyContent}
+		where  replyComplaintsId = #{replyNo}
+	</update>
+	
+	<delete id="replyDelete">
+		delete from ReplyComplaints
+		where replyComplaintsId = #{replyNo}
+	</delete>
+	
+	
 </mapper>

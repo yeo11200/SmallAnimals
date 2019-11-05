@@ -27,7 +27,7 @@
 <body>
 <table>
 	<tbody>
-		<tr>
+		<tr id="no" attr="${view.no }">
 			<th>상태</th>
 			<td>${view.result }</td>
 		</tr>
@@ -50,8 +50,9 @@
 	</tbody>
 </table>
 <div>
-	<button>수정</button>
+	<button id="update">수정</button>
 	<button>삭제</button>
 </div>
+<script type="module" src="<c:url value='/resources/js/complaints/complaintEvent.js'></c:url>"></script>
 </body>
 </html>

@@ -8,7 +8,9 @@
 </head>
 <body>
 <form method="post">
-<input name="title">
+<input name="title" value="${update.title }">
+<input name="title" value="${update.writer }">
+<textarea rows="10" cols="200">${update.content }</textarea>
 <button type="submit">전송</button>
 </form>
 </body>

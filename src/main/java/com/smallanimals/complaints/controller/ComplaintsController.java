@@ -1,5 +1,8 @@
 package com.smallanimals.complaints.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.spi.LoggerFactoryBinder;
@@ -62,10 +65,9 @@ public class ComplaintsController {
 	public ModelAndView insertApi(ComplaintsVO vo) {
 		logger.info("insert!!!!"+vo.getTitle());
 		ModelAndView mv = new ModelAndView();
-		
 		try {
 			if(service.insert(vo) == 1) {
-				mv.setViewName("complaints/list");
+				mv.setViewName("redirect:/complaints/list");
 			}else {
 				mv.setViewName("error/error500");
 			}
@@ -75,8 +77,8 @@ public class ComplaintsController {
 		return mv;
 	}
 	
-	@GetMapping(value="/update")
-	public ModelAndView update(int no) {
+	@GetMapping(value="/update/{no}")
+	public ModelAndView update(@PathVariable int no, HttpSession session) {
 		ModelAndView mv = new ModelAndView();	
 		mv.addObject("update", service.view(no));
 		mv.setViewName("complaints/update");
@@ -86,7 +88,6 @@ public class ComplaintsController {
 	@PutMapping(value="/update")
 	public void updateApi(ComplaintsVO vo) {
 		ModelAndView mv = new ModelAndView();
-		
 		try {
 			if(service.update(vo) == 1) {
 				
