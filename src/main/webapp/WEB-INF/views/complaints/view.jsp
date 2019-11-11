@@ -51,7 +51,10 @@
 </table>
 <div>
 	<button id="update">수정</button>
-	<button>삭제</button>
+	<button id="delete">삭제</button>
+</div>
+<div id="viewList">
+
 </div>
 <script type="module" src="<c:url value='/resources/js/complaints/complaintEvent.js'></c:url>"></script>
 </body>

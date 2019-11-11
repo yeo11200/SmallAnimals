@@ -21,7 +21,7 @@ $(function() {
 	  });
 	});
 	
-let ols = document.getElementsByClassName('li');
+let ols = document.getElementsByClassName('ol');
 for(let i = 0; i < ols.length; i++) {
 	ols[i].addEventListener('click', function () {
 		let views = ols[i].getAttribute('data-source');

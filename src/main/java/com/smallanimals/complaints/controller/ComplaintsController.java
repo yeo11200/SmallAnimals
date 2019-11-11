@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.smallanimals.complaints.service.ComplaintsService;
@@ -90,15 +91,25 @@ public class ComplaintsController {
 		ModelAndView mv = new ModelAndView();
 		try {
 			if(service.update(vo) == 1) {
-				
+				mv.setViewName("redirect:/complaints/views/"+vo.getNo());
+			}else {
+				mv.setViewName("redirect:/error/error500");
 			}
 		}catch(Exception e) {
-			
+			mv.setViewName("redirect:/error/error");
 		}
 	}
 	
-	@DeleteMapping(value="/delete", produces = "application/text; charset=utf-8")
-	public String delete(int no) {
-		return "";
+	@DeleteMapping(value="/delete/{no}", produces = "application/text; charset=utf-8")
+	@ResponseBody
+	public String delete(@PathVariable int no) {
+		logger.info("deleteteltetlete", no);
+		int result = service.delete(no);
+		if(result == 1) {
+			return "/complaints/list";
+		}else {
+			return "/error/error500";
+		}
+
 	}
 }

@@ -16,8 +16,9 @@
 		SELECT *, (SELECT COUNT(*) FROM complaints c INNER JOIN ReplyComplaints rc ON c.complaintsId = rc.complaintsId) AS replycnt
 		FROM complaints c
 		LEFT JOIN complaintsResult cr ON c.complaintsResult = cr.`NO`
+		order by complaintsId desc
 	</select>
-	
+	<!-- null이나 colmuns의 타입이 다를 경우 , jdbcType=type 사용해서 타입을 지정해주거나 변환해준다. -->
 	<select id="view" resultMap="complaints">
 		SELECT c.*, cr.result
 		FROM complaints c INNER JOIN complaintsResult cr ON c.complaintsResult = cr.`NO`
@@ -35,7 +36,7 @@
 	</update>
 	
 	<delete id="delete">
-		delete from complaints where complaintId = #{no}
+		delete from complaints where complaintsId = #{no}
 	</delete>
 	
 	<select id="count">
