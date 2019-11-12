@@ -1,11 +1,16 @@
 package com.smallanimals.complaints.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.spi.LoggerFactoryBinder;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +41,8 @@ public class ComplaintsController {
 		ModelAndView mv = new ModelAndView();
 		try {
 			mv.setViewName("complaints/list");
-			mv.addObject("list", service.list());		
+			mv.addObject("list", service.list());
+			mv.addObject("count", service.count());
 		}catch(Exception e) {
 			System.out.println(e);
 			mv.setViewName("error/error500");
@@ -86,7 +92,7 @@ public class ComplaintsController {
 		return mv;
 	}
 	
-	@PutMapping(value="/update")
+	@PutMapping(value= {"/update", "/updateApi"})
 	public void updateApi(ComplaintsVO vo) {
 		ModelAndView mv = new ModelAndView();
 		try {
@@ -110,6 +116,16 @@ public class ComplaintsController {
 		}else {
 			return "/error/error500";
 		}
-
+	}
+	
+	// fetch api를 가지고 올떄 produces="application/text; charset=utf-8"을 사용했는데 406에러가 발생했다 
+	// 이 부분은 ajax로 가지고 올때 한글로 가지고 오는 건 줄 알았는데, 조금 더 알아봐야한다.
+	@GetMapping(value="/viewlist")
+	public ResponseEntity<Map<String, Object>> viewList() {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", service.list());
+		
+		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+		
 	}
 }

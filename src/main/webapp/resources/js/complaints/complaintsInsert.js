@@ -4,10 +4,9 @@ let insert = new list;
 
 function insertEvent() {
 	console.log(insert);
-	return insert.insertGo('1234');
+	return insert.insertGo();
 }
 
 document.getElementById('submit').addEventListener('click', function () {
-	alert(123);
 //	event.preventDefault();
 });

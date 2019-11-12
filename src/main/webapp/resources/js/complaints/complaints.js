@@ -3,11 +3,9 @@ class list {
 		
 	}
 	
-	insertGo(app) {
-		alert(app);
+	insertGo() {
 		location.href = '/complaints/insert';
 	}
-	
 }
 
 class deleteApi {
@@ -26,6 +24,13 @@ class deleteApi {
 			alert('실패');
 			location.href = "/error/error";
 		};
+	}
+}
+
+class reply {
+	
+	replyList() {
+		
 	}
 }
 export {list, deleteApi};

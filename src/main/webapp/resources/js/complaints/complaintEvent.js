@@ -4,12 +4,11 @@ let insert = new list;
 
 function insertEvent() {
 	console.log(insert);
-	return insert.insertGo('1234');
+	return insert.insertGo();
 }
 
 function deleteGo() {
 	let no = document.getElementById('no').getAttribute('attr');
-	alert(no);
 	let del = new deleteApi();
 	return del.deleteApi1(no);
 }

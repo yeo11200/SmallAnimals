@@ -10,9 +10,21 @@
 		<result column="complaintsWriter" property="writer"/>
 		<result column="complaintsWriteDate" property="writeDate"/>
 		<result column="complaintsHit" property="hit"/>
+		<!-- 여러개의 vo를 사용할 경우 collection 태그를 사용을 해줘야하고 가지고 올떄는 resultmap의 id로 가지고 온다 -->
+		<!-- property에는 그 해당하는 resultMap의 id를 적고 resultMap은 패키지의 자바의 경로를 적어준다 -->
+		<!-- collection property="replyComplaints" resultMap="com.smallanimals.complaints.vo.ReplyComplaintsVO"></collection-->
 	</resultMap>
 	
-	<select id="list" parameterType="com.smallanimals.complaints.vo.ComplaintsVO" resultMap="complaints">
+	<resultMap type="com.smallanimals.complaints.vo.ReplyComplaintsVO" id="replyComplaints">
+		<result column="replyComplaintsId" property="replyId"/>
+		<result column="complaintsId" property="boardId"/>
+		<result column="replyComplaintsWriter" property="replyWriter"/>
+		<result column="replyComplaintsContent" property="replyContent"/>
+		<result column="replyComplaintsWriteDate" property="replyWriteDate"/>
+		<result column="replyDepth" property="depth"/>
+	</resultMap>	
+
+	<select id="list" resultMap="complaints">
 		SELECT *, (SELECT COUNT(*) FROM complaints c INNER JOIN ReplyComplaints rc ON c.complaintsId = rc.complaintsId) AS replycnt
 		FROM complaints c
 		LEFT JOIN complaintsResult cr ON c.complaintsResult = cr.`NO`
@@ -39,27 +51,23 @@
 		delete from complaints where complaintsId = #{no}
 	</delete>
 	
-	<select id="count">
-		select count(complaintsId) from complaints;
+	<select id="count" resultType="java.lang.Integer">
+		select count(*) as cnt from complaints;
 	</select>
 	
 	<update id="result">
 		update complaints set complaintsResult = #{result}
 	</update>
 	
-	<insert id="like">
-		insert into ReplyComplaintsLike(replyComplaiantsId, ReplyLikeUid)
-		values(#{replyno}, #{replyUid}) 
-	</insert>
-	
-	<select id="replyList">
+	<select id="replyList" resultMap="complaints">
 		select *
 		from ReplyComplaints
+		where complaintsId = #{replyNo}
 	</select>
 	
 	<insert id="replyInsert">
 		insert into ReplyComplaints(complaintsId, replyComplaintsWriter, replyComplaintsContent)
-		values(#{no}, #{replyWriter}, #{replyContent})
+		values(#{boardNo}, #{replyWriter}, #{replyContent})
 	</insert>
 	
 	<update id="replyUpdate">
@@ -72,5 +80,13 @@
 		where replyComplaintsId = #{replyNo}
 	</delete>
 	
+	<select id="likeList">
+		
+	</select>
+	
+	<insert id="like">
+		insert into ReplyComplaintsLike(replyComplaiantsId, ReplyLikeUid)
+		values(#{replyno}, #{replyUid}) 
+	</insert>
 	
 </mapper>

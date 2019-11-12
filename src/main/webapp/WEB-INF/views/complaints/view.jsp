@@ -22,6 +22,9 @@
 	div {
 		text-align: left;
 	}
+	[v-cloak] {
+		display: none;
+	}
 </style>
 </head>
 <body>
@@ -53,9 +56,40 @@
 	<button id="update">수정</button>
 	<button id="delete">삭제</button>
 </div>
-<div id="viewList">
+
+<div id="replyComplaint">
 
 </div>
+
+<!-- v-cloak을 사용하면 로딩되는 동안 방지를 해준다. -->
+<div id="viewList" v-cloak>
+ {{ message }}
+</div>
 <script type="module" src="<c:url value='/resources/js/complaints/complaintEvent.js'></c:url>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+	new Vue({ 
+		el: '#viewList',
+		data () {
+			return {
+				lists : [],
+				message : 'test',
+			}
+		},
+		created : function() {
+			fetch('/complaints/viewlist').then( function (data) {
+				data.text().then( function (list) {
+					console.log(JSON.parse(list));
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}).catch( function (error) {
+				console.log(error);
+			});
+		}
+	})
+</script>
 </body>
 </html>

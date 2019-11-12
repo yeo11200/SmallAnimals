@@ -2,6 +2,7 @@
 <ul class="menu_bar">
 	<li data-source="notice" class="ol">공지사항</li>
 	<li data-source="complaints" class="ol">민원</li>
+	<li data-source="qnaboard" class="ol">질의응답</li>
 </ul>
 <style>
 #summernote {

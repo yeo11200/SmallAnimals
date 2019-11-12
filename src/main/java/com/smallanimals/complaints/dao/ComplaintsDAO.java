@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.smallanimals.complaints.service.ComplaintsImfo;
 import com.smallanimals.complaints.vo.ComplaintsVO;
+import com.smallanimals.complaints.vo.ReplyComplaintsVO;
 
 @Repository
 public class ComplaintsDAO implements ComplaintsImfo{
@@ -46,6 +47,34 @@ public class ComplaintsDAO implements ComplaintsImfo{
 	public int delete(int no) {
 		// TODO Auto-generated method stub
 		return sql.delete(name+"delete", no);
+	}
+
+	public int count() {
+		return sql.selectOne(name+"count");
+	}
+	
+	@Override
+	public List<ReplyComplaintsVO> replyList(int replyNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int replyInsert(ReplyComplaintsVO rvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int replyUpdate(ReplyComplaintsVO rvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int replyDelete(int rno) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

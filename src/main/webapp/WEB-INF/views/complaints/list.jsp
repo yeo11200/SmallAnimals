@@ -30,6 +30,7 @@
 <table>
 <thead>
 	<tr>
+		<th>숫자</th>
 		<th>진행상태</th>
 		<th>제목</th>
 		<th>내용</th>
@@ -40,12 +41,15 @@
 <tbody>
 <c:forEach var="list" items="${ list }">
     <tr class="tr" attr="${list.no }">
+    	<td>${count }</td>
     	<td>${list.result }</td>
     	<td>${list.title }</td>
     	<td>${list.content }(<strong>${list.replycnt }</strong>)</td>
     	<td>${list.writer }</td>
     	<td>${list.writeDate }</td>
     </tr>
+    
+    <c:set value="${count-1 }" var="count"></c:set>
 </c:forEach>
 </tbody>
 <tfoot>
