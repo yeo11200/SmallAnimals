@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smallanimals.tipboard">
+
+  <select id="select_list" resultType="com.smallanimals.tipboard.vo.TipboardVO">
+    select * from tipBoard order by board_id desc
+  </select>
+
+  <select id="select_by_no" resultType="com.smallanimals.tipboard.vo.TipboardVO">
+    select * from tipBoard 
+    where board_id = #{board_id}
+  </select>
+
+  <insert id="insert">
+    insert into tipBoard
+    (title, contents, user_id, reg_date)
+    values (#{title}, #{contents}, #{user_id}, sysdate())
+  </insert>
+
+  <update id="update">
+    update tipBoard
+    set title = #{title},
+    contents = #{contents},
+    edit_num = #{edit_num} + 1,
+    edit_date = sysdate()
+    where board_id = #{board_id}
+  </update>
+
+  <delete id="delete">
+    delete from tipBoard
+    where board_id = #{board_id}
+  </delete>
+
+  <update id="viewUp">
+    update tipBoard
+    set viewcnt = #{viewcnt} + 1
+    where board_id = #{board_id}
+  </update>
+
+  <insert id="reply_insert">
+    insert into tipBoard_reply 
+    (board_id, user_id, contents, reg_date)
+    values (#{board_id}, #{user_id}, #{contents}, sysdate())
+  </insert>
+
+  <select id="reply_select" resultType="com.smallanimals.tipboard.vo.TipReplyVO">
+    select * from tipBoard_reply 
+    where board_id = #{board_id} order by reply_id desc
+  </select>
+
+  <delete id="reply_delete">
+    delete from tipBoard_reply
+    where reply_id = #{reply_id}
+  </delete>
+  
+  <select id="select_like" resultType="com.smallanimals.tipboard.vo.TipLikeVO">
+    select * from tipBoard_like 
+    where user_id = #{user_id} and board_id = #{board_id}
+  </select>
+  
+  <insert id="insert_like">
+    insert into tipBoard_like
+    values (#{user_id}, #{board_id})
+  </insert>
+  
+  <delete id="delete_like">
+    delete from tipBoard_like
+    where user_id = #{user_id} and board_id = #{board_id}
+  </delete>
+  
+  <select id="select_dislike" resultType="com.smallanimals.tipboard.vo.TipLikeVO">
+    select * from tipBoard_dislike 
+    where user_id = #{user_id} and board_id = #{board_id}
+  </select>
+  
+  <insert id="insert_dislike">
+    insert into tipBoard_dislike
+    values (#{user_id}, #{board_id})
+  </insert>
+  
+  <delete id="delete_dislike">
+    delete from tipBoard_dislike
+    where user_id = #{user_id} and board_id = #{board_id}
+  </delete>
+  
+
+</mapper>

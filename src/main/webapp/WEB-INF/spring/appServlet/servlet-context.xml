@@ -29,6 +29,7 @@
 	<context:component-scan base-package="com.smallanimals.myapp" />
 	<context:component-scan base-package="com.smallanimals.notice" />
 	<context:component-scan base-package="com.smallanimals.qnaboard" />
+    <context:component-scan base-package="com.smallanimals.tipboard" />
 	<context:component-scan base-package="com.smallanimals.member" />
 	<context:component-scan base-package="com.smallanimals.main"></context:component-scan>
 	<context:component-scan base-package="com.smallanimals.complaints"></context:component-scan>
