@@ -14,7 +14,63 @@ public class MemberVO implements UserDetails{
   private String userNickname;
   private String userName;
   private String userPhone;
-  private String userRegdate;
+  private String userPhone1;
+  private String userPhone2;
+  private String yy;
+  private String mm;
+  public String getYy() {
+	return yy;
+}
+
+
+public void setYy(String yy) {
+	this.yy = yy;
+}
+
+
+public String getMm() {
+	return mm;
+}
+
+
+public void setMm(String mm) {
+	this.mm = mm;
+}
+
+
+public String getDd() {
+	return dd;
+}
+
+
+public void setDd(String dd) {
+	this.dd = dd;
+}
+
+
+private String dd;
+  
+  public String getUserPhone1() {
+	return userPhone1;
+}
+
+
+public void setUserPhone1(String userPhone1) {
+	this.userPhone1 = userPhone1;
+}
+
+
+public String getUserPhone2() {
+	return userPhone2;
+}
+
+
+public void setUserPhone2(String userPhone2) {
+	this.userPhone2 = userPhone2;
+}
+
+
+private String userRegdate;
   private String userAddr;
   private String userRole;
   private boolean userEnabled;
@@ -32,7 +88,7 @@ public MemberVO() {
 
 
 public MemberVO(String userNo, String userId, String userPwd, String userNickname, String userName, String userPhone,
-		String userRegdate, String userAddr, String userRole, boolean userEnabled) {
+		String userPhone1, String userPhone2,	String userRegdate, String yy,String mm ,String dd,String userAddr, String userRole, boolean userEnabled) {
 	super();
 	this.userNo = userNo;
 	this.userId = userId;
@@ -40,6 +96,11 @@ public MemberVO(String userNo, String userId, String userPwd, String userNicknam
 	this.userNickname = userNickname;
 	this.userName = userName;
 	this.userPhone = userPhone;
+	this.userPhone1 = userPhone1;
+	this.userPhone2 = userPhone2;
+	this.yy = yy;
+	this.mm = mm;
+	this.dd = dd;
 	this.userRegdate = userRegdate;
 	this.userAddr = userAddr;
 	this.userRole = userRole;

@@ -308,17 +308,17 @@ function chkValidate(){
 							<option value="019">019</option>
 							</select>
 							-
-							<input type="tel" name="*" name="userPhone" id="userPhone" maxlength="4" /> 
+							<input type="tel" name="userPhone1" id="userPhone1" maxlength="4" /> 
 							- 
-							<input type="tel" name="*" name="userPhone" id="userPhone" maxlength="4" />
+							<input type="tel" name="userPhone2" id="userPhone2" maxlength="4" />
 						</td>
 					</tr>
 					<tr>
 						<th>생년월일</th>
 						<td>
-							<input type="text" id="yy" placeholder="년(4자)" aria-label="년(4자)" class="int" maxlength="4">
+							<input type="text" id="yy" name = "yy" placeholder="년(4자)" aria-label="년(4자)" class="int" maxlength="4">
 							/
-							<select id="mm" class="sel" aria-label="월" style="width: 100px; height: 30px;">
+							<select id="mm" name = "mm"class="sel" aria-label="월" style="width: 100px; height: 30px;">
 								<option>월</option>
 								<option value="01">1</option>
 								<option value="02">2</option>
@@ -334,7 +334,7 @@ function chkValidate(){
 								<option value="12">12</option>
 						</select>
 						/
-						<select id="mm" class="sel" aria-label="월" style="width: 100px; height: 30px;">
+						<select id="dd"name = "dd" class="sel" aria-label="월" style="width: 100px; height: 30px;">
 								<option>일</option>
 								<option value="01">1</option>
 								<option value="02">2</option>
@@ -347,25 +347,25 @@ function chkValidate(){
 								<option value="09">9</option>
 								<option value="10">10</option>
 								<option value="11">11</option>
-								<option value="12">13</option>
-								<option value="12">14</option>
-								<option value="12">15</option>
-								<option value="12">16</option>
-								<option value="12">17</option>
-								<option value="12">18</option>
-								<option value="12">19</option>
-								<option value="12">20</option>
-								<option value="12">21</option>
-								<option value="12">22</option>
-								<option value="12">23</option>
-								<option value="12">24</option>
-								<option value="12">25</option>
-								<option value="12">26</option>
-								<option value="12">27</option>
-								<option value="12">28</option>
-								<option value="12">29</option>
-								<option value="12">30</option> 
-								<option value="12">31</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+								<option value="21">21</option>
+								<option value="22">22</option>
+								<option value="23">23</option>
+								<option value="24">24</option>
+								<option value="25">25</option>
+								<option value="26">26</option>
+								<option value="27">27</option>
+								<option value="28">28</option>
+								<option value="29">29</option>
+								<option value="30">30</option> 
+								<option value="31">31</option>
 						</select>
 						</td>
 					</tr>

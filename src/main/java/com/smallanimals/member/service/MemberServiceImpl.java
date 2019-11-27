@@ -25,9 +25,10 @@ public class MemberServiceImpl implements MemberService {
 	vo.setUserPwd(passwordEncoder.encode(vo.getUserPwd())); 
 	if(vo.getUserRole()==null) { 
 		vo.setUserRole("ROLE_USER"); 
-		
-	} 
 	
+	} 
+	vo.setUserPhone(vo.getUserPhone()+vo.getUserPhone1()+vo.getUserPhone2());
+	vo.setUserRegdate(vo.getYy()+vo.getMm()+vo.getDd());
 		memberDAO.registerMember(vo);
 	}
 
