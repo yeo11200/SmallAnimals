@@ -22,23 +22,24 @@
 <body>
 <h2>메인입니다</h2>
 <sec:authorize access="isAnonymous()">
-<a href='<c:url value="/memberInfo/login/loginPage"/>'>login</a></br> 
-<a href='<c:url value="/memberInfo/join/register2"/>'>회원가입</a></br> 
-
+<a href='<c:url value="/memberInfo/login/loginPage"/>'><button class="btn btn-primary">login</button></a>
+<a href='<c:url value="/memberInfo/join/register1"/>'><button class="btn btn-primary">회원가입</button></a>
 </sec:authorize>
+
 <sec:authorize access="isAuthenticated()">
-<form id="logoutFrm" action="${pageContext.request.contextPath}/logout" method="post" style:"display:none">
-	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-	<button type="submit">LOGOUT</button>
+<form id="logoutFrm" action="${pageContext.request.contextPath}/logout" method="post">
+   <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+   <button type="submit" class="btn btn-primary">LOGOUT</button>
+<input type="button" value="정보수정" class="btn btn-primary" onclick="location.href='../memberInfo/modify/Member_Modify'">
+<button type="button" class="btn btn-primary" id="modal">모달창 열기</button>
+<div id="modalshow"></div>
 </form>
 </sec:authorize>
 
-<button id="modal">모달창 열기</button>
-<div id="modalshow"></div>
+
 <script>
 document.getElementById('modal').onclick = function () {
 	var xhr = new XMLHttpRequest();
-	
 	xhr.open('get', '/modal/modal');
 	xhr.send();
 	xhr.onload = function () {
@@ -47,6 +48,7 @@ document.getElementById('modal').onclick = function () {
 		
 		document.getElementById('close').addEventListener('click', function () {
 			document.getElementById('noticeModal').style.display = 'none';
+			
 		});
 	}
 }

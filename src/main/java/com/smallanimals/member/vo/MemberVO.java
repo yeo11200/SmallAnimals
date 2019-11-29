@@ -18,7 +18,8 @@ public class MemberVO implements UserDetails{
   private String userAddr;
   private String userRole;
   private boolean userEnabled;
-@Override
+
+  @Override
 public Collection<? extends GrantedAuthority> getAuthorities() {
 	 ArrayList<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
      auth.add(new SimpleGrantedAuthority(userRole));
@@ -72,6 +73,9 @@ public boolean isCredentialsNonExpired() {
 	// TODO Auto-generated method stub
 	return true;
 }
+
+
+
 @Override
 public boolean isEnabled() {
 	// TODO Auto-generated method stub
@@ -141,7 +145,7 @@ public void setUserEnabled(boolean userEnabled) {
 
 @Override
 public String toString() {
-	return "MemberVO [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userNickname="
+	return "MemberVO [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd +  ", userNickname="
 			+ userNickname + ", userName=" + userName + ", userPhone=" + userPhone + ", userRegdate=" + userRegdate
 			+ ", userAddr=" + userAddr + ", userRole=" + userRole + ", userEnabled=" + userEnabled + "]";
 }

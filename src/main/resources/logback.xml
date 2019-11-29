@@ -14,9 +14,9 @@
  %F : 로깅이 발생한 프로그램 파일명을 나타냅니다.
  %l : 로깅이 발생한 caller의 정보를 나타냅니다 
  %L : 로깅이 발생한 caller의 라인수를 나타냅니다 
- %x : 로깅이 발생한 thread와 관련된 NDC(nested diagnostic context)를 출력합니다. 
- %X : 로깅이 발생한 thread와 관련된 MDC(mapped diagnostic context)를 출력합니다. 
- %% : % 표시를 출력하기 위해 사용한다.  
+ %x : 로깅이 발생한 thread와 관련된 NDC(nested diagnostic context)를 출력합니다.
+ %X : 로깅이 발생한 thread와 관련된 MDC(mapped diagnostic context)를 출력합니다.
+ %% : % 표시를 출력하기 위해 사용한다.
  %t : 로그이벤트가 발생된 쓰레드의 이름을 출력합니다
 -->
 <configuration scan="true" scanPeriod="30 seconds">

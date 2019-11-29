@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.smallanymals</groupId>
@@ -12,7 +13,7 @@
 		<org.springframework-version>5.0.2.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
-		 <spring.security.version>5.0.0.RELEASE</spring.security.version>
+		<spring.security.version>5.0.0.RELEASE</spring.security.version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -25,7 +26,7 @@
 				<exclusion>
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
-				 </exclusion>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -33,14 +34,14 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-				
+
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
-		</dependency>	
-		
+		</dependency>
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -90,7 +91,7 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-				
+
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -109,27 +110,35 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-	<!-- security -->
- 	<dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-core</artifactId>
-        <version>${spring.security.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-web</artifactId>
-        <version>${spring.security.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-config</artifactId>
-        <version>${spring.security.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-taglibs</artifactId>
-        <version>${spring.security.version}</version>
-    </dependency>
+		<!-- security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/nl.captcha/simplecaptcha -->
+		<dependency>
+			<groupId>nl.captcha</groupId>
+			<artifactId>simplecaptcha</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -138,118 +147,127 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- DB -->
-			<!-- Maria DB -->
-			<dependency>
-			     <groupId>org.mariadb.jdbc</groupId>
-			     <artifactId>mariadb-java-client</artifactId>
-			     <version>2.0.3</version>
-			</dependency>
-			<!-- DBCP 데이터베이스 풀 커넥션 -->
-			<dependency>
-			     <groupId>commons-dbcp</groupId>
-			     <artifactId>commons-dbcp</artifactId>
-			     <version>1.4</version>
-			</dependency>
-			<!-- Spring JDBC -->
-			<dependency>
-			     <groupId>org.springframework</groupId>
-			     <artifactId>spring-jdbc</artifactId>
-			     <version>${org.springframework-version}</version>
-			</dependency>
-			<!-- Mybatis -->
-			<dependency>
-			     <groupId>org.mybatis</groupId>
-			     <artifactId>mybatis</artifactId>
-			     <version>3.4.4</version>
-			</dependency>
-			<dependency>
-			     <groupId>org.mybatis</groupId>
-			     <artifactId>mybatis-spring</artifactId>
-			     <version>1.3.1</version>
-			</dependency>
-        <dependency>
-            <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-extras</artifactId>
-            <version>3.0.8</version>
-          </dependency>
-        <dependency>
-            <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-servlet</artifactId>
-            <version>3.0.8</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-jsp</artifactId>
-            <version>3.0.8</version>
-        </dependency>
-        
-        <!--  rest api나 restcontroler를 사용할 떄 json으로 바꿔주는 라이브러리 -->
-        <dependency>
-		  <groupId>com.fasterxml.jackson.core</groupId>
-		  <artifactId>jackson-databind</artifactId>
-		  <version>2.9.9.2</version>
-		</dependency>
-  
-   		<!-- JackSon -->
+		<!-- Maria DB -->
 		<dependency>
-		    <groupId>org.codehaus.jackson</groupId>
-		    <artifactId>jackson-mapper-asl</artifactId>
-		    <version>1.9.13</version>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>2.0.3</version>
+		</dependency>
+		<!-- DBCP 데이터베이스 풀 커넥션 -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- Spring JDBC -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<!-- Mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.4.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>3.0.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-servlet</artifactId>
+			<version>3.0.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>3.0.8</version>
 		</dependency>
 
-        <!-- Logback -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>1.2.3</version>
-        </dependency>
-        <dependency>
-        	<groupId>org.projectlombok</groupId>
-        	<artifactId>lombok</artifactId>
-        	<version>1.18.4</version>
-        </dependency>
+		<!-- rest api나 restcontroler를 사용할 떄 json으로 바꿔주는 라이브러리 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.9.2</version>
+		</dependency>
+
+		<!-- JackSon -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		
+		<!-- Logback -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.4</version>
+		</dependency>
 	</dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <additionalProjectnatures>
-                        <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
-                    </additionalProjectnatures>
-                    <additionalBuildcommands>
-                        <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
-                    </additionalBuildcommands>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>true</downloadJavadocs>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
-                <configuration>
-                    <source>${java-version}</source>
-                    <target>${java-version}</target>
-                    <compilerArgument>-Xlint:all</compilerArgument>
-                    <showWarnings>true</showWarnings>
-                    <showDeprecation>true</showDeprecation>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <configuration>
-                    <mainClass>org.test.int1.Main</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
+	<repositories>
+		<repository>
+			<id>enonic</id>
+			<name>Enonic Repository</name>
+			<url>http://repo.enonic.com/public/</url>
+		</repository>
+	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<additionalProjectnatures>
+						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+					</additionalProjectnatures>
+					<additionalBuildcommands>
+						<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+					</additionalBuildcommands>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+					<compilerArgument>-Xlint:all</compilerArgument>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<configuration>
+					<mainClass>org.test.int1.Main</mainClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

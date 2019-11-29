@@ -16,21 +16,18 @@
     		<intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER','ROLE_MEMBER','ROLE_ADMIN')"/>
     		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
     		<intercept-url pattern="/**" access="permitAll"/> -->
+    		<intercept-url pattern="/user/id/available" access="permitAll"/>
     		<intercept-url pattern="/**" access="permitAll"/>
     		<csrf disabled="true"/>
     	<form-login
         username-parameter="loginId"
         password-parameter="loginPwd"
         login-page="/memberInfo/login/loginPage"
-        default-target-url="/"      
+        default-target-url="/"
           />
-     <logout
-        logout-url="/logout"
-        logout-success-url="/"
-    />
-    <access-denied-handler
-    error-page="/access_denied_page"
-	/>
+     <logout logout-url="/logout" logout-success-url="/" />
+   	 <access-denied-handler	error-page="/access_denied_page"/>
+		
 		</http>
 		
 	<context:component-scan base-package="com.smallanimals.member.dao"/>

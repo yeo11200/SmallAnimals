@@ -28,7 +28,6 @@ function CheckForm(chkForm){
 		return true;
 	}
 }
-
 </script>
 </head>
 
@@ -418,14 +417,12 @@ NICE신용평가정보㈜(이하 “대행사”)가 “대행사”에서 제�
             </tr>
             <tr>
             	<td align="center">
-					  
 					  <input type="button" class="btn_order"  onclick="CheckForm()" onclick="register2"  style="margin:10px;" value="회 원 가 입">
-					  <a href="index"> <button type="button" class="btn_cancel1" style="margin:10px;">취 소 하 기</button></a>
+					  <a href="../../main/main"> <button type="button" class="btn_cancel1" style="margin:10px;">취 소 하 기</button></a>
             	</td>
             </tr>
           </tbody></table>
-
-      </td>
+		</td>
     </tr>
 </tbody></table>
 </form>
