@@ -16,8 +16,8 @@
 	</resultMap>
 	
 	<resultMap type="com.smallanimals.complaints.vo.ReplyComplaintsVO" id="replyComplaints">
-		<result column="replyComplaintsId" property="replyId"/>
-		<result column="complaintsId" property="boardId"/>
+		<result column="replyComplaintsId" property="replyNo"/>
+		<result column="complaintsId" property="boardNo"/>
 		<result column="replyComplaintsWriter" property="replyWriter"/>
 		<result column="replyComplaintsContent" property="replyContent"/>
 		<result column="replyComplaintsWriteDate" property="replyWriteDate"/>
@@ -59,10 +59,10 @@
 		update complaints set complaintsResult = #{result}
 	</update>
 	
-	<select id="replyList" resultMap="complaints">
+	<select id="replyList" resultMap="replyComplaints" resultType="com.smallanimals.complaints.vo.ReplyComplaintsVO">
 		select *
 		from ReplyComplaints
-		where complaintsId = #{replyNo}
+		where complaintsId = #{boardNo}
 	</select>
 	
 	<insert id="replyInsert">
