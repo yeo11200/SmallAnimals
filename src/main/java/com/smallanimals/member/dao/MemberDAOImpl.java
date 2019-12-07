@@ -13,13 +13,10 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Resource
 	private SqlSessionTemplate sqlSession;
-	private MemberDAO memberDAO;
 	@Override
 	public void registerMember(MemberVO vo) {
 		sqlSession.insert("member.registerMember",vo);
 	
-		
-		
 	}
 	@Override
 	public MemberVO memberInfo(String user_id) {
@@ -28,16 +25,15 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	
-	//아이디 중복체크
+//아이디 중복체크
 //	@Override
 //	public MemberVO idCheck(String user_id) throws Exception{
 //		return sqlSession.selectOne("member.idCheck", user_id);
 //	}
 
-	//	@Override
-	public int idCheck(String user_id) {
-		return sqlSession.selectOne("memberMapper.idcheck",user_id);				
+	@Override
+	public MemberVO idCheck(String user_id) {
+		System.out.println("요기는 MemberDAOImpl 실행하는곳!!!!"+user_id);
+		return sqlSession.selectOne("member.idCheck",user_id);
 	}
-	
-	
 }

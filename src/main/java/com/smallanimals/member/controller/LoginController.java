@@ -15,8 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,7 +25,6 @@ import com.smallanimals.member.vo.MemberVO;
 
 @Controller
 public class LoginController {
-
 	@Autowired
 	private MemberService memberService;
 	
@@ -62,32 +60,25 @@ public class LoginController {
 
 	// 아이디 중복체크
 	@ResponseBody
-	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
-	public String idCheck(HttpServletRequest request) throws Exception {
-	System.out.println("아이디 중복체크 입니다 확인 해 주세요");
+	@RequestMapping(value = "/idCheck", method = RequestMethod.POST,produces="text/plain;charset=UTF-8")
+	public int idCheck(@RequestBody String user_id) throws Exception {
 		logger.info("post idCheck");
-		return memberService.idCheck(request.getParameter("user_id"));
-//		MemberVO idCheck = memberService.idCheck(user_id);
-//		System.out.println(idCheck);
-//
-//		String userId = request.getParameter("user_id");		
-//		System.out.println(user_id + "불러온 아이디 이름이다.");
-//		MemberVO idCheck =  memberService.idCheck(user_id);
-//		
-//		int result = 0;
-//	 
-//	 if(idCheck != null) {
-//	  result = 1;
-//	 }
-//	 
-//	 return result;
+		
+		System.out.println("아이디 중복체크 입니다 확인 해 주세요" + user_id);
+		
+		MemberVO idCheck = memberService.idCheck(user_id);
+		
+		int result = 0;
+		 if(idCheck !=null) {
+			 result =1;
+		 }
+		return result;
 	}
 	@RequestMapping(value = "/memberInfo/join/successlogin", method = { RequestMethod.GET, RequestMethod.POST })
 	public String successlogin(Model model) {
-		
 		return "memberInfo/join/successlogin";
 	}
-
+	
 	@RequestMapping("/registerMember")
 	public String insertMaember(MemberVO vo) {
 		System.out.println("vo:" + vo);
@@ -99,9 +90,9 @@ public class LoginController {
 	@RequestMapping(value = "/memberInfo/modify/Member_Modify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String Member_Modify(Principal principal, Model model) {
 		
-		String user_id = currentUserName(principal);
-		System.out.println(user_id);
-		MemberVO membervo = memberService.memberInfo(user_id);
+		String userId = currentUserName(principal);
+		System.out.println(userId);
+		MemberVO membervo = memberService.memberInfo(userId);
 		System.out.println(membervo.getUserId());
 		
 		model.addAttribute("memberInfo",membervo);
@@ -122,5 +113,5 @@ public class LoginController {
 	   @ResponseBody
 	   public String currentUserName(Principal principal) {
 	      return principal.getName();
+	}
 	   }
-}

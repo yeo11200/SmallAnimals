@@ -25,7 +25,7 @@
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
     </bean>
     
-	  <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+	 	 <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basenames">
             <list>
                 <value>/WEB-INF/message/security_message</value>
@@ -33,9 +33,7 @@
         </property>
         <property name="defaultEncoding" value="UTF-8"/>
         <property name="cacheSeconds" value="5"/>
-    </bean>
+    	</bean>
+    
 	<tx:annotation-driven/>
-
-	
-	
 </beans>

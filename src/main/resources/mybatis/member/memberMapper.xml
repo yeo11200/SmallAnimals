@@ -42,8 +42,8 @@
 	</select>
 	
 	<!--아이디 중복체크 기능 -->
-	<select id="idCheck" parameterType="String" resultType="com.smallanimals.member.vo.MemberVO">
-		SELECT * FROM member WHERE user_id = #{userId}
+	<select id="idCheck" resultType="com.smallanimals.member.vo.MemberVO">
+		SELECT * FROM member WHERE user_id = #{user_id}
 	</select>
 	
 	

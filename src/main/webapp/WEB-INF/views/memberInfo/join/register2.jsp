@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="org.springframework.security.core.Authentication" %>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -222,14 +224,11 @@ th {
 
 
  <script type="text/javascript">
-	/* <label for="id">너는 아이디다</label>
-	<input type="text" name="id" id="id" onchange="idcheck();"> */
-	//아이디 중복체크.
 function idCheck() {
 		var user_id = $('#user_id').val();
 		var query = {user_id : $("#user_id").val()};
 		
-		if(user_id =="" || user_id == " "){
+		if(user_id =="" || user_id ==" "){
      		alert("아이디를 입력하여 주세요!");
      	}else{
       $.ajax({
@@ -239,21 +238,16 @@ function idCheck() {
          contentType: "application/json",
          success : function (data) {
            //alert(data);
-           if (data == "fail") {
-				$("#idCheckView").html("  " + user_id + "이미 존재한 아이디 입니다.");
-				checkResultId = "";
-			} else {
-				$("#idCheckView").html("  "+ user_id+ "사용 가능한 아이디 입니다.");
-				checkResultmemberId = user_id;
-			}
-           /* alert(query);
+           alert(query);
            if(data == 1) {
-               $(".result .msg").text("사용 불가");
-               $(".result .msg").attr("style", "color:#f00");    
+               alert("이미 사용중인 아이디입니다...(유감)");
+               
+               $("#choice").attr("disabled", "disabled");
               } else {
-               $(".result .msg").text("사용 가능");
-               $(".result .msg").attr("style", "color:#00f");
-              } */
+               alert("사용 가능한 아이디입니다!!");
+              
+               $("#choice").removeAttr("disabled");
+              } 
          },
          error : function (request,status,error) {
              alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -262,7 +256,6 @@ function idCheck() {
 	}
 }
 </script> 
-
 <script type="text/javascript">
 //비밀번호 일치 확인 fuction
     $(function(){
@@ -285,75 +278,6 @@ function idCheck() {
         });
     });
 </script>
-	<script type="text/javascript">
-// Mail 체크
-
-function checkMail(){
-	var email = document.getElementById("email").value;
-	
-	if(email ==""){
-		alert("메일을 입력 해 주세요")
-		return false;
-	}
-		var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function(){
-		if(xhttp.readyState == 4){
-			var data = JSON.parse(xhttp.responseText);
-			
-			if(data != 0){
-				alert("이미 가입한 메일 입니다.");
-			}else{
-				sendMail(email);
-			}
-		}
-	};
-	xhttp.open("POST", 'checkMail', true);
-	xhttp.setRequestHeader("content-Type","application/x-www-form-urlencoded; charset=UTF-8")
-	xhttp.send('email=' + email);
-	return false;
-}
-function checkJoinCode(){
-	<%String chk = (String)session.getAttribute("joinCode");%>
-	var inputCode= document.getElementById("inputCode").value;
-	var regisuccess = document.getElementById("success");
-
-	var query = {code : inputCode};
-	$.ajax({
-	      url : "codeCheck",
-	      type : "POST",
-	      data : query,
-	      success : function(data) {
-	      if(inputCode ==""){
-	    	alert('인증번호를 입력하여 주세요.')  
-	    	return;
-	      }else if(data == 1) {
-  			alert('정상 인증 되었습니다!!')
-  			regisuccess.disabled = false;
-	       } else {
-			alert('인증번호가 일치하지 않습니다!!')
-			regisuccess.disabled = true;
-	       }
-	      }
-	     });
-}
-function sendMail(email){
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function(){
-		if(xhttp.readyState ==4){
-			if(xhttp.status == 200)
-				alert("메일을 정상적으로 보냈습니다.");
-			else
-				alert("올바른 메일 형식이 아닙니다.");
-		}
-	};
-	xhttp.open("POST", 'sendMail', true);
-	xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
-	xhttp.send('email=' +email);
-	return false;
-}
-
-</script>
-
 <script>
 function chkValidate(){ 
 	if($("#isCheckedId").val() == "N"){
@@ -366,8 +290,6 @@ function chkValidate(){
 		}else{ document.form.submit(); }
 	}
 </script>
-
- 
 </head>
 
 <body>
@@ -393,8 +315,8 @@ function chkValidate(){
 					<th><label for="user_id">아이디</label></th>
 					<td>
 						<div class="form-group">
-							<input type="email" class="form-control" id="user_id" name="user_id" style="width: 50%;" placeholder="이메일을 입력 하여 주세요" autofocus required>
-							<input type="button" value="중복체크" onclick="idCheck()">
+							<input type="text" class="form-control" id="user_id" name="user_id" style="width: 50%;" placeholder="이메일을 입력 하여 주세요" autofocus required>
+							<input type="button" value="중복체크"  class="btn btn-primary" name="user_id" onclick="idCheck()">
 							<span id="idCheckView"></span> 
 							<div class="check_font" id="id_check"></div>
 							<!-- <input type="button" value="인증하기" onclick="checkMail()"> -->
@@ -527,7 +449,7 @@ function chkValidate(){
 				</tr>
 				<tr>
 					<th colspan="2" align="right">
-						<input type="submit" value="회원가입" onclick="chkValidate()" class="btn btn-primary"> 
+						<input type="submit" value="회원가입" id="choice" onclick="chkValidate()" class="btn btn-primary"> 
 						<input type="button" value="취소" class="btn btn-primary" onclick="location.href='../../main/main'">
 					</th>
 				</tr>

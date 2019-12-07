@@ -38,7 +38,7 @@
 
 
 <script>
-document.getElementById('modal').onclick = function () {
+document.getElementById('modal').onclick = function() {
 	var xhr = new XMLHttpRequest();
 	xhr.open('get', '/modal/modal');
 	xhr.send();

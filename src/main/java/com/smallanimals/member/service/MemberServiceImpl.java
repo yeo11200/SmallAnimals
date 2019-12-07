@@ -15,14 +15,14 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	@Autowired private PasswordEncoder passwordEncoder;
-	
+		
 	 
 	@Override
 	public void registerMember(MemberVO vo) {
 	
-	vo.setUserPwd(passwordEncoder.encode(vo.getUserPwd())); 
-	if(vo.getUserRole()==null) { 
-		vo.setUserRole("ROLE_USER"); 
+	vo.setUserPwd(passwordEncoder.encode(vo.getUserPwd()));
+	if(vo.getUserRole()==null) {
+		vo.setUserRole("ROLE_USER");
 	} 
 		memberDAO.registerMember(vo);
 	}
@@ -40,8 +40,8 @@ public class MemberServiceImpl implements MemberService {
 	
 	//아이디 중복체크
 	@Override
-	public String idCheck(String user_id) {
-		int count=memberDAO.idCheck(user_id);
-		return (count==0) ? "ok":"fail";
+	public MemberVO idCheck(String user_id) throws Exception{
+		System.out.println("MemberServiceImpl 실행합니다~~~~~~~~~~~~~~~~~~~~~~~"+user_id);
+		return memberDAO.idCheck(user_id);
 	}
 }
