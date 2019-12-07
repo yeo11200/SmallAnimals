@@ -17,12 +17,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.smallanimals.complaints.service.ComplaintsService;
 import com.smallanimals.complaints.vo.ComplaintsVO;
+import com.smallanimals.complaints.vo.ReplyComplaintsVO;
 
 @Controller
 @RequestMapping(value="/complaints")
@@ -126,6 +129,46 @@ public class ComplaintsController {
 		map.put("list", service.list());
 		
 		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
-		
 	}
+	
+	// 댓글쪽 view restcontroller + rest api
+	@ResponseBody
+	@GetMapping("/replyList/{boardNo}")
+	public ResponseEntity<Map<String, Object>> replyList(@PathVariable int boardNo) {
+		System.out.println(boardNo);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", service.replyList(boardNo));
+		
+		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+	}
+	
+	@PostMapping("/replyInsert")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>>replyInsert(@RequestBody ReplyComplaintsVO rvo) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("map", service.replyInsert(rvo));
+		map.put("eventCode", 1130);
+		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+	}
+	
+	@PutMapping("/replyList")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> replyUpdate(@RequestBody ReplyComplaintsVO rvo) {
+		System.out.println(rvo.getReplyNo());
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("reply", service.replyUpdate(rvo));
+		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/replyList/{replyNo}")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> replyDelete(@PathVariable int replyNo) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("replyDelete", service.replyDelete(replyNo));
+		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+	}
+	// 좋아요를 만들 곳
+	
+	// 신고를 만들 곳
 }

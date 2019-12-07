@@ -52,9 +52,9 @@ public class ComplaintsService implements ComplaintsImfo{
 	}
 
 	@Override
-	public List<ReplyComplaintsVO> replyList(int replyNo) {
+	public List<ReplyComplaintsVO> replyList(int boardNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.replyList(boardNo);
 	}
 
 	public int count() {
@@ -63,19 +63,19 @@ public class ComplaintsService implements ComplaintsImfo{
 	@Override
 	public int replyInsert(ReplyComplaintsVO rvo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.replyInsert(rvo);
 	}
 
 	@Override
 	public int replyUpdate(ReplyComplaintsVO rvo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.replyUpdate(rvo);
 	}
 
 	@Override
 	public int replyDelete(int rno) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.replyDelete(rno);
 	}
 
 }
