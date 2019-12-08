@@ -17,4 +17,8 @@ public interface ComplaintsImfo {
 	public int replyInsert(ReplyComplaintsVO rvo);
 	public int replyUpdate(ReplyComplaintsVO rvo);
 	public int replyDelete(int rno);
+	public List<ReplyComplaintsVO> replyCommintList(int replyNo);
+	public int replyCommintInsert(ReplyComplaintsVO rvo);
+	public int replyCommintUpdate(ReplyComplaintsVO rvo);
+	public int replyCommintDelete(int rno);
 }

@@ -1,6 +1,7 @@
 package com.smallanimals.complaints.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.slf4j.spi.LoggerFactoryBinder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -166,6 +168,41 @@ public class ComplaintsController {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("replyDelete", service.replyDelete(replyNo));
+		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+	}
+	
+	@GetMapping("/replyComment/{replyNo}")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> replyCommentList(@PathVariable int replyNo) {
+		List<ReplyComplaintsVO> list = service.replyCommintList(replyNo);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(list.size() != 0) {
+		map.put("replyComment", service.replyCommintList(replyNo));
+		}else {
+		map.put("replyComment", 0);
+		}
+		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+	}
+	
+	@PostMapping("/replyComment")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> replyCommentInsert(@PathVariable int replyNo) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+	}
+	
+	@PutMapping("/replyComment")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> replyCommentUpdate(@PathVariable int replyNo) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/replyComment/{replyNo}")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> replyCommentDelete(@PathVariable int replyNo) {
+		Map<String, Object> map = new HashMap<String, Object>();
 		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
 	}
 	// 좋아요를 만들 곳

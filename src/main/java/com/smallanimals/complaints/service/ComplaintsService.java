@@ -78,4 +78,28 @@ public class ComplaintsService implements ComplaintsImfo{
 		return dao.replyDelete(rno);
 	}
 
+	@Override
+	public List<ReplyComplaintsVO> replyCommintList(int replyNo) {
+		// TODO Auto-generated method stub
+		return dao.replyCommintList(replyNo);
+	}
+
+	@Override
+	public int replyCommintInsert(ReplyComplaintsVO rvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int replyCommintUpdate(ReplyComplaintsVO rvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int replyCommintDelete(int rno) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

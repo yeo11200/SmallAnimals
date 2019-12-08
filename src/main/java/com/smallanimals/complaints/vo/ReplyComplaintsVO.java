@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public class ReplyComplaintsVO {
 
-	private int replyNo, boardNo, depth;
+	private int replyNo, boardNo, depth, countLike, depthReply;
 	private String replyContent, replyWriter;
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date replyWriteDate;

@@ -59,10 +59,11 @@
 		update complaints set complaintsResult = #{result}
 	</update>
 	
+	<!-- 댓글 처리 -->
 	<select id="replyList" resultMap="replyComplaints" resultType="com.smallanimals.complaints.vo.ReplyComplaintsVO">
-		select *
-		from ReplyComplaints
-		where complaintsId = #{boardNo}
+		select *, (SELECT COUNT(*) FROM ReplyComplaintsLike WHERE replyComplaintsId = r.replyComplaintsId) AS countLike, (SELECT COUNT(*) FROM ReplyComplaints WHERE parentsReplyId = r.replyComplaintsId) AS depthReply
+		from ReplyComplaints r
+		where r.complaintsId = #{boardNo} and r.replyDepth = 1
 	</select>
 	
 	<insert id="replyInsert">
@@ -80,6 +81,24 @@
 		where replyComplaintsId = #{replyNo}
 	</delete>
 	
+	<!-- 대댓글 처리 쿼리 -->
+	<select id="replyCommentList" resultMap="replyComplaints">
+		select *, (SELECT COUNT(*) FROM ReplyComplaintsLike WHERE replyComplaintsId = r.replyComplaintsId) AS countLike, (SELECT COUNT(*) FROM ReplyComplaints WHERE parentsReplyId = r.replyComplaintsId) AS depthReply
+		from ReplyComplaints
+		where parentsReplyId = #{replyNo}
+	</select>
+	
+	<insert id="replyCommentInsert">
+	
+	</insert>
+	
+	<update id="replyCommentUpdate">
+	
+	</update>
+	
+	<delete id="replyCommentDelete">
+	
+	</delete>
 	<select id="likeList">
 		
 	</select>

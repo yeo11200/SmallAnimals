@@ -31,6 +31,11 @@
 	.replyDelete {
 		color: red;
 	}
+	textarea {
+		margin-top : 5px;
+		width: 10%;
+		height: 20%;
+	}
 </style>
 </head>
 <body>
@@ -88,23 +93,24 @@
 
 <div id="replyList" v-cloak>
 <input value="${view.no}" v-model="no1" hidden="hidden">
+<div class="replyForm">
+<input v-model="replyWriter"><Br>
+<textarea v-model="replyContent"></textarea><br>
+<button v-on:click="replyInsert">등록</button>
+</div>
  <h2>{{ message }}</h2>
- <table>
- 	<thead>
- 	</thead>
- 	<tbody>
- 		<tr v-for="list in replyList">
- 			<td><div v-if="list12 === true">{{ list.replyNo }}</div><input v-if="list12 === false" v-bind:value="list.replyNo"></td>
- 			<td><div v-if="list12 === true">{{ list.boardNo }}</div><input v-if="list12 === false" v-bind:value="list.boardNo"></td>
- 			<td><div v-if="list12 === true">{{ list.replyContent }}</div><input v-if="list12 === false" v-bind:value="list.replyContent"></td>
- 			<td><div v-if="list12 === true">{{ list.replyWriter }}</div><input v-if="list12 === false" v-bind:value="list.replyWriter"></td>
-<%--  			<c:if test=""> --%>
- 			<td><button v-if="list12 === true" class="replyUpdate" @click="replyUpdate">수정</button></td>
- 			<td><button v-if="list12 === true" class="replyDelete">삭제</button></td>
-<%--  			</c:if> --%>
-		</tr>
- 	</tbody>
- </table>
+<div v-for="list in replyList">
+ 			<div v-if="list12 === true">{{ list.replyNo }}<input v-if="list12 === false" v-bind:value="list.replyNo"> 
+ 			<span>
+ 			<button v-if="hidden1" class="replyUpdate" @click="replyUpdate">수정</button>
+ 			<button v-if="hidden1" class="replyDelete">삭제</button>
+ 			</span>
+ 			{{ list.boardNo }}<input v-if="list12 === false" v-bind:value="list.boardNo">
+ 			{{ list.replyContent }}<input v-if="list12 === false" v-bind:value="list.replyContent">
+ 			{{ list.replyWriter }}<input v-if="list12 === false" v-bind:value="list.replyWriter">
+			<span style="color: blue;" class="glyphicon glyphicon-thumbs-up" v-on:click="like">{{ list.countLike }}</span></div>
+			<div><button ref="re1" attr="value" v-on:click="replyComment">답글</button></div>
+</div>
 </div>
 <script type="module" src="<c:url value='/resources/js/complaints/complaintEvent.js'></c:url>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
@@ -150,7 +156,10 @@ function replyList() {
 			replyList : [],
 			message : '여기는 댓글',
 			no1 : '${view.no}',
-			list12 : true
+			list12 : true,
+			hidden1 : false,
+			replyWriter : '',
+			replyContent : '',
 			}
 		},
 		created: function () {
@@ -171,12 +180,21 @@ function replyList() {
 			});
 		},
 		methods: {
+			replyInsert: function () {
+				
+			},
 			replyUpdate: function () {
 				this.list12 = false;
 				alert('replyUpdateClick');
 			},
 			replyDelete: function () {
 				this.list12 = false;
+			},
+			like: function () {
+				alert('좋아요');
+			},
+			replyComment: function () {
+				alert("겨울속을 걸어가");
 			}
 		}
 	})

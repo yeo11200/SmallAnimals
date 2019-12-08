@@ -78,4 +78,28 @@ public class ComplaintsDAO implements ComplaintsImfo{
 		return sql.delete(name+"replyDelete", replyNo);
 	}
 
+	@Override
+	public List<ReplyComplaintsVO> replyCommintList(int replyNo) {
+		// TODO Auto-generated method stub
+		return sql.selectList(name+"replyCommentList", replyNo);
+	}
+
+	@Override
+	public int replyCommintInsert(ReplyComplaintsVO rvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int replyCommintUpdate(ReplyComplaintsVO rvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int replyCommintDelete(int rno) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
