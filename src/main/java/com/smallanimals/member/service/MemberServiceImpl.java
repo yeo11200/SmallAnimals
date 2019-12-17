@@ -23,25 +23,25 @@ public class MemberServiceImpl implements MemberService {
 	vo.setUserPwd(passwordEncoder.encode(vo.getUserPwd()));
 	if(vo.getUserRole()==null) {
 		vo.setUserRole("ROLE_USER");
-	} 
+		}
 		memberDAO.registerMember(vo);
 	}
+
 	//회원정보 수정시 정보 값 불러오기
 	@Override
-	public MemberVO memberInfo(String user_id) {
-	
-		return memberDAO.memberInfo(user_id);
+	public MemberVO memberInfo(String userId) {
+		return memberDAO.memberInfo(userId);
 	}
-	//아이디 중복체크
-//	@Override
-//	public MemberVO idCheck(String user_id) throws Exception{
-//		return memberDAO.idCheck(user_id);
-//	}
 	
-	//아이디 중복체크
 	@Override
-	public MemberVO idCheck(String user_id) throws Exception{
-		System.out.println("MemberServiceImpl 실행합니다~~~~~~~~~~~~~~~~~~~~~~~"+user_id);
-		return memberDAO.idCheck(user_id);
+	public MemberVO idCheck(String userId) throws Exception {
+		System.out.println("MemberServiceImpl 실행합니다~~~~~~~~~~~~~~~~~~~~~~~"+userId);
+		return memberDAO.idCheck(userId);
+	}
+	
+	@Override
+	public void memberUpdate(MemberVO vo) {
+		System.out.println("MemberServiceImpl 구간" + vo);
+		 memberDAO.memberUpdate(vo);
 	}
 }

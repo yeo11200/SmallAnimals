@@ -29,38 +29,4 @@ public class MainController {
 	public ModelAndView modal() {
 		return new ModelAndView("modal/modal");
 	}
-	
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String register(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		
-		
-		return "register";
-	}
-	@RequestMapping(value = "/naver", method = RequestMethod.GET)
-	public String naver(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		
-		
-		return "naver";
-}
-	@RequestMapping(value = "/sample", method = RequestMethod.GET)
-	public String sample(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		
-		
-		return "sample";
-}
-	@RequestMapping(value = "/jusoPopup", method = RequestMethod.GET)
-	public String jusoPopup(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		
-		
-		return "jusoPopup";
-}
-	
 }

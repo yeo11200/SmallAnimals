@@ -1,50 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
-   <!-- VO와 컬럼이 서로 이름이 다른 경우 사용을 한다. property = vo이름, column = column 이름 -->
-   <resultMap type="com.smallanimals.member.vo.MemberVO" id="memberMap">
-      <result property="userNo" column="user_no"/>
-      <result property="userId" column="user_id"/>
-      <result property="userPwd" column="user_pwd"/>
-      <result property="userPwdchk" column="user_pwdchk"/>
-      <result property="userName" column="user_name"/>
-      <result property="userNickname" column="user_nickname"/>
-      <result property="userPhone" column="user_phone"/>
-      <result property="userAddr" column="user_addr"/>
-      <result property="userRegdate" column="user_regdate"/>
-      <result property="userLoginDate" column="user_loginDate"/>
-      <result property="userCheckparcel" column="user_checkparcel"/>
-      <result property="userParcel" column="user_parcel"/>
-      <result property="userEnabled" column="user_enabled"/>
-      <result property="userType" column="user_type"/>
-      <result property="userRole" column="user_role"/>
-      <result property="userBirth" column="user_birth"/>
-      
-   </resultMap>
-   
-<!--    <select id="selectUserById" resultType="com.smallanimals.member.vo.AuthoritiesVO" resultMap="memberMap"> -->
-   <select id="selectUserById" resultType="com.smallanimals.member.vo.MemberVO" resultMap="memberMap">
-      SELECT user_id, user_pwd, user_enabled,user_role
-      FROM member
-      WHERE user_id = #{loginId}
-   </select>
-   
-   
-   <insert id="registerMember" useGeneratedKeys="true"  keyProperty="userNo" parameterType="com.smallanimals.member.vo.MemberVO">
-   insert into member(user_id,user_pwd,user_nickname,user_name,user_phone,user_regdate,user_addr,user_role)
-    values(#{userId},#{userPwd},#{userNickname},#{userName},#{userPhone},#{userRegdate},#{userAddr},#{userRole})
-   </insert>
-   
-   
-   <!--MemberModify -->
-	<select id="memberInfo" resultType="com.smallanimals.member.vo.MemberVO">
-		SELECT * FROM member WHERE user_id = #{loginId}
-	</select>
+<!-- VO와 컬럼이 서로 이름이 다른 경우 사용을 한다. property = vo이름, column = column 이름 -->
+	<resultMap type="com.smallanimals.member.vo.MemberVO" id="memberMap">
+		<result property="userNo" column="user_no"/>
+		<result property="userId" column="user_id"/>
+		<result property="userPwd" column="user_pwd"/>
+		<result property="userPwdchk" column="user_pwdchk"/>
+		<result property="userName" column="user_name"/>
+		<result property="userNickname" column="user_nickname"/>
+		<result property="userPhone" column="user_phone"/>
+		<result property="userZipcode" column="user_zipCode"/>
+		<result property="userStreetnameaddr" column="user_streetNameAddr"/>
+		<result property="userAddress" column="user_address"/>
+		<result property="userDetailaddr" column="user_detailAddr"/>
+		<result property="userReferenceitem" column="user_referenceItem"/>
+		<result property="userRegdate" column="user_regdate"/>
+		<result property="userLoginDate" column="user_loginDate"/>
+		<result property="userCheckparcel" column="user_checkparcel"/>
+		<result property="userParcel" column="user_parcel"/>
+		<result property="userEnabled" column="user_enabled"/>
+		<result property="userType" column="user_type"/>
+		<result property="userRole" column="user_role"/>
+		<result property="userBirth" column="user_birth"/>
+	</resultMap>
 	
-	<!--아이디 중복체크 기능 -->
-	<select id="idCheck" resultType="com.smallanimals.member.vo.MemberVO">
-		SELECT * FROM member WHERE user_id = #{user_id}
+	<!-- <select id="selectUserById" resultType="com.smallanimals.member.vo.AuthoritiesVO" resultMap="memberMap"> -->
+	<select id="selectUserById" resultType="com.smallanimals.member.vo.MemberVO" resultMap="memberMap">
+		SELECT user_id, user_pwd, user_enabled,user_role
+		FROM member
+		WHERE user_id = #{loginId}
 	</select>
 	
 	
+	<insert id="registerMember" useGeneratedKeys="true"  keyProperty="userNo" parameterType="com.smallanimals.member.vo.MemberVO">
+	insert into member(user_id,user_pwd,user_nickname,user_name,user_phone,user_zipCode,user_streetNameAddr,user_address,user_detailAddr,user_referenceItem,user_regdate,user_role)
+	 values(#{userId},#{userPwd},#{userNickname},#{userName},#{userPhone},#{userZipcode},#{userStreetnameaddr},#{userAddress},#{userDetailaddr},#{userReferenceitem},#{userRegdate},#{userRole})
+	</insert>
+
+	
+	<!--MemberModify 회원정보 불러오기 -->
+	<select id="memberInfo" resultMap="memberMap" >
+			SELECT * FROM member WHERE user_id = #{loginId}
+	</select>
+	
+	<!--Id중복체크-->
+	<select id="idCheck"  resultMap="memberMap" >
+		SELECT * FROM member WHERE user_id = #{userId}
+	</select>
+	
+	
+	<!--회원 정보 수정-->
+	<update id="memberUpdate"  parameterType="com.smallanimals.member.vo.MemberVO">
+		UPDATE member set
+			user_name = #{userName},
+			user_nickname = #{userNickname},
+			user_phone = #{userPhone},
+			user_zipCode = #{userZipcode},
+			user_streetNameAddr = #{userStreetnameaddr},
+			user_address = #{userAddress},
+			user_detailAddr = #{userDetailaddr},
+			user_referenceItem = #{userReferenceitem}
+		WHERE
+		 	user_id = #{userId}
+	</update>
+	
+	<!-- 회원 삭제 
+	<delete id="memberDelete"  resultMap="memberMap" >
+	Delete * FROM member WHERE user_id = #{userId}
+	</delete>-->
+	
+	
+	<!-- resultType="com.smallanimals.member.vo.MemberVO" -->
 </mapper>

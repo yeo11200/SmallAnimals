@@ -26,8 +26,9 @@
         default-target-url="/"
           />
      <logout logout-url="/logout" logout-success-url="/" />
-   	 <access-denied-handler	error-page="/access_denied_page"/>
-		
+
+    <access-denied-handler error-page="/access_denied_page" />
+
 		</http>
 		
 	<context:component-scan base-package="com.smallanimals.member.dao"/>
@@ -36,7 +37,6 @@
      <security:password-encoder ref="passwordEncoder"/>
      </authentication-provider>
 	</authentication-manager>
-
 
 
 	<beans:bean id="userService" class="com.smallanimals.member.service.AuthoritiesService"/>

@@ -8,11 +8,13 @@ public interface MemberService {
 	void registerMember(MemberVO vo);
 	
 	//회원정보 수정 시 정보값 불러오기
-	MemberVO memberInfo(String user_id);
+	MemberVO memberInfo(String userId);
+
+	//아이디 체크
+	public MemberVO idCheck(String userId) throws Exception;
 	
-	//아이디 확인
-	// public String idCheck(String user_id) throws Exception;
-	public MemberVO idCheck(String user_id) throws Exception;
+	//회원정보 수정
+	public void memberUpdate(MemberVO vo);
 	
-	
-	}
+}
+

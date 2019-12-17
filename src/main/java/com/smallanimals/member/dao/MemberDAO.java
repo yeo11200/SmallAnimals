@@ -6,8 +6,9 @@ public interface MemberDAO {
 
 	void registerMember(MemberVO vo);
 	
-	MemberVO memberInfo(String user_id);
+	MemberVO memberInfo(String userId);
+
+	public MemberVO idCheck(String userId) throws Exception;
 	
-	//public MemberVO idCheck(String user_id) throws Exception;
-	public MemberVO idCheck(String user_id) throws Exception;
+	public void memberUpdate(MemberVO vo);
 }

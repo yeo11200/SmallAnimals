@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
-<%@ page import="org.springframework.security.core.Authentication" %>
- 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+	<%@ page import="org.springframework.security.core.Authentication" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +43,8 @@ th {
 		 $("#capslock").hide();
 		}
 </script>
+</head>
+<body>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -104,7 +105,7 @@ th {
     </script>
 
 <script type="text/javascript">
-    	//패스워드 안내문
+		//패스워드 안내문
     	function pwd(element,min,max) { 
           var len = element.value.length;
 			if(len==""){
@@ -203,6 +204,37 @@ th {
 			fournum();
 		}else if(isNaN(temp)==false){
 			fournum_good();
+	}
+	}
+	function fournum_good(){
+		$("#fourNumber").hide();
+		$("#fourNumber_blank").hide();
+	}
+	function fournum(){
+		$("#fourNumber").show();
+		$("#fourNumber_blank").hide();
+	}
+	function fournum_blank(){
+		$("#fourNumber").hide();
+		$("#fourNumber_blank").show();
+	}
+	
+	
+</script>
+
+<script type="text/javascript">
+    //	input type="text" 최소,최대 길이 alert 창
+      function validate(element,min,max) {
+         var len = element.value.length;
+			if ((len<min)||(len>max)) {
+				alert(min + '자 이상 ' + max + '자 이하로 입력해야 합니다' );
+				element.style.borderColor="#FF0000";
+				// 입력 필드의 경계선을 빨강으로 설정함
+				//return false;
+				
+			}else{
+				element.style.borderColor="#ffffff";
+		    	// 입력 필드의 경계선을 흰색으로 설정
 		}
 	}
 	function fournum_good(){
@@ -221,37 +253,33 @@ th {
 	
 </script>
 
-
-
- <script type="text/javascript">
+<script type="text/javascript">
+/* <label for="id">너는 아이디다</label>
+<input type="text" name="id" id="id" onchange="idcheck();"> */
 function idCheck() {
-		var user_id = $('#user_id').val();
-		var query = {user_id : $("#user_id").val()};
-		
-		if(user_id =="" || user_id ==" "){
+	var user_id = $('#userId').val();
+	var query = {userId : $("#userId").val()};
+			if(user_id =="" || user_id ==" "){
      		alert("아이디를 입력하여 주세요!");
-     	}else{
-      $.ajax({
+     		}else{
+		$.ajax({
          type: 'POST',
          url : "${pageContext.request.contextPath}/idCheck",
          data : query,
-         contentType: "application/json",
-         success : function (data) {
-           //alert(data);
-           alert(query);
-           if(data == 1) {
-               alert("이미 사용중인 아이디입니다...(유감)");
-               
-               $("#choice").attr("disabled", "disabled");
-              } else {
-               alert("사용 가능한 아이디입니다!!");
-              
-               $("#choice").removeAttr("disabled");
-              } 
-         },
-         error : function (request,status,error) {
-             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-         }
+			contentType: 'application/json',
+		 success : function (data) {
+            	if(data == 1) {
+                alert("이미 사용중인 아이디입니다...(유감)");
+                
+                $("#choice").attr("disabled", "disabled");
+  				} else {
+                  alert("사용 가능한 아이디입니다!!");
+                  $("#choice").removeAttr("disabled");
+  				}
+  				},
+                error : function (request,status,error) {
+                    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
       });
 	}
 }
@@ -278,6 +306,7 @@ function idCheck() {
         });
     });
 </script>
+
 <script>
 function chkValidate(){ 
 	if($("#isCheckedId").val() == "N"){
@@ -312,18 +341,18 @@ function chkValidate(){
 					</td>
 				</tr>
 				<tr>
-					<th><label for="user_id">아이디</label></th>
-					<td>
-						<div class="form-group">
-							<input type="text" class="form-control" id="user_id" name="user_id" style="width: 50%;" placeholder="이메일을 입력 하여 주세요" autofocus required>
-							<input type="button" value="중복체크"  class="btn btn-primary" name="user_id" onclick="idCheck()">
+						<th><label for="user_id">아이디</label></th>
+						<td>
+							<div class="form-group">
+							<input type="text" class="form-control" id="userId" name="userId" style="width: 50%;" placeholder="이메일을 입력 하여 주세요" autofocus required>
+							<input type="button" value="중복체크"  class="btn btn-primary"  onclick="idCheck()">
 							<span id="idCheckView"></span> 
 							<div class="check_font" id="id_check"></div>
-							<!-- <input type="button" value="인증하기" onclick="checkMail()"> -->
-						</div>
-					</td>
-				</tr>
-				<tr>
+							</div>
+						</td>
+					</tr>
+					<tr>
+
 					<th>비밀번호</th>
 					<td colspan="3">
 						<input type="password" id="user_pwd" name="userPwd"  placeholder="비밀번호" onblur="pwd(this,8,16)" onkeypress="caps_lock(event)">
@@ -359,26 +388,27 @@ function chkValidate(){
 				<tr>	
 					<th>전화번호</th>
 					<td>
-						<select id="mm" name="userPhone" class="sel" aria-label="월" id="userPhone" style="width: 100px;">
+
+						<select  name="userPhone" class="sel" aria-label="월" id="userPhone" style="width: 100px;">
+
 								<option value="010">010</option>
 								<option value="011">011</option>
 								<option value="016">016</option>
 								<option value="017">017</option>
 								<option value="019">019</option>
 						</select>
+													- 
+						<input type="tel" name="userPhone1" id="userPhone1" maxlength="4" />
 						- 
-						<input type="tel" name="*" name="userPhone1" id="userPhone1" maxlength="4" />
-						- 
-						<input type="tel" name="*" name="userPhone2" id="userPhone2" maxlength="4" />
+						<input type="tel"  name="userPhone2" id="userPhone2" maxlength="4" />
+
 					</td>
 				</tr>
 				<tr style="height:50px;">
 					<th>생년월일</th>
 					<td>
-					
-
-						<input type="text" id="input" name="year" class="int" placeholder="년(4자)" aria-label="년(4자)" maxlength="4" onfocus="this.select();" onblur="numberCheck(isNaN(this.value));"> / 
-						<select name="month" class="sel" aria-label="월" style="width: 100px; height: 30px;">
+						<input type="text" id="yy" name="yy" class="int" placeholder="년(4자)" aria-label="년(4자)" maxlength="4" onfocus="this.select();" onblur="numberCheck(isNaN(this.value));"> / 
+						<select name="mm" class="sel" aria-label="월" style="width: 100px; height: 30px;">
 							<option>월</option>
 							<option value="01">1</option>
 							<option value="02">2</option>
@@ -394,7 +424,8 @@ function chkValidate(){
 							<option value="12">12</option>
 						</select> 
 						/ 
-						<select name="day" class="sel" aria-label="월" style="width: 100px; height: 30px;">
+						<select name="dd" class="sel" aria-label="월" style="width: 100px; height: 30px;">
+
 							<option>일</option>
 							<option value="01">1</option>
 							<option value="02">2</option>
@@ -437,19 +468,22 @@ function chkValidate(){
 				<tr>
 					<th>주소</th>
 					<td style="height: 100px;">
-						<input type="text" id="sample4_postcode" placeholder="우편번호"> 
+						<input type="text" id="sample4_postcode"placeholder="우편번호" name="userZipcode"> 
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" id="sample4_roadAddress" placeholder="도로명주소"style="width: 300px;"> 
-						<input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="width: 300px;">
+						<input type="text" id="sample4_roadAddress" placeholder="도로명주소"style="width: 300px;" name="userStreetnameaddr"> 
+						<input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="width: 300px;" name="userAddress">
 						<span id="guide" style="color: #999; display: none;"></span><br>
-						<input type="text" id="sample4_detailAddress" placeholder="상세주소" style="width: 300px;"> 
-						<input type="text" id="sample4_extraAddress" placeholder="참고항목" style="width: 300px;">
+						<input type="text" id="sample4_detailAddress" placeholder="상세주소" style="width: 300px;" name="userDetailaddr"> 
+						<input type="text" id="sample4_extraAddress" placeholder="참고항목" style="width: 300px;" name="userReferenceitem">
+
 					</td>
 					<td></td>
 				</tr>
 				<tr>
 					<th colspan="2" align="right">
-						<input type="submit" value="회원가입" id="choice" onclick="chkValidate()" class="btn btn-primary"> 
+
+						<input type="submit" value="회원가입"  onclick="chkValidate()" class="btn btn-primary"> 
+
 						<input type="button" value="취소" class="btn btn-primary" onclick="location.href='../../main/main'">
 					</th>
 				</tr>

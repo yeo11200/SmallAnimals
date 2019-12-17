@@ -18,7 +18,8 @@
 
     <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
     <button type="submit" class="btn btn-primary">Sign in</button>
-    <a href="../../main/main"><button type="button" class="btn btn-primary" style="margin:10px;">cancel</button></a>
+	<input type="button" onclick="location.href='../../main/main'" value="이전" class="btn btn-primary" />
+
 	<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
     	<font color="red">
         	<p>Your login attempt was not successful due to <br/>

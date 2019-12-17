@@ -22,19 +22,24 @@
 <body>
 <h2>메인입니다</h2>
 <sec:authorize access="isAnonymous()">
-<a href='<c:url value="/memberInfo/login/loginPage"/>'><button class="btn btn-primary">login</button></a>
-<a href='<c:url value="/memberInfo/join/register1"/>'><button class="btn btn-primary">회원가입</button></a>
+
+	<a href='<c:url value="/memberInfo/login/loginPage"/>' class="btn btn-primary">login</a>
+	<a href='<c:url value="/memberInfo/join/register1"/>' class="btn btn-primary">회원가입</a>
+
+	<button type="button" id="modal" class="btn btn-primary">모달창 열기</button>
+
 </sec:authorize>
 
 <sec:authorize access="isAuthenticated()">
-<form id="logoutFrm" action="${pageContext.request.contextPath}/logout" method="post">
-   <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-   <button type="submit" class="btn btn-primary">LOGOUT</button>
+
+<form id="logoutFrm" action="${pageContext.request.contextPath}/logout" method="post" >
+	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+	<button type="submit" class="btn btn-primary" >LOGOUT</button>
 <input type="button" value="정보수정" class="btn btn-primary" onclick="location.href='../memberInfo/modify/Member_Modify'">
-<button type="button" class="btn btn-primary" id="modal">모달창 열기</button>
-<div id="modalshow"></div>
+<button type="button" id="modal" class="btn btn-primary">모달창 열기</button>
 </form>
 </sec:authorize>
+<div id="modalshow"></div>
 
 
 <script>

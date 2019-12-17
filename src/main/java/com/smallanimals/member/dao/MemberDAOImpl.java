@@ -18,22 +18,22 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.insert("member.registerMember",vo);
 	
 	}
+	
 	@Override
-	public MemberVO memberInfo(String user_id) {
+	public MemberVO memberInfo(String userId) {
 		
-		return sqlSession.selectOne("member.memberInfo", user_id);
+		return sqlSession.selectOne("member.memberInfo", userId);
 	}
 	
-	
-//아이디 중복체크
-//	@Override
-//	public MemberVO idCheck(String user_id) throws Exception{
-//		return sqlSession.selectOne("member.idCheck", user_id);
-//	}
-
 	@Override
-	public MemberVO idCheck(String user_id) {
-		System.out.println("요기는 MemberDAOImpl 실행하는곳!!!!"+user_id);
-		return sqlSession.selectOne("member.idCheck",user_id);
+	public MemberVO idCheck(String userId) {
+		System.out.println("요기는 MemberDAOImpl 실행하는곳!!!!"+userId);
+		return sqlSession.selectOne("member.idCheck",userId);
+	}
+	
+	@Override
+	public void memberUpdate(MemberVO vo) {
+		System.out.println("MemberDAOImpl 실행 구간" + vo);
+		 sqlSession.update("member.memberUpdate", vo);
 	}
 }

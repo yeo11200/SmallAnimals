@@ -14,9 +14,134 @@ public class MemberVO implements UserDetails{
   private String userNickname;
   private String userName;
   private String userPhone;
+  private String userPhone1;
+  private String userPhone2;
+  private String userZipcode;
+  private String userStreetnameaddr;
+  private String userAddress;
+  private String userDetailaddr;
+  private String userReferenceitem;
+  
+
+
+
+public String getUserZipcode() {
+	return userZipcode;
+}
+
+
+public void setUserZipcode(String userZipcode) {
+	this.userZipcode = userZipcode;
+}
+
+
+public String getUserStreetnameaddr() {
+	return userStreetnameaddr;
+}
+
+
+public void setUserStreetnameaddr(String userStreetnameaddr) {
+	this.userStreetnameaddr = userStreetnameaddr;
+}
+
+
+public String getUserDetailaddr() {
+	return userDetailaddr;
+}
+
+
+public void setUserDetailaddr(String userDetailaddr) {
+	this.userDetailaddr = userDetailaddr;
+}
+
+
+
+
+public String getUserReferenceitem() {
+	return userReferenceitem;
+}
+
+
+public void setUserReferenceitem(String userReferenceitem) {
+	this.userReferenceitem = userReferenceitem;
+}
+
+
+public String getUserReferencitem() {
+	return userReferenceitem;
+}
+
+
+public void setUserReferencitem(String userReferencitem) {
+	this.userReferenceitem = userReferencitem;
+}
+
+
+public String getUserAddress() {
+	return userAddress;
+}
+public void setUserAddress(String userAddress) {
+	this.userAddress = userAddress;
+}
+
+
+
+
+
+  private String yy;
+  private String mm;
+  private String dd;
+  public String getYy() {
+	return yy;
+}
+
+
+public void setYy(String yy) {
+	this.yy = yy;
+}
+
+
+public String getMm() {
+	return mm;
+}
+
+
+public void setMm(String mm) {
+	this.mm = mm;
+}
+
+
+public String getDd() {
+	return dd;
+}
+
+
+public void setDd(String dd) {
+	this.dd = dd;
+}
+  
+  public String getUserPhone1() {
+	return userPhone1;
+}
+
+
+public void setUserPhone1(String userPhone1) {
+	this.userPhone1 = userPhone1;
+}
+
+
+public String getUserPhone2() {
+	return userPhone2;
+}
+
+
+public void setUserPhone2(String userPhone2) {
+	this.userPhone2 = userPhone2;
+}
+	
   private String userRegdate;
   private String userAddr;
-  private String userRole;
+  private String userRole; 
   private boolean userEnabled;
 
   @Override
@@ -33,7 +158,8 @@ public MemberVO() {
 
 
 public MemberVO(String userNo, String userId, String userPwd, String userNickname, String userName, String userPhone,
-		String userRegdate, String userAddr, String userRole, boolean userEnabled) {
+		String userPhone1, String userPhone2, String userZipCode, String userStreetnameaddr, String userAddress, String userDetailaddr, String userReferenceitem, String userRegdate, String yy,String mm ,String dd,String userAddr, String userRole, boolean userEnabled, String userZipcode) {
+
 	super();
 	this.userNo = userNo;
 	this.userId = userId;
@@ -41,6 +167,16 @@ public MemberVO(String userNo, String userId, String userPwd, String userNicknam
 	this.userNickname = userNickname;
 	this.userName = userName;
 	this.userPhone = userPhone;
+	this.userPhone1 = userPhone1;
+	this.userPhone2 = userPhone2;
+	this.userZipcode = userZipcode;
+	this.userStreetnameaddr = userStreetnameaddr;
+	this.userAddress = userAddress;
+	this.userDetailaddr = userDetailaddr;
+	this.userReferenceitem = userReferenceitem;
+	this.yy = yy;
+	this.mm = mm;
+	this.dd = dd;
 	this.userRegdate = userRegdate;
 	this.userAddr = userAddr;
 	this.userRole = userRole;
@@ -123,12 +259,7 @@ public String getUserRegdate() {
 public void setUserRegdate(String userRegdate) {
 	this.userRegdate = userRegdate;
 }
-public String getUserAddr() {
-	return userAddr;
-}
-public void setUserAddr(String userAddr) {
-	this.userAddr = userAddr;
-}
+
 public String getUserRole() {
 	return userRole;
 }
@@ -141,16 +272,22 @@ public boolean isUserEnabled() {
 public void setUserEnabled(boolean userEnabled) {
 	this.userEnabled = userEnabled;
 }
-
-
-@Override
-public String toString() {
-	return "MemberVO [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd +  ", userNickname="
-			+ userNickname + ", userName=" + userName + ", userPhone=" + userPhone + ", userRegdate=" + userRegdate
-			+ ", userAddr=" + userAddr + ", userRole=" + userRole + ", userEnabled=" + userEnabled + "]";
+public String getUserAddr() {
+	return userAddr;
 }
 
 
+public void setUserAddr(String userAddr) {
+	this.userAddr = userAddr;
+}
 
+@Override
+public String toString() {
 
+	return "MemberVO [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userNickname="
+			+ userNickname + ", userName=" + userName + ", userPhone=" + userPhone + ",userZipcode=" + userZipcode + 
+			", userStreetnameaddr=" + userStreetnameaddr + ", userAddress=" + userAddress + ", userDetailaddr=" + 
+			userDetailaddr + ",userReferenceitem=" + userReferenceitem + ", useruserRegdate=" + userRegdate
+			+ ", userAddr=" + userAddr + ", userRole=" + userRole + ", userEnabled=" + userEnabled + "]";
+}
 }
