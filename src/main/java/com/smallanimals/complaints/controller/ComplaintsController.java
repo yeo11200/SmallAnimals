@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -147,6 +148,7 @@ public class ComplaintsController {
 	@PostMapping("/replyInsert")
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>>replyInsert(@RequestBody ReplyComplaintsVO rvo) {
+		System.out.println(rvo);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("map", service.replyInsert(rvo));
 		map.put("eventCode", 1130);
@@ -170,41 +172,47 @@ public class ComplaintsController {
 		map.put("replyDelete", service.replyDelete(replyNo));
 		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
 	}
-	
+//	
 	@GetMapping("/replyComment/{replyNo}")
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> replyCommentList(@PathVariable int replyNo) {
-		List<ReplyComplaintsVO> list = service.replyCommintList(replyNo);
+//		List<ReplyComplaintsVO> list = service.replyCommintList(replyNo);
 		
+		System.out.println(replyNo);
+		List<ReplyComplaintsVO> list = service.replyCommintList(replyNo);
 		Map<String, Object> map = new HashMap<String, Object>();
 		if(list.size() != 0) {
-		map.put("replyComment", service.replyCommintList(replyNo));
+		map.put("replyComment", list);
 		}else {
 		map.put("replyComment", 0);
 		}
 		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
 	}
+//	
+//	@PostMapping("/replyComment")
+//	@ResponseBody
+//	public ResponseEntity<Map<String, Object>> replyCommentInsert(@RequestBody ReplyComplaintsVO rvo) {
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("replyComment", service.replyCommintInsert(rvo));
+//		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+//	}
+//	
+//	@PutMapping("/replyComment")
+//	@ResponseBody
+//	public ResponseEntity<Map<String, Object>> replyCommentUpdate(@RequestBody ReplyComplaintsVO rvo) {
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("CommentUpdate", service.replyCommintUpdate(rvo));
+//		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+//	}
+//	
+//	@DeleteMapping("/replyComment/{replyNo}")
+//	@ResponseBody
+//	public ResponseEntity<Map<String, Object>> replyCommentDelete(@PathVariable int replyNo) {
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("Delete", service.replyCommintDelete(replyNo));
+//		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+//	}
 	
-	@PostMapping("/replyComment")
-	@ResponseBody
-	public ResponseEntity<Map<String, Object>> replyCommentInsert(@PathVariable int replyNo) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
-	}
-	
-	@PutMapping("/replyComment")
-	@ResponseBody
-	public ResponseEntity<Map<String, Object>> replyCommentUpdate(@PathVariable int replyNo) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
-	}
-	
-	@DeleteMapping("/replyComment/{replyNo}")
-	@ResponseBody
-	public ResponseEntity<Map<String, Object>> replyCommentDelete(@PathVariable int replyNo) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
-	}
 	// 좋아요를 만들 곳
 	
 	// 신고를 만들 곳

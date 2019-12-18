@@ -77,29 +77,28 @@ public class ComplaintsDAO implements ComplaintsImfo{
 		// TODO Auto-generated method stub
 		return sql.delete(name+"replyDelete", replyNo);
 	}
-
-	@Override
+	
 	public List<ReplyComplaintsVO> replyCommintList(int replyNo) {
 		// TODO Auto-generated method stub
-		return sql.selectList(name+"replyCommentList", replyNo);
+		return sql.selectList(name+"replyCommintList", replyNo);
 	}
-
-	@Override
-	public int replyCommintInsert(ReplyComplaintsVO rvo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int replyCommintUpdate(ReplyComplaintsVO rvo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int replyCommintDelete(int rno) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+//
+//	@Override
+//	public int replyCommintInsert(ReplyComplaintsVO rvo) {
+//		// TODO Auto-generated method stub
+//		return sql.insert(name + "replyCommentInsert", rvo);
+//	}
+//
+//	@Override
+//	public int replyCommintUpdate(ReplyComplaintsVO rvo) {
+//		// TODO Auto-generated method stub
+//		return sql.update(name + "replyCommentUpdate", rvo);
+//	}
+//
+//	@Override
+//	public int replyCommintDelete(int rno) {
+//		// TODO Auto-generated method stub
+//		return sql.delete(name + "replyCommentDelete", rno);
+//	}
 
 }

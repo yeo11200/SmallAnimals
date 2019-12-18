@@ -22,6 +22,7 @@
 		<result column="replyComplaintsContent" property="replyContent"/>
 		<result column="replyComplaintsWriteDate" property="replyWriteDate"/>
 		<result column="replyDepth" property="depth"/>
+		<result column="parentsReplyId" property="parentsReply"/>
 	</resultMap>	
 
 	<select id="list" resultMap="complaints">
@@ -61,14 +62,14 @@
 	
 	<!-- 댓글 처리 -->
 	<select id="replyList" resultMap="replyComplaints" resultType="com.smallanimals.complaints.vo.ReplyComplaintsVO">
-		select *, (SELECT COUNT(*) FROM ReplyComplaintsLike WHERE replyComplaintsId = r.replyComplaintsId) AS countLike, (SELECT COUNT(*) FROM ReplyComplaints WHERE parentsReplyId = r.replyComplaintsId) AS depthReply
-		from ReplyComplaints r
-		where r.complaintsId = #{boardNo} and r.replyDepth = 1
+		<include refid="replyWhere"></include>
+		WHERE complaintsId = #{boardNo} and replyDepth = 1
+<!-- 		<include refid="replyWhere"></include -->
 	</select>
 	
 	<insert id="replyInsert">
-		insert into ReplyComplaints(complaintsId, replyComplaintsWriter, replyComplaintsContent)
-		values(#{boardNo}, #{replyWriter}, #{replyContent})
+		insert into ReplyComplaints(complaintsId, replyComplaintsWriter, replyComplaintsContent, parentsReplyId, replyDepth)
+		values(#{boardNo}, #{replyWriter}, #{replyContent}, #{parentsReply}, #{depth})
 	</insert>
 	
 	<update id="replyUpdate">
@@ -81,31 +82,27 @@
 		where replyComplaintsId = #{replyNo}
 	</delete>
 	
-	<!-- 대댓글 처리 쿼리 -->
-	<select id="replyCommentList" resultMap="replyComplaints">
-		select *, (SELECT COUNT(*) FROM ReplyComplaintsLike WHERE replyComplaintsId = r.replyComplaintsId) AS countLike, (SELECT COUNT(*) FROM ReplyComplaints WHERE parentsReplyId = r.replyComplaintsId) AS depthReply
-		from ReplyComplaints
-		where parentsReplyId = #{replyNo}
+	<select id="replyCommintList" resultMap="replyComplaints">
+		<include refid="replyWhere"></include>
+		Where parentsReplyId = #{replyNo}
 	</select>
-	
-	<insert id="replyCommentInsert">
-	
-	</insert>
-	
-	<update id="replyCommentUpdate">
-	
-	</update>
-	
-	<delete id="replyCommentDelete">
-	
-	</delete>
 	<select id="likeList">
 		
 	</select>
 	
-	<insert id="like">
+	<insert id="likeInsert">
 		insert into ReplyComplaintsLike(replyComplaiantsId, ReplyLikeUid)
 		values(#{replyno}, #{replyUid}) 
 	</insert>
+	
+	<delete id="likeDelete">
+		insert into ReplyComplaintsLike(replyComplaiantsId, ReplyLikeUid)
+		values(#{replyno}, #{replyUid}) 
+	</delete>
+	
+	<sql id="replyWhere">
+		select *, (SELECT COUNT(*) FROM ReplyComplaintsLike WHERE replyComplaintsId = r.replyComplaintsId) AS countLike, (SELECT COUNT(*) FROM ReplyComplaints WHERE parentsReplyId = r.replyComplaintsId) AS depthReply
+		from ReplyComplaints r
+	</sql>
 	
 </mapper>

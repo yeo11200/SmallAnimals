@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="v-on" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +36,9 @@
 		margin-top : 5px;
 		width: 10%;
 		height: 20%;
+	}
+	.glyphicon{
+		cursor: pointer;
 	}
 </style>
 </head>
@@ -109,8 +113,19 @@
  			{{ list.replyContent }}<input v-if="list12 === false" v-bind:value="list.replyContent">
  			{{ list.replyWriter }}<input v-if="list12 === false" v-bind:value="list.replyWriter">
 			<span style="color: blue;" class="glyphicon glyphicon-thumbs-up" v-on:click="like">{{ list.countLike }}</span></div>
-			<div><button ref="re1" attr="value" v-on:click="replyComment">답글</button></div>
+			<div><button ref="re1" v-bind:value="list.replyNo" v-on:click="replyComment">답글</button></div>
+			
+			
+	<div>
+		<form name="comment">
+			<input v-bind:value="list.replyNo" name="replyNo">
+			<input v-bind:value="list.depth" name="depth">
+			<input name="replyWriter">
+			<textarea name="replyContent"></textarea>
+		</form>
+	</div>
 </div>
+
 </div>
 <script type="module" src="<c:url value='/resources/js/complaints/complaintEvent.js'></c:url>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
@@ -160,6 +175,7 @@ function replyList() {
 			hidden1 : false,
 			replyWriter : '',
 			replyContent : '',
+			listComment : [],
 			}
 		},
 		created: function () {
@@ -181,7 +197,24 @@ function replyList() {
 		},
 		methods: {
 			replyInsert: function () {
-				
+				fetch('/complaints/replyInsert', {
+					method : 'POST',
+					body : JSON.stringify({boardNo : this.no1 , replyWriter : this.replyWriter, replyContent : this.replyContent}),        
+					headers: {
+			            'Content-Type': 'application/json',
+			            // 'Content-Type': 'application/x-www-form-urlencoded',
+			        },
+				}).then((data) => {
+					data.text().then((success) => {
+						let event = JSON.parse(success);
+						if(event.eventCode === 1130) {
+							alert('댓글이 등록되었습니다.');
+							location.href = '/complaints/views/'+ this.no1;
+						}else {
+							alert('시스템관리자에게 문의 하세요');
+						}
+					});
+				});
 			},
 			replyUpdate: function () {
 				this.list12 = false;
@@ -193,8 +226,23 @@ function replyList() {
 			like: function () {
 				alert('좋아요');
 			},
-			replyComment: function () {
+			replyComment: function (event) {
 				alert("겨울속을 걸어가");
+				// event에 대한 target에 속성에 대한 값을 가지고 올 수 있다.
+				// 이거는 자바스크립트에서도 사용 가능
+				let no = event.target.value;
+				alert(no);
+				fetch('/complaints/replyComment/'+no, { method :'GET'} ).then((data) => {
+					date.text().then((data) => {
+						var text = '';
+						let commentList = JSON.parse(data);
+						
+						console.log(commentList);
+					});
+				}).catch((error) =>{
+					console.log(error);
+				});
+// 				var form = new FormData(document.comment);
 			}
 		}
 	})
