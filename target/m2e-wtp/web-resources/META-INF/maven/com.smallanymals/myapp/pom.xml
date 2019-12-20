@@ -243,7 +243,7 @@
                     <compilerArgument>-Xlint:all</compilerArgument>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
-                    <encoding>UTF-8</encoding>
+                    <encoding>EUC-KR</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -254,13 +254,6 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
-           <plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-compiler-plugin</artifactId>
-			    <configuration>
-			    <encoding>UTF-8</encoding>              
-			    </configuration>
-			</plugin>
         </plugins>
     </build>
 </project>
