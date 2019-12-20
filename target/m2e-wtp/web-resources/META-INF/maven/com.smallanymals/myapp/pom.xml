@@ -244,6 +244,7 @@
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
                 </configuration>
+                 <encoding>UTF-8</encoding>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
