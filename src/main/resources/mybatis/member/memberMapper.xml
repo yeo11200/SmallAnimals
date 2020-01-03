@@ -32,12 +32,11 @@
 		WHERE user_id = #{loginId}
 	</select>
 	
-	
-	<insert id="registerMember" useGeneratedKeys="true"  keyProperty="userNo" parameterType="com.smallanimals.member.vo.MemberVO">
+	<!-- useGeneratedKeys="true"  keyProperty="userNo" -->
+	<insert id="registerMember"  useGeneratedKeys="true" keyProperty="userNo" parameterType="com.smallanimals.member.vo.MemberVO">
 	insert into member(user_id,user_pwd,user_nickname,user_name,user_phone,user_zipCode,user_streetNameAddr,user_address,user_detailAddr,user_referenceItem,user_regdate,user_role)
 	 values(#{userId},#{userPwd},#{userNickname},#{userName},#{userPhone},#{userZipcode},#{userStreetnameaddr},#{userAddress},#{userDetailaddr},#{userReferenceitem},#{userRegdate},#{userRole})
 	</insert>
-
 	
 	<!--MemberModify 회원정보 불러오기 -->
 	<select id="memberInfo" resultMap="memberMap" >
@@ -55,6 +54,7 @@
 		UPDATE member set
 			user_name = #{userName},
 			user_nickname = #{userNickname},
+			user_pwd = #{userPwd},
 			user_phone = #{userPhone},
 			user_zipCode = #{userZipcode},
 			user_streetNameAddr = #{userStreetnameaddr},
@@ -65,11 +65,13 @@
 		 	user_id = #{userId}
 	</update>
 	
-	<!-- 회원 삭제 
-	<delete id="memberDelete"  resultMap="memberMap" >
-	Delete * FROM member WHERE user_id = #{userId}
-	</delete>-->
+	<!--회원정보 탈퇴 구현 -->
+	<delete id="memberDelete"  parameterType="com.smallanimals.member.vo.MemberVO">
+		 delete from member
+		 	where user_id = #{userId}
+		 		and user_pwd = #{userPwd}
+	</delete>
 	
 	
-	<!-- resultType="com.smallanimals.member.vo.MemberVO" -->
+	
 </mapper>

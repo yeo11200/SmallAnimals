@@ -16,12 +16,16 @@ public class MemberVO implements UserDetails{
   private String userPhone;
   private String userPhone1;
   private String userPhone2;
+  
   private String userZipcode;
   private String userStreetnameaddr;
   private String userAddress;
   private String userDetailaddr;
   private String userReferenceitem;
   
+  private String yy;
+  private String mm;
+  private String dd;
 
 
 
@@ -55,8 +59,6 @@ public void setUserDetailaddr(String userDetailaddr) {
 }
 
 
-
-
 public String getUserReferenceitem() {
 	return userReferenceitem;
 }
@@ -86,12 +88,7 @@ public void setUserAddress(String userAddress) {
 
 
 
-
-
-  private String yy;
-  private String mm;
-  private String dd;
-  public String getYy() {
+public String getYy() {
 	return yy;
 }
 
@@ -276,7 +273,6 @@ public String getUserAddr() {
 	return userAddr;
 }
 
-
 public void setUserAddr(String userAddr) {
 	this.userAddr = userAddr;
 }
@@ -285,9 +281,8 @@ public void setUserAddr(String userAddr) {
 public String toString() {
 
 	return "MemberVO [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userNickname="
-			+ userNickname + ", userName=" + userName + ", userPhone=" + userPhone + ",userZipcode=" + userZipcode + 
-			", userStreetnameaddr=" + userStreetnameaddr + ", userAddress=" + userAddress + ", userDetailaddr=" + 
-			userDetailaddr + ",userReferenceitem=" + userReferenceitem + ", useruserRegdate=" + userRegdate
-			+ ", userAddr=" + userAddr + ", userRole=" + userRole + ", userEnabled=" + userEnabled + "]";
+			+ userNickname + ", userName=" + userName + ", userPhone=" + userPhone + ", userZipcode=" + userZipcode + ", userStreetnameaddr=" + userStreetnameaddr + 
+			", userAddress=" + userAddress + ", userDetailaddr=" + userDetailaddr + ",userReferenceitem=" + userReferenceitem + 
+			", useruserRegdate=" + userRegdate + ", userAddr=" + userAddr + ", userRole=" + userRole + ", userEnabled=" + userEnabled + "]";
 }
 }

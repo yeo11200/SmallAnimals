@@ -196,15 +196,18 @@ th {
    	} 
    
 	//생년월일 형식,필수 입력체크 
-	var numberCheck = function(){
-		var temp = document.getElementById('input').value;
-		if(temp =="" ){
+	var numberCheck = function(){ 
+		var name = document.getElementById('birth').value;
+		if(name == "" || name == " "){
 			fournum_blank();
-		}else if(isNaN(temp) == true){
+			return false;
+		}
+			var data = parseInt(name);
+		if(isNaN(data)){
 			fournum();
-		}else if(isNaN(temp)==false){
+		}else{
 			fournum_good();
-	}
+		}
 	}
 	function fournum_good(){
 		$("#fourNumber").hide();
@@ -249,17 +252,14 @@ th {
 		$("#fourNumber").hide();
 		$("#fourNumber_blank").show();
 	}
-	
-	
 </script>
-
 <script type="text/javascript">
 /* <label for="id">너는 아이디다</label>
 <input type="text" name="id" id="id" onchange="idcheck();"> */
 function idCheck() {
-	var user_id = $('#userId').val();
-	var query = {userId : $("#userId").val()};
-			if(user_id =="" || user_id ==" "){
+	
+	var query = $("#userId").val();
+			if(query =="" || query ==" "){
      		alert("아이디를 입력하여 주세요!");
      		}else{
 		$.ajax({
@@ -307,20 +307,19 @@ function idCheck() {
     });
 </script>
 
-<script>
-function chkValidate(){ 
+<!-- <script>
+function chkValidate(){  
 	if($("#isCheckedId").val() == "N"){
 		alert("ID 체크를 먼저 해주세요.")
 	}
-	if(document.getElementById('user_id').value == ""){
+	if(document.getElementById('user_id').value == ""){ 
 		  alert('아이디는 필수 입력 사항입니다.');   
 		}else if(document.getElementById('user_pwd').value == ""){
 		   alert('비밀번호는 필수 입력 사항입니다.');
 		}else{ document.form.submit(); }
 	}
-</script>
+</script> -->
 </head>
-
 <body>
 	<div align="center">
 		<form action="${pageContext.request.contextPath}/registerMember" method="post" onsubmit="return;">
@@ -355,7 +354,7 @@ function chkValidate(){
 
 					<th>비밀번호</th>
 					<td colspan="3">
-						<input type="password" id="user_pwd" name="userPwd"  placeholder="비밀번호" onblur="pwd(this,8,16)" onkeypress="caps_lock(event)">
+						<input type="password" id="user_pwd" name="userPwd" placeholder="비밀번호" onblur="pwd(this,8,16)" onkeypress="caps_lock(event)">
 						<span id="capslock" style="position: relative; border: 1px solid #003b83; width:300px; bottom: 0px; display: none"> &nbsp; <b>* CapsLock</b> 키가 눌려있습니다. &nbsp;</span> <br> 
 						<div>
 						<span id="pwdcheck_danger" style="color:red; display:none;">8자 이상 16자 이하로 입력해야 합니다.</span>
@@ -389,8 +388,7 @@ function chkValidate(){
 					<th>전화번호</th>
 					<td>
 
-						<select  name="userPhone" class="sel" aria-label="월" id="userPhone" style="width: 100px;">
-
+						<select  name="userPhone" class="sel" aria-label="월" style="width: 100px;">
 								<option value="010">010</option>
 								<option value="011">011</option>
 								<option value="016">016</option>
@@ -398,16 +396,16 @@ function chkValidate(){
 								<option value="019">019</option>
 						</select>
 													- 
-						<input type="tel" name="userPhone1" id="userPhone1" maxlength="4" />
+						<input type="text" name="userPhone1" maxlength="4" />
 						- 
-						<input type="tel"  name="userPhone2" id="userPhone2" maxlength="4" />
+						<input type="text"  name="userPhone2"  maxlength="4" />
 
 					</td>
 				</tr>
 				<tr style="height:50px;">
 					<th>생년월일</th>
 					<td>
-						<input type="text" id="yy" name="yy" class="int" placeholder="년(4자)" aria-label="년(4자)" maxlength="4" onfocus="this.select();" onblur="numberCheck(isNaN(this.value));"> / 
+						<input type="text" id="birth" name="yy" class="int" placeholder="년(4자)" aria-label="년(4자)" maxlength="4" onfocus="this.select();" onblur="numberCheck(isNaN(this.value))"> / 
 						<select name="mm" class="sel" aria-label="월" style="width: 100px; height: 30px;">
 							<option>월</option>
 							<option value="01">1</option>
@@ -425,7 +423,6 @@ function chkValidate(){
 						</select> 
 						/ 
 						<select name="dd" class="sel" aria-label="월" style="width: 100px; height: 30px;">
-
 							<option>일</option>
 							<option value="01">1</option>
 							<option value="02">2</option>
@@ -464,7 +461,6 @@ function chkValidate(){
 					</div>
 					</td>
 				</tr>
-
 				<tr>
 					<th>주소</th>
 					<td style="height: 100px;">
@@ -475,15 +471,12 @@ function chkValidate(){
 						<span id="guide" style="color: #999; display: none;"></span><br>
 						<input type="text" id="sample4_detailAddress" placeholder="상세주소" style="width: 300px;" name="userDetailaddr"> 
 						<input type="text" id="sample4_extraAddress" placeholder="참고항목" style="width: 300px;" name="userReferenceitem">
-
 					</td>
 					<td></td>
 				</tr>
 				<tr>
 					<th colspan="2" align="right">
-
-						<input type="submit" value="회원가입"  onclick="chkValidate()" class="btn btn-primary"> 
-
+						<input type="submit" value="회원가입" id="choice" onclick="chkValidate()" class="btn btn-primary"> 
 						<input type="button" value="취소" class="btn btn-primary" onclick="location.href='../../main/main'">
 					</th>
 				</tr>

@@ -28,5 +28,4 @@ for(let i = 0; i < ols.length; i++) {
 		location.href = '/'+views+'/list';
 	});
 }
-
 </script>

@@ -13,6 +13,8 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Resource
 	private SqlSessionTemplate sqlSession;
+	
+	//회원가입.
 	@Override
 	public void registerMember(MemberVO vo) {
 		sqlSession.insert("member.registerMember",vo);
@@ -35,5 +37,11 @@ public class MemberDAOImpl implements MemberDAO {
 	public void memberUpdate(MemberVO vo) {
 		System.out.println("MemberDAOImpl 실행 구간" + vo);
 		 sqlSession.update("member.memberUpdate", vo);
+	}
+	
+	@Override
+	public void memberDelete(MemberVO vo) throws Exception {
+		System.out.println("MemberDAOImpl 실행 구간" + vo);
+		sqlSession.delete("member.memberDelete", vo);
 	}
 }

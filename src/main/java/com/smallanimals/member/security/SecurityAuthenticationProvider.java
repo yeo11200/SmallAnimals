@@ -7,6 +7,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 
+
 import com.smallanimals.member.service.AuthoritiesService;
 import com.smallanimals.member.vo.MemberVO;
 
@@ -15,8 +16,6 @@ public class SecurityAuthenticationProvider implements AuthenticationProvider  {
 
 	@Autowired
 	private AuthoritiesService AuthSer;
-	
-	
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -24,7 +23,7 @@ public class SecurityAuthenticationProvider implements AuthenticationProvider  {
 	        String password = (String) authentication.getCredentials();
 	        
 	        MemberVO user = (MemberVO) AuthSer.loadUserByUsername(username);
-	        System.out.println("ºñ¹Ð¹øÈ£ ºñ±³!");
+	        System.out.println("ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½!");
 	       System.out.println(password);
 	        System.out.println(user.getPassword());
 	        
